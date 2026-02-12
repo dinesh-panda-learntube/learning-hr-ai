@@ -1289,13 +1289,18 @@ window.HRSimulationApp = function ({ simulationData }) {
       }
     }
 
-    // Calculate Points
-    if (type === 'correct' && !hasAttemptedCurrentStep) {
-      // Base 10 + (Streak * 5)
-      points = 10 + (currentStreakCount * 5);
-    } else {
-      points = 0;
+    // Calculate Points: +10 for correct, +5 for partial, 0 for incorrect
+    if (!hasAttemptedCurrentStep) {
+      if (type === 'correct') {
+        points = 10;
+      } else if (type === 'partial') {
+        points = 5;
+      } else {
+        points = 0;
+      }
     }
+    
+    console.log('Points calculated:', { type, points, hasAttemptedCurrentStep });
 
     // Construct Feedback Message
     let feedbackMsg = step.immediate_feedback || "Your decision has been recorded.";
@@ -1336,6 +1341,15 @@ window.HRSimulationApp = function ({ simulationData }) {
     setStepResults(prev => [...prev, result]);
     setAttemptCount(prev => prev + 1);
     setIsFeedbackVisible(true);
+    
+    // Add points immediately (since we're skipping feedback display)
+    if (!hasAttemptedCurrentStep) {
+      setScore(prev => {
+        const newScore = prev + points;
+        console.log('Score updated:', { previousScore: prev, pointsAdded: points, newScore });
+        return newScore;
+      });
+    }
     
     // Immediately proceed to next step without showing feedback
     setTimeout(() => handleFeedbackComplete(), 0);
@@ -1603,12 +1617,14 @@ window.HRSimulationApp = function ({ simulationData }) {
           <span>STEP {currentStep + 1} OF {steps.length}</span>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
             {streak >= 2 && (
-              !isFeedbackVisible ? (
-                <window.BonusTimer duration={bonusDuration} onExpire={() => { }} />
-              ) : (
-                <span style={{ color: COLORS.warning, fontWeight: 700 }}>⏰ {streak}</span>
-              )
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: COLORS.highlightSoft, padding: '6px 12px', borderRadius: '8px' }}>
+                <span style={{ fontSize: '16px' }}>🔥</span>
+                <span style={{ fontSize: '12px', color: COLORS.highlight, fontWeight: 700 }}>{streak}</span>
+              </div>
             )}
+            {/* REMOVED: Bonus Timer 
+            <window.BonusTimer duration={bonusDuration} onExpire={() => { }} />
+            */}
             <span style={{ color: COLORS.highlight }}>⚡️ {score.toLocaleString()}</span>
             {(() => {
               const t = formatTimer(simElapsed); return (
@@ -1631,46 +1647,7 @@ window.HRSimulationApp = function ({ simulationData }) {
         )} */}
         <h3 style={{ fontSize: '20px', fontWeight: 400, color: COLORS.text, lineHeight: 1.35, marginBottom: '16px' }}>{step.instruction_question}</h3>
 
-
-        <div style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <button
-            onClick={() => setIsExplainExpanded(!isExplainExpanded)}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              padding: 0,
-              color: COLORS.highlight,
-              fontSize: '13px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px'
-            }}
-          >
-            <span style={{ transform: isExplainExpanded ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>▶</span>
-            Explain This Question
-          </button>
-        </div>
-
-        {isExplainExpanded && (
-          <div style={{
-            marginBottom: '24px',
-            marginTop: '12px',
-            background: 'rgba(64, 106, 255, 0.08)',
-            borderRadius: '12px',
-            padding: '16px',
-            border: `1px solid ${COLORS.highlight}`,
-            borderLeft: `4px solid ${COLORS.highlight}`
-          }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-              <span style={{ fontSize: '18px' }}>💡</span>
-              <p style={{ fontSize: '13px', color: COLORS.text, lineHeight: 1.6, margin: 0 }}>
-                {step.explain_this_question}
-              </p>
-            </div>
-          </div>
-        )}
+        {/* REMOVED: Explain This Question dropdown */}
         {artefact}
 
       </div>

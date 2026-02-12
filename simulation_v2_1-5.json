@@ -1,0 +1,606 @@
+{
+  "path_title": "Prompt Engineering Mastery for HR Managers",
+  "simulations": [
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_01",
+        "simulation_title": "Crafting AI-Powered Job Description Prompts",
+        "why_this_matters_for_getting_hired": "HR Managers who master prompt engineering can create compelling, unbiased job descriptions 10x faster.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": ["Job Description Prompt Master"],
+          "badges": ["AI-Enhanced JD Creation"],
+          "recruiter_readable_proof": [
+            "Optimized Job Description Prompts",
+            "Bias Detection Strategy",
+            "Multi-variant JD Examples"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Prompt clarity and precision",
+          "Bias mitigation in AI outputs",
+          "Context setting for AI models",
+          "Iterative prompt refinement",
+          "Output quality assessment"
+        ],
+        "impact_metrics": {
+          "time_saved": "4 days",
+          "cost_saved": "$300"
+        }
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Creating Your First AI Job Description",
+          "workplace_context": {
+            "company_type": "Fast-growing tech startup",
+            "business_state": "Need to fill 5 roles this month"
+          },
+          "crisis_or_decision_trigger": "Hiring manager needs a Senior Data Scientist JD by end of day.",
+          "central_artefact": "Prompt template for job description generation",
+          "emotional_peak": "AI generates biased or irrelevant content"
+        },
+        {
+          "scenario_id": "S2",
+          "scenario_title": "Refining Prompts for Better Results",
+          "workplace_context": {
+            "company_type": "Enterprise SaaS company",
+            "business_state": "Strict DEI requirements"
+          },
+          "crisis_or_decision_trigger": "Initial AI output contains gendered language and unrealistic requirements.",
+          "central_artefact": "Prompt refinement checklist",
+          "emotional_peak": "Leadership questions AI tool value"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Crafting Effective AI Prompts for Job Descriptions",
+            "key_points": [
+              "Be Specific: Include role level (Senior, Mid-level), years of experience, and key responsibilities",
+              "Set Constraints: Define tone (professional), language style (inclusive), and content scope",
+              "Provide Context: Mention company type, team structure, or special requirements",
+              "Request Structure: Specify sections like responsibilities, requirements, and qualifications"
+            ],
+            "example": "✅ Good: 'Write a job description for a Senior Data Scientist with 5+ years experience, including responsibilities, requirements, and qualifications. Focus on inclusive language and realistic expectations.'\n\n❌ Weak: 'Write a job description.'"
+          },
+          "instruction_question": "Choose the best opening prompt to generate a Senior Data Scientist job description.",
+          "explain_this_question": "Effective prompts require clear context, role details, and output format. This tests whether you can structure a prompt that gives AI the right constraints and information.",
+          "artefact_interaction_description": "You select a prompt structure; the AI output quality changes based on your choice.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Write a job description for a Senior Data Scientist with 5+ years experience, including responsibilities, requirements, and qualifications. Focus on inclusive language and realistic expectations.",
+            "Create a job posting for Data Scientist.",
+            "Generate a Senior Data Scientist JD similar to Google's approach, emphasizing ML expertise, Python skills, and leadership abilities.",
+            "Write a job description."
+          ],
+          "outcomes": {
+            "correct": "AI generates a well-structured, comprehensive JD",
+            "partially_correct": "AI output is usable but needs significant editing",
+            "incorrect": "AI produces generic or irrelevant content"
+          },
+          "immediate_feedback": "Impact: time saved and JD quality.",
+          "skill_signals_observed": ["Prompt specificity", "Context setting"]
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Mitigating Bias in AI-Generated Content",
+            "key_points": [
+              "Identify Common Biases: Gender-coded words (rockstar, ninja), age bias (digital native), ability bias",
+              "Set Clear Constraints: Explicitly state what to avoid in your prompt",
+              "Use Positive Instructions: Tell AI what to do, not just what to avoid",
+              "Test and Iterate: Review outputs for unintended bias patterns"
+            ],
+            "example": "Good constraint: Use professional, inclusive language. Avoid jargon like rockstar, ninja. Focus on concrete skills.\n\nWeak: Make it less biased"
+          },
+          "instruction_question": "The AI output includes 'rockstar' and 'ninja'. What prompt refinement will you add?",
+          "explain_this_question": "AI models can perpetuate biased language. HR Managers must know how to guide AI toward inclusive outputs through clear constraints.",
+          "artefact_interaction_description": "You add a constraint to your prompt; the language tone shifts.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Add: 'Use professional, inclusive language. Avoid jargon like rockstar, ninja, or guru. Focus on concrete skills and behaviors.'",
+            "Manually edit the output after generation",
+            "Accept the output as-is to save time",
+            "Add: 'Make it sound cool and exciting'"
+          ],
+          "outcomes": {
+            "correct": "AI regenerates with professional, inclusive language",
+            "partially_correct": "Some improvements but inconsistent",
+            "incorrect": "Bias remains or increases"
+          },
+          "immediate_feedback": "Impact: employer brand and DEI compliance.",
+          "skill_signals_observed": ["Bias mitigation", "Prompt constraints"]
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Structuring Realistic Job Requirements",
+            "key_points": [
+              "Separate Must-Haves from Nice-to-Haves: Limit essentials to 5-7 items maximum",
+              "Avoid Credential Inflation: Requirements should reflect actual job needs, not wish lists",
+              "Use Clear Criteria: Define what proficiency or experience actually means",
+              "Consider Alternate Paths: Acknowledge different ways to gain relevant skills"
+            ],
+            "example": "Good: Separate must-have from nice-to-have. Limit must-haves to 5 core skills.\n\nWeak: List all possible skills and qualifications"
+          },
+          "instruction_question": "Choose how to structure requirements in your prompt to avoid credential inflation.",
+          "explain_this_question": "Poorly prompted AI often creates unrealistic requirement lists. This tests whether you can guide AI to generate achievable, fair requirements.",
+          "artefact_interaction_description": "You select a requirement strategy; the JD's accessibility changes.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Separate 'must-have' from 'nice-to-have'. Limit must-haves to 5 core skills. Ensure requirements reflect actual job needs, not wish lists.",
+            "List all possible skills and qualifications",
+            "Keep requirements vague and flexible",
+            "Copy requirements from competitor job postings"
+          ],
+          "outcomes": {
+            "correct": "JD attracts diverse, qualified candidates",
+            "partially_correct": "Requirements are clearer but still extensive",
+            "incorrect": "JD deters qualified candidates with overreach"
+          },
+          "immediate_feedback": "Impact: candidate pool quality and diversity.",
+          "skill_signals_observed": ["Requirement precision", "Candidate experience"]
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S2",
+          "theory_content": {
+            "title": "Ensuring Gender-Neutral Language",
+            "key_points": [
+              "Preventative Approach: Build neutrality into the prompt, not just the output",
+              "Use You or The Candidate: Direct address avoids pronoun issues entirely",
+              "Systematic Fixing: Correct at the prompt level so all future outputs comply",
+              "Avoid Manual Editing: Manual fixes do not scale and introduce inconsistency"
+            ],
+            "example": "Good: Write all responsibilities using gender-neutral language. Use you or the candidate instead of pronouns.\n\nWeak: Manual find-and-replace after generation"
+          },
+          "instruction_question": "AI generated 'he/his' pronouns in job responsibilities. Select your correction approach.",
+          "explain_this_question": "Pronoun bias is a common AI output issue. HR Managers must know how to prevent this through prompt engineering, not just post-editing.",
+          "artefact_interaction_description": "You modify your prompt; pronouns update automatically in regeneration.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Add to prompt: 'Write all responsibilities using gender-neutral language. Use 'you' or 'the candidate' instead of pronouns.'",
+            "Just find-and-replace 'he' with 'they' in the output",
+            "Ignore it since it's just a draft",
+            "Ask AI to 'be less sexist'"
+          ],
+          "outcomes": {
+            "correct": "All future generations use neutral language automatically",
+            "partially_correct": "This instance is fixed but pattern may repeat",
+            "incorrect": "Bias persists or manual effort required each time"
+          },
+          "immediate_feedback": "Impact: inclusivity and process efficiency.",
+          "skill_signals_observed": ["Bias prevention", "Systematic fixing"]
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S2",
+          "theory_content": {
+            "title": "Creating Content Variants for Testing",
+            "key_points": [
+              "Single Prompt, Multiple Outputs: Use parameters like create 3 variants to batch generate",
+              "Vary One Dimension: Change tone (formal vs casual), length (concise vs detailed), or focus area",
+              "Maintain Core Consistency: All variants should have the same key requirements",
+              "Label Variants Clearly: Make it easy to track which version performs better"
+            ],
+            "example": "Good: Create 3 variants with different emphasis - growth, technical challenges, team culture.\n\nWeak: Generating one version at a time without variation strategy"
+          },
+          "instruction_question": "Choose the best prompt strategy to generate multiple JD variants for A/B testing.",
+          "explain_this_question": "Advanced prompt engineering enables experimentation. This tests whether you can use AI to create variations for optimization.",
+          "artefact_interaction_description": "You craft a variation prompt; 3 different JDs are generated.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Generate 3 versions: one emphasizing growth opportunities, one highlighting technical challenges, one focused on team culture. Keep core requirements consistent.",
+            "Ask AI to make random changes to the original",
+            "Copy the same JD three times with minor edits",
+            "Create one perfect JD instead of variants"
+          ],
+          "outcomes": {
+            "correct": "You get testable variants optimized for different candidate motivations",
+            "partially_correct": "Variants exist but differences are superficial",
+            "incorrect": "Variants are inconsistent or confusing"
+          },
+          "immediate_feedback": "Impact: application quality and hiring funnel optimization.",
+          "skill_signals_observed": ["Strategic prompting", "Testing mindset"]
+        }
+      ],
+      "end_state": "You've mastered job description prompt engineering—next, apply these skills to resume screening.",
+      "hook_to_next_simulation": "Now you need to screen 200 resumes using AI-powered prompts."
+    },
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_02",
+        "simulation_title": "AI-Powered Resume Screening Prompts",
+        "why_this_matters_for_getting_hired": "HR Managers who can engineer effective resume screening prompts reduce review time by 80% while improving quality.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": ["Resume Screening Prompt Expert"],
+          "badges": ["AI Screening Master"],
+          "recruiter_readable_proof": [
+            "Screening Criteria Prompts",
+            "Fair Evaluation Framework",
+            "Quality Shortlist Results"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Criteria definition in prompts",
+          "Fair evaluation prompt design",
+          "Consistency in AI screening",
+          "Bias detection in results",
+          "Candidate experience awareness"
+        ],
+        "impact_metrics": {
+          "time_saved": "2 weeks",
+          "cost_saved": "$800"
+        }
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Setting Up Screening Criteria",
+          "workplace_context": {
+            "company_type": "Scale-up with high volume hiring",
+            "business_state": "200 applications for 3 open roles"
+          },
+          "crisis_or_decision_trigger": "Hiring manager wants initial shortlist by tomorrow morning.",
+          "central_artefact": "AI screening prompt template",
+          "emotional_peak": "AI misses a strong candidate or flags weak ones"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Designing Effective Screening Criteria",
+            "key_points": [
+              "Be Specific About What to Evaluate: Define exact skills, experience levels, and attributes",
+              "Request Structured Output: Ask for ratings, justifications, or specific data points",
+              "Set Clear Benchmarks: Define what constitutes strong vs weak in each criterion",
+              "Keep It Consistent: Same format for all candidates enables fair comparison"
+            ],
+            "example": "Good: Rate 1-10 on product strategy experience (5+ years), provide 2-sentence justification.\n\nWeak: Is this candidate good for Product Manager?"
+          },
+          "instruction_question": "Select the best prompt structure to screen resumes for a Product Manager role.",
+          "explain_this_question": "Effective screening prompts require clear evaluation criteria and output format. This tests your ability to translate role needs into AI-readable instructions.",
+          "artefact_interaction_description": "You craft a screening prompt; AI evaluates sample resumes.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Evaluate this resume for a Product Manager role. Rate 1-10 on: product strategy experience (5+ years), cross-functional leadership, data-driven decision making, technical understanding. Provide rating and 2-sentence justification.",
+            "Is this candidate good for Product Manager?",
+            "Rank this resume from 1-100",
+            "Tell me everything about this candidate"
+          ],
+          "outcomes": {
+            "correct": "AI provides structured, actionable assessments",
+            "partially_correct": "AI output is inconsistent across candidates",
+            "incorrect": "AI gives vague or unusable feedback"
+          },
+          "immediate_feedback": "Impact: shortlist quality and time efficiency.",
+          "skill_signals_observed": ["Criteria clarity", "Structured output"]
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Handling Employment Gaps Fairly",
+            "key_points": [
+              "Focus on Skills Over Timeline: Evaluate what they can do, not employment continuity",
+              "Avoid Negative Assumptions: Gaps may be for caregiving, education, health, or other valid reasons",
+              "Set Explicit Fairness Rules: Tell AI not to penalize gaps in your prompt",
+              "Note Neutrally: Gaps can be mentioned for context without negative judgment"
+            ],
+            "example": "Good: Focus on skills relevance and growth. Do not penalize employment gaps.\n\nWeak: Automatically downgrade any resume with gaps over 6 months"
+          },
+          "instruction_question": "How will you prompt AI to handle employment gaps fairly?",
+          "explain_this_question": "AI can amplify bias around employment gaps. HR Managers must design prompts that evaluate fairly without penalizing career breaks.",
+          "artefact_interaction_description": "You add fairness constraints; AI's gap evaluation changes.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "When evaluating employment history, focus on skills relevance and growth trajectory. Do not penalize employment gaps. Note gaps neutrally without negative inference.",
+            "Automatically downgrade any resume with gaps over 6 months",
+            "Ignore employment dates entirely",
+            "Flag all gaps for manual review"
+          ],
+          "outcomes": {
+            "correct": "AI evaluates fairly while noting relevant context",
+            "partially_correct": "Gaps noted but bias may remain subtle",
+            "incorrect": "Qualified candidates wrongly filtered out"
+          },
+          "immediate_feedback": "Impact: candidate diversity and fairness.",
+          "skill_signals_observed": ["Fair prompting", "Bias awareness"]
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Evaluating Non-Traditional Backgrounds",
+            "key_points": [
+              "Value Demonstrated Skills: Look for evidence of ability, not just credentials",
+              "Recognize Alternate Paths: Bootcamps, self-teaching, career transitions are valid",
+              "Focus on Impact: What results did they achieve regardless of how they learned?",
+              "Avoid Credential Bias: Traditional paths are not inherently better"
+            ],
+            "example": "Good: Evaluate based on demonstrated skills and outcomes, not credentials. Consider bootcamp, self-taught paths.\n\nWeak: Only consider 4-year degrees from top universities"
+          },
+          "instruction_question": "Choose your prompt approach for evaluating non-traditional backgrounds.",
+          "explain_this_question": "The best candidates may have unconventional paths. This tests whether you can prompt AI to recognize transferable skills and diverse experiences.",
+          "artefact_interaction_description": "You refine criteria; AI's candidate pool diversity shifts.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Evaluate based on demonstrated skills and outcomes, not just traditional credentials. Consider bootcamp, self-taught, career transitions, and non-linear paths as valid. Focus on impact achieved.",
+            "Only consider candidates with 4-year degrees from top universities",
+            "Weight all backgrounds equally regardless of relevance",
+            "Separate traditional and non-traditional candidates into different categories"
+          ],
+          "outcomes": {
+            "correct": "AI surfaces strong candidates with diverse backgrounds",
+            "partially_correct": "Some diversity but traditional bias remains",
+            "incorrect": "Talented candidates incorrectly filtered out"
+          },
+          "immediate_feedback": "Impact: talent pool quality and innovation potential.",
+          "skill_signals_observed": ["Inclusive criteria", "Skills-based evaluation"]
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Handling Overqualification Nuance",
+            "key_points": [
+              "Flag Instead of Reject: Overqualified candidates deserve manager review, not auto-rejection",
+              "Provide Context: Explain why they might be overqualified with specific reasons",
+              "Avoid Assumptions: Let hiring manager decide if it's a problem or opportunity",
+              "Note Without Penalizing: Include the data point without making it a disqualifier"
+            ],
+            "example": "Good: Note as potentially overqualified with reasons. Flag for discussion, do not auto-reject.\\n\\nWeak: Auto-reject anyone with more than 2 years over requirement"
+          },
+          "instruction_question": "Design a prompt to identify overqualified candidates without auto-rejecting them.",
+          "explain_this_question": "Overqualified candidates may be flight risks or great assets. This tests whether you can prompt AI for nuanced evaluation.",
+          "artefact_interaction_description": "You create evaluation logic; AI flags candidates with context.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "If candidate experience significantly exceeds requirements, note it as 'potentially overqualified' with specific reasons. Do not recommend automatic rejection—flag for hiring manager discussion.",
+            "Auto-reject anyone with more than 2 years over requirement",
+            "Ignore experience level entirely",
+            "Downgrade candidates with too much experience"
+          ],
+          "outcomes": {
+            "correct": "Hiring manager gets flagged candidates with useful context",
+            "partially_correct": "Candidates flagged but without clear reasoning",
+            "incorrect": "Strong candidates rejected or important signals missed"
+          },
+          "immediate_feedback": "Impact: hiring manager decision quality.",
+          "skill_signals_observed": ["Nuanced prompting", "Context provision"]
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Auditing AI Screening for Bias",
+            "key_points": [
+              "Check for Patterns: Do certain demographics get consistently lower scores?",
+              "Analyze Disparate Impact: Compare shortlisted vs rejected groups by various factors",
+              "Sample Manual Review: Validate AI decisions on a subset of candidates",
+              "Iterate Based on Findings: Refine prompts if bias patterns emerge"
+            ],
+            "example": "Good: Analyze shortlisted vs rejected by gender indicators, university tiers, career transitions. Report disparities.\n\nWeak: Trust AI is unbiased by default"
+          },
+          "instruction_question": "How will you validate AI screening results aren't biased?",
+          "explain_this_question": "Prompt engineering includes verification. This tests whether you know how to audit AI outputs for hidden bias.",
+          "artefact_interaction_description": "You design a validation prompt; bias patterns become visible.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Analyze the shortlisted vs rejected groups by: gender indicators, university tiers, years of experience, career transitions. Report any significant disparities for review.",
+            "Trust AI is unbiased by default",
+            "Manually review every single resume",
+            "Only check if someone complains"
+          ],
+          "outcomes": {
+            "correct": "You catch and correct bias before it affects candidates",
+            "partially_correct": "Some bias detected but process is manual",
+            "incorrect": "Bias goes undetected and affects hiring"
+          },
+          "immediate_feedback": "Impact: hiring fairness and legal risk.",
+          "skill_signals_observed": ["Bias auditing", "Quality control"]
+        }
+      ],
+      "end_state": "You've mastered AI resume screening—next, learn to generate interview assessment prompts.",
+      "hook_to_next_simulation": "Top candidates are advancing. Now you need AI-powered interview evaluation."
+    },
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_03",
+        "simulation_title": "Generating Interview Assessment Prompts",
+        "why_this_matters_for_getting_hired": "HR Managers using AI interview prompts create consistent, fair evaluation frameworks that improve hiring decisions.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": ["Interview Prompt Designer"],
+          "badges": ["Structured Interview AI Master"],
+          "recruiter_readable_proof": [
+            "Behavioral Question Prompts",
+            "Scoring Framework Prompts",
+            "Interview Guide Templates"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Behavioral question generation",
+          "Competency-based prompting",
+          "Evaluation consistency",
+          "Interviewer guidance creation",
+          "Fair scoring frameworks"
+        ],
+        "impact_metrics": {
+          "time_saved": "3 days",
+          "cost_saved": "$450"
+        }
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Creating Behavioral Interview Questions",
+          "workplace_context": {
+            "company_type": "Product-focused tech company",
+            "business_state": "Scaling interview process for consistency"
+          },
+          "crisis_or_decision_trigger": "Interviewers report inconsistent candidate evaluation and unclear questions.",
+          "central_artefact": "AI-generated interview question bank",
+          "emotional_peak": "Interview quality varies wildly across interviewers"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Generating Effective Behavioral Interview Questions",
+            "key_points": [
+              "Use STAR Framework: Request questions that prompt Situation, Task, Action, Result responses",
+              "Target Specific Competencies: Define exact skills or behaviors to assess (e.g., stakeholder management)",
+              "Request Concrete Scenarios: Ask for questions about real situations, not hypotheticals",
+              "Avoid Generic Questions: Specify role context for relevant, tailored questions"
+            ],
+            "example": "Good: Generate 5 behavioral questions for Product Manager assessing stakeholder management. Use STAR format. Focus on conflicting priorities, difficult stakeholders.\n\nWeak: Create questions about stakeholder management"
+          },
+          "instruction_question": "Choose the best prompt to generate behavioral questions for 'stakeholder management' competency.",
+          "explain_this_question": "Good behavioral questions are specific, relevant, and reveal past behavior patterns. This tests your ability to generate targeted interview content via prompts.",
+          "artefact_interaction_description": "You craft a question generation prompt; AI produces interview questions.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Generate 5 behavioral interview questions that assess stakeholder management for a Product Manager role. Use STAR format. Focus on: conflicting priorities, difficult stakeholders, cross-team alignment, executive communication, and influence without authority.",
+            "Create questions about stakeholder management",
+            "Write interview questions",
+            "Generate hard questions to trick candidates"
+          ],
+          "outcomes": {
+            "correct": "AI produces targeted, STAR-friendly behavioral questions",
+            "partially_correct": "Questions are relevant but not optimized for evaluation",
+            "incorrect": "Questions are generic or unhelpful"
+          },
+          "immediate_feedback": "Impact: interview signal quality and consistency.",
+          "skill_signals_observed": ["Question specificity", "Competency mapping"]
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Creating Scoring Rubrics for Consistency",
+            "key_points": [
+              "Define Clear Levels: Specify what makes a strong, acceptable, or weak response",
+              "Use Observable Behaviors: Focus on specific actions and outcomes, not vague qualities like enthusiasm",
+              "Make It Reusable: Same rubric applies to all candidates for fair comparison",
+              "Include Red Flags: Define what responses would be concerning or disqualifying"
+            ],
+            "example": "Good: Define strong (includes metrics, shows cross-team collaboration), acceptable (demonstrates awareness), weak (no examples).\n\nWeak: Just score on gut feel"
+          },
+          "instruction_question": "Design a prompt to create an interviewer scoring rubric for responses.",
+          "explain_this_question": "Scoring rubrics reduce interviewer bias and improve consistency. This tests whether you can prompt AI to build evaluation frameworks.",
+          "artefact_interaction_description": "You generate a rubric prompt; structured scoring guide appears.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Create a 1-5 scoring rubric for stakeholder management responses: 1=no examples, 2=basic examples, 3=clear examples with some impact, 4=strong examples with clear impact, 5=exceptional examples with measurable business outcomes. Include behavioral indicators for each level.",
+            "Make a scoring system",
+            "Rate candidates good or bad",
+            "Give everyone the same score to be fair"
+          ],
+          "outcomes": {
+            "correct": "Interviewers have clear, calibrated scoring guidelines",
+            "partially_correct": "Rubric exists but levels are vague",
+            "incorrect": "Evaluation remains subjective"
+          },
+          "immediate_feedback": "Impact: hiring quality and interviewer alignment.",
+          "skill_signals_observed": ["Rubric design", "Evaluation consistency"]
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Generating Effective Probing Questions",
+            "key_points": [
+              "Go Deeper on Vague Answers: Ask for specifics like metrics, challenges, actual decisions made",
+              "Challenge Generalities: If they say we did X, ask What specifically was YOUR role?",
+              "Test Critical Thinking: Follow-ups should reveal problem-solving approach, not just results",
+              "Prepare Multiple Angles: Have probes ready for outcome, their specific role, and lessons learned"
+            ],
+            "example": "Good: For each question, create 3 follow-ups exploring outcome, their role, and lessons learned.\n\nWeak: Just repeat the original question louder"
+          },
+          "instruction_question": "How will you prompt AI to generate follow-up probing questions?",
+          "explain_this_question": "Great interviews dig deeper with targeted follow-ups. This tests whether you can create prompts that help interviewers go beyond surface responses.",
+          "artefact_interaction_description": "You design follow-up logic; interviewer guide becomes more interactive.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "For each behavioral question, generate 3 follow-up probes: one exploring outcome/impact, one exploring their specific role/actions, one exploring lessons learned or what they'd do differently.",
+            "Just repeat the original question louder",
+            "Ask 'why' repeatedly",
+            "Don't prompt for follow-ups, let interviewers improvise"
+          ],
+          "outcomes": {
+            "correct": "Interviewers get structured probing that reveals depth",
+            "partially_correct": "Follow-ups exist but may not uncover signal",
+            "incorrect": "Interviews stay superficial"
+          },
+          "immediate_feedback": "Impact: candidate evaluation depth and accuracy.",
+          "skill_signals_observed": ["Probing strategy", "Signal extraction"]
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Preventing Biased Interview Questions",
+            "key_points": [
+              "Request Open-Ended Questions: Avoid yes/no or leading questions that suggest correct answers",
+              "Eliminate Assumption Bias: Do not assume candidate background, education, or resources",
+              "Focus on Behaviors: Ask about what they did, not their opinions or cultural fit",
+              "Set Fairness Constraints: Explicitly tell AI to avoid cultural bias and be legally defensible"
+            ],
+            "example": "Good: Generate open-ended, neutral questions. Avoid assumptions about background or culturally biased scenarios.\n\nWeak: Accept whatever AI generates without review"
+          },
+          "instruction_question": "Select your approach to prevent leading or biased interview questions from AI.",
+          "explain_this_question": "AI can generate biased questions without proper constraints. This tests whether you can prompt for neutral, fair questions.",
+          "artefact_interaction_description": "You add fairness constraints; question tone shifts to neutral.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Generate questions that are open-ended and neutral. Avoid questions that assume candidate background, suggest 'correct' answers, or contain cultural bias. Focus on observable behaviors and outcomes.",
+            "Accept whatever AI generates",
+            "Only ask yes/no questions to avoid bias",
+            "Generate questions that favor candidates from top companies"
+          ],
+          "outcomes": {
+            "correct": "Interview questions are fair and legally defensible",
+            "partially_correct": "Most questions are fair but some bias slips through",
+            "incorrect": "Questions introduce or amplify bias"
+          },
+          "immediate_feedback": "Impact: candidate experience and legal risk.",
+          "skill_signals_observed": ["Fair question design", "Bias prevention"]
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S1",
+          "instruction_question": "Design a prompt to create a complete interview guide with timing and structure.",
+          "explain_this_question": "Interview guides bring structure to the process. This tests whether you can use AI to create comprehensive interviewer resources.",
+          "artefact_interaction_description": "You prompt for full guide; formatted document is generated.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Create a 60-minute interview guide for Engineering Manager role: 5 min intro, 40 min behavioral questions (8 min each for 5 competencies with scoring rubrics), 10 min candidate questions, 5 min close. Include what to say at each stage.",
+            "Just list some questions",
+            "Copy interview guide from the internet",
+            "Tell interviewers to wing it"
+          ],
+          "outcomes": {
+            "correct": "Interviewers have complete, time-managed structure",
+            "partially_correct": "Guide exists but missing key elements",
+            "incorrect": "Interviews remain unstructured"
+          },
+          "immediate_feedback": "Impact: interview consistency and candidate experience.",
+          "skill_signals_observed": ["Process design", "Comprehensive prompting"]
+        }
+      ],
+      "end_state": "You've created AI-powered interview frameworks—next comes employee feedback.",
+      "hook_to_next_simulation": "Performance review season is here. Time to prompt AI for feedback frameworks."
+    }
+  ]
+}

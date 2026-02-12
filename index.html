@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Engineering for HR Managers</title>
+    <!-- React & Babel (Development Mode) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "vc3dx7t71f");
+    </script>
+
+    <!-- Google Analytics 4 (GA4) -->
+    <!-- Replace G-XXXXXXXXXX with your actual Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWC2NTL2N3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        // Config with placeholder ID
+        gtag('config', 'G-HWC2NTL2N3');
+
+        // Helper for App Events
+        window.trackEvent = function (eventName, params = {}) {
+            // Auto-attach user_name if present in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const userName = urlParams.get('user_name');
+
+            const finalParams = { ...params };
+            if (userName) {
+                finalParams.user_name = userName;
+                // Also set as user property if available
+                if (typeof gtag === 'function') {
+                    gtag('set', 'user_properties', { user_name: userName });
+                }
+            }
+
+            console.log('📊 Track:', eventName, finalParams);
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, finalParams);
+            }
+        };
+    </script>
+    <script>
+        // Global Configuration - Set before JSX loads to ensure availability
+        window.COLORS = {
+            bg: '#0D2436',
+            bgLight: '#132F45',
+            bgCard: '#1A3A52',
+            cta: '#7FC241',
+            ctaHover: '#8FD251',
+            highlight: '#406AFF',
+            highlightSoft: 'rgba(64, 106, 255, 0.15)',
+            text: '#FFFFFF',
+            textMuted: '#8BA3B9',
+            textDim: '#5A7A94',
+            warning: '#FF6B4A',
+            warningBg: 'rgba(255, 107, 74, 0.12)',
+            success: '#4ADE80',
+            successBg: 'rgba(74, 222, 128, 0.12)',
+        };
+
+        window.RISK_FLAGS = [
+            { id: 'gaps', label: 'Employment gaps', icon: '⏸' },
+            { id: 'hopping', label: 'Job-hopping pattern', icon: '↺' },
+            { id: 'overstate', label: 'Skill overstatement', icon: '⚠' },
+            { id: 'culture', label: 'Cultural mismatch', icon: '👥' },
+        ];
+
+        window.MOCK_CANDIDATES = [
+            { id: 1, name: 'Priya Sharma', role: 'Senior Recruiter', company: 'Razorpay', experience: '6 years', skills: ['Full-cycle recruiting', 'Tech hiring', 'ATS management'], match: 95, flags: [], mustHave: true, brandName: true, growth: true, immediate: true },
+            { id: 2, name: 'Arjun Mehta', role: 'HR Business Partner', company: 'Flipkart', experience: '4 years', skills: ['Stakeholder management', 'Comp & Ben', 'Policy'], match: 72, flags: ['Adjacent experience'], mustHave: false, brandName: true, growth: true, immediate: false },
+            { id: 3, name: 'Kavitha Rajan', role: 'Talent Acquisition Lead', company: 'Freshworks', experience: '5 years', skills: ['Volume hiring', 'Campus recruitment', 'Employer branding'], match: 88, flags: [], mustHave: true, brandName: true, growth: false, immediate: true },
+            { id: 4, name: 'Rahul Deshmukh', role: 'Recruiting Coordinator', company: 'TCS', experience: '3 years', skills: ['Interview scheduling', 'Onboarding', 'Data entry'], match: 45, flags: ['Skill gap', 'Junior level'], mustHave: false, brandName: true, growth: true, immediate: true },
+            { id: 5, name: 'Sneha Kulkarni', role: 'HR Manager', company: 'Early-stage startup', experience: '7 years', skills: ['Full-cycle HR', 'Compliance', 'Team building'], match: 82, flags: ['Job hopping (3 roles in 4 years)'], mustHave: true, brandName: false, growth: true, immediate: false },
+            { id: 6, name: 'Vikram Iyer', role: 'Technical Recruiter', company: 'Microsoft', experience: '8 years', skills: ['Engineering hiring', 'Sourcing', 'Offer negotiation'], match: 91, flags: [], mustHave: true, brandName: true, growth: false, immediate: false },
+            { id: 7, name: 'Ananya Nair', role: 'People Operations', company: 'Zerodha', experience: '2 years', skills: ['HRIS', 'Payroll support', 'Documentation'], match: 38, flags: ['Limited recruiting exp', 'Junior'], mustHave: false, brandName: true, growth: true, immediate: true },
+            { id: 8, name: 'Deepak Verma', role: 'Recruitment Manager', company: 'Infosys', experience: '9 years', skills: ['Bulk hiring', 'Vendor management', 'SLA tracking'], match: 68, flags: ['Employment gap (8 months)'], mustHave: false, brandName: true, growth: false, immediate: true },
+        ];
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0D2436;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        #root {
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root" style="max-width: 600px; margin: 0 auto;"></div>
+    <!-- Load the JSX file as a Babel script -->
+    <script type="text/babel" src="hr-simulation.jsx"></script>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function AppWrapper() {
+            const [data, setData] = useState(null);
+            const [engineReady, setEngineReady] = useState(false);
+
+            useEffect(() => {
+                // Fetch simulation data based on URL parameter
+                // Example: /?sim=custom_test loads custom_test.json
+                const params = new URLSearchParams(window.location.search);
+                const simId = params.get('sim') || 'simulation_v2_1-5';
+                const jsonPath = `${simId}.json?t=${Date.now()}`;
+
+                console.log(`Loading simulation from: ${jsonPath}`);
+
+                fetch(jsonPath)
+                    .then(r => {
+                        if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
+                        return r.json();
+                    })
+                    .then(d => {
+                        window.SIMULATION_DATA = d;
+                        setData(d);
+                    })
+                    .catch(err => {
+                        console.error("Failed to load JSON:", err);
+                        setData({ error: true, message: `Failed to load ${jsonPath}. Check if file exists.` });
+                    });
+
+                // Poll for engine availability (Babel script tags are async)
+                const timer = setInterval(() => {
+                    if (window.HRSimulationApp) {
+                        setEngineReady(true);
+                        clearInterval(timer);
+                    }
+                }, 100);
+                return () => clearInterval(timer);
+            }, []);
+
+            if (!data) return <div style={{ color: '#8BA3B9', padding: '40px', textAlign: 'center' }}>Loading data...</div>;
+            if (!engineReady) return <div style={{ color: '#8BA3B9', padding: '40px', textAlign: 'center' }}>Initializing engine...</div>;
+
+            return <window.HRSimulationApp simulationData={data} />;
+        }
+
+        const rootNode = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootNode);
+        root.render(<AppWrapper />);
+    </script>
+</body>
+
+</html>

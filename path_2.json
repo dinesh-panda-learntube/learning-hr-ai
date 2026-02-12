@@ -1,0 +1,223 @@
+{
+  "PATH TITLE": "HR Manager Job Readiness — Real-World Evaluation Path",
+
+  "Simulation 1": {
+    "Set": "Overall Readiness",
+    "Title": "Acting as an HR Manager on Day One",
+    "What companies look for": "Recruiters at companies like Infosys and Accenture look for proof that you can independently handle HR manager-level decisions from day one, not just support roles.",
+    "Role Competencies Evaluated": [
+      "Owning HR decisions end-to-end under limited guidance",
+      "Prioritising business impact alongside people considerations"
+    ],
+    "Frameworks / Tools": [
+      "CPHRx",
+      "HRMS Dashboard",
+      "People Analytics Basics"
+    ],
+    "Emotional Peak": "First senior leadership review as acting HR Manager",
+    "Deliverables": [
+      "HR Manager Job Readiness Certificate",
+      "Badge: HR Manager – Core Readiness",
+      "CV Point: Acted as HR Manager handling business-critical decisions"
+    ],
+    "Hook to Next Simulation": "You are now evaluated differently depending on the type of company you step into."
+  },
+
+  "Simulation 2": {
+    "Set": "Company Type – Startup",
+    "Title": "Scaling HR in a Fast-Growth Startup",
+    "What companies look for": "Startup founders at companies like Razorpay and Meesho assess HR Managers on speed, judgment, and ability to build systems while hiring aggressively.",
+    "Role Competencies Evaluated": [
+      "Balancing rapid hiring with basic governance",
+      "Handling ambiguity without established HR playbooks"
+    ],
+    "Frameworks / Tools": [
+      "ATS",
+      "OKR Framework",
+      "ChatGPT for HR Operations"
+    ],
+    "Emotional Peak": "Founder escalation on hiring delays",
+    "Deliverables": [
+      "Certificate: Startup HR Readiness",
+      "Badge: High-Growth Hiring Management",
+      "CV Point: Managed HR operations in a scaling startup"
+    ],
+    "Hook to Next Simulation": "A different company type brings very different expectations and risks."
+  },
+
+  "Simulation 3": {
+    "Set": "Company Type – MNC",
+    "Title": "Managing HR Decisions in a Global MNC",
+    "What companies look for": "MNCs like TCS and Deloitte expect HR Managers to operate within strict policies while advising leaders on risk and compliance.",
+    "Role Competencies Evaluated": [
+      "Applying policy without losing credibility with leaders",
+      "Managing documentation and audit readiness"
+    ],
+    "Frameworks / Tools": [
+      "Global HR Policy Manuals",
+      "HRIS",
+      "Compliance Checklists"
+    ],
+    "Emotional Peak": "Internal audit and compliance review",
+    "Deliverables": [
+      "Certificate: MNC HR Operations",
+      "Badge: Policy & Compliance Management",
+      "CV Point: Managed HR decisions in a global enterprise context"
+    ],
+    "Hook to Next Simulation": "Beyond company type, HR Managers are judged by the role they play in the business."
+  },
+
+  "Simulation 4": {
+    "Set": "Role Type – Business Partner",
+    "Title": "Advising Leaders as an HR Business Partner",
+    "What companies look for": "Companies like Amazon and Flipkart expect HR Managers to act as trusted advisors, not just policy enforcers.",
+    "Role Competencies Evaluated": [
+      "Advising managers on people trade-offs",
+      "Aligning HR actions with business goals"
+    ],
+    "Frameworks / Tools": [
+      "HRBP Operating Model",
+      "Stakeholder Mapping",
+      "People Metrics"
+    ],
+    "Emotional Peak": "Leadership trust moment during a business review",
+    "Deliverables": [
+      "Certificate: HR Business Partnering",
+      "Badge: Leadership Advisory",
+      "CV Point: Acted as HRBP for business leadership"
+    ],
+    "Hook to Next Simulation": "Sometimes HR is tested not in planning, but in crisis."
+  },
+
+  "Simulation 5": {
+    "Set": "Role Type – Crisis Manager",
+    "Title": "Handling a High-Stakes HR Crisis",
+    "What companies look for": "Senior leaders at companies like Wipro and HUL assess HR Managers on judgment and calm during employee or legal crises.",
+    "Role Competencies Evaluated": [
+      "Managing sensitive employee situations under pressure",
+      "Protecting company and leadership credibility"
+    ],
+    "Frameworks / Tools": [
+      "Incident Response Playbooks",
+      "Employee Relations Frameworks",
+      "Legal Escalation Matrix"
+    ],
+    "Emotional Peak": "Emergency escalation to leadership",
+    "Deliverables": [
+      "Certificate: Employee Relations & Crisis Management",
+      "Badge: HR Crisis Handling",
+      "CV Point: Resolved high-impact HR crisis"
+    ],
+    "Hook to Next Simulation": "Strong HR Managers are also evaluated on how they build teams, not just fix problems."
+  },
+
+  "Simulation 6": {
+    "Set": "Role Type – Talent Leader",
+    "Title": "Owning End-to-End Hiring Outcomes",
+    "What companies look for": "Hiring managers at companies like Swiggy and Zomato expect HR Managers to close roles without compromising quality.",
+    "Role Competencies Evaluated": [
+      "Managing hiring pipelines to closure",
+      "Aligning recruiters and business stakeholders"
+    ],
+    "Frameworks / Tools": [
+      "Hiring Funnel Metrics",
+      "Competency Mapping",
+      "Offer Approval Matrix"
+    ],
+    "Emotional Peak": "Final hiring decision review",
+    "Deliverables": [
+      "Certificate: Talent Acquisition Leadership",
+      "Badge: Hiring Closure Ownership",
+      "CV Point: Closed critical roles end-to-end"
+    ],
+    "Hook to Next Simulation": "As responsibility grows, HR Managers are judged on specialised depth."
+  },
+
+  "Simulation 7": {
+    "Set": "Specialisation – Performance & Appraisals",
+    "Title": "Driving Fair and Defensible Appraisals",
+    "What companies look for": "Companies like Infosys and Cognizant evaluate HR Managers on how well they run appraisal cycles without bias or backlash.",
+    "Role Competencies Evaluated": [
+      "Designing and defending appraisal outcomes",
+      "Managing employee dissatisfaction professionally"
+    ],
+    "Frameworks / Tools": [
+      "Performance Management Systems",
+      "Bell Curve Models",
+      "Calibration Frameworks"
+    ],
+    "Emotional Peak": "Appraisal committee review",
+    "Deliverables": [
+      "Certificate: Performance Management",
+      "Badge: Appraisal Governance",
+      "CV Point: Led appraisal and calibration cycles"
+    ],
+    "Hook to Next Simulation": "Performance decisions often trigger tough conversations next."
+  },
+
+  "Simulation 8": {
+    "Set": "Specialisation – Employee Relations",
+    "Title": "Resolving Senior-Level Employee Conflict",
+    "What companies look for": "Leadership teams at companies like Tata Group expect HR Managers to resolve conflicts without reputational damage.",
+    "Role Competencies Evaluated": [
+      "Handling senior employee disputes",
+      "Balancing fairness with business continuity"
+    ],
+    "Frameworks / Tools": [
+      "ER Case Management",
+      "Investigation Frameworks",
+      "Documentation Standards"
+    ],
+    "Emotional Peak": "Senior leader escalation meeting",
+    "Deliverables": [
+      "Certificate: Advanced Employee Relations",
+      "Badge: Senior Conflict Resolution",
+      "CV Point: Managed senior-level employee disputes"
+    ],
+    "Hook to Next Simulation": "At higher levels, HR is evaluated as a leadership function."
+  },
+
+  "Simulation 9": {
+    "Set": "Specialisation – Leadership & Strategy",
+    "Title": "Presenting HR Strategy to Leadership",
+    "What companies look for": "CXOs at companies like Reliance and Adani Group expect HR Managers to justify people strategies with data and outcomes.",
+    "Role Competencies Evaluated": [
+      "Building and defending HR strategy",
+      "Using data to influence leadership decisions"
+    ],
+    "Frameworks / Tools": [
+      "People Analytics",
+      "Strategic Workforce Planning",
+      "HR Dashboards"
+    ],
+    "Emotional Peak": "Leadership strategy presentation",
+    "Deliverables": [
+      "Certificate: HR Strategy & Analytics",
+      "Badge: Strategic HR Leadership",
+      "CV Point: Presented HR strategy to leadership"
+    ],
+    "Hook to Next Simulation": "The final evaluation mirrors how promotions are actually decided."
+  },
+
+  "Simulation 10": {
+    "Set": "Promotion Readiness",
+    "Title": "Defending Your Promotion to HR Manager",
+    "What companies look for": "Promotion panels at companies like Amazon and Accenture assess whether HR professionals consistently operate at the next level.",
+    "Role Competencies Evaluated": [
+      "Demonstrating readiness across HR domains",
+      "Reflecting on decisions with business impact"
+    ],
+    "Frameworks / Tools": [
+      "Promotion Panels",
+      "Role Readiness Rubrics",
+      "Career Frameworks"
+    ],
+    "Emotional Peak": "Promotion panel decision",
+    "Deliverables": [
+      "HR Manager Job Readiness Certificate – Advanced",
+      "Badge: Promotion-Ready HR Manager",
+      "CV Point: Cleared HR Manager promotion-level evaluation"
+    ],
+    "Hook to Next Simulation": "You now carry proof that mirrors real hiring and promotion decisions."
+  }
+}

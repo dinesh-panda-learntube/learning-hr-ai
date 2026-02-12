@@ -1,0 +1,157 @@
+{
+  "simulation_metadata": {
+    "simulation_title": "Screening Candidates Under Hiring Pressure",
+    "why_this_matters_for_getting_hired": "Hiring managers judge HR Managers on shortlist quality when speed and stakes are high.",
+    "estimated_time": "15 minutes",
+    "deliverables_unlockable": {
+      "certifications": ["HR Manager Job-Readiness Proof"],
+      "badges": ["Shortlisting Under Pressure"],
+      "recruiter_readable_proof": [
+        "Candidate Shortlist with Rationale",
+        "Risk Flags & Hiring Signals Log"
+      ]
+    },
+    "primary_role_competencies_evaluated": [
+      "Role-relevant resume screening",
+      "Signal vs noise judgment under pressure",
+      "Hiring risk prioritisation",
+      "Consistency in applying role requirements",
+      "Decision accountability to leadership"
+    ]
+  },
+  "scenario_breakdown": [
+    {
+      "scenario_title": "Urgent Shortlist for Growth Team",
+      "workplace_context": {
+        "company_type": "Series C SaaS startup",
+        "business_state": "Rapid hiring during revenue growth"
+      },
+      "crisis_or_decision_trigger": "Hiring manager demands a 5-candidate shortlist by EOD after recruiter dropout.",
+      "central_artefact": "ATS resume shortlist dashboard",
+      "emotional_peak": "Hiring manager questions speed vs quality trade-off"
+    },
+    {
+      "scenario_title": "Red Flags vs High Potential",
+      "workplace_context": {
+        "company_type": "VC-backed fintech startup",
+        "business_state": "Scaling with compliance pressure"
+      },
+      "crisis_or_decision_trigger": "Conflicting feedback appears on shortlisted candidates.",
+      "central_artefact": "Candidate comparison & notes sheet",
+      "emotional_peak": "Risk escalation to leadership"
+    },
+    {
+      "scenario_title": "Defending the Shortlist",
+      "workplace_context": {
+        "company_type": "Global MNC tech division",
+        "business_state": "Hiring audit and interview pipeline review"
+      },
+      "crisis_or_decision_trigger": "Interview outcomes reflect poorly on shortlist quality.",
+      "central_artefact": "Hiring review email & shortlist rationale doc",
+      "emotional_peak": "Trust moment with senior leadership"
+    }
+  ],
+  "step_level_design": [
+    {
+      "step_id": 1,
+      "instruction_question": "Filter resumes to identify immediate role-fit candidates.",
+      "explain_this_question": "At senior levels, speed without relevance damages credibility. This task evaluates how you quickly narrow down candidates using must-have criteria that directly affect time-to-hire and interview success. Focus on what makes someone interview-ready today, not potentially trainable later. The business impact is reducing wasted interview bandwidth and protecting hiring manager trust.",
+      "artefact_interaction_description": "You scan an ATS dashboard and apply filters to surface resumes that meet core role requirements.",
+      "interaction_type": "selection",
+      "options_inputs": [
+        "Select candidates meeting all JD must-haves",
+        "Select candidates with adjacent experience",
+        "Select candidates with strong brand-name companies",
+        "Select candidates with career growth signals"
+      ],
+      "outcomes": {
+        "correct": "Must-have aligned candidates shortlisted",
+        "partially_correct": "Mixed relevance shortlist",
+        "incorrect": "Noise-heavy shortlist"
+      },
+      "immediate_feedback": "Your choice impacts interviewer confidence and hiring velocity.",
+      "skill_signals_observed": ["Role-relevant screening", "Signal prioritisation"]
+    },
+    {
+      "step_id": 2,
+      "instruction_question": "Reduce the shortlist to five under time pressure.",
+      "explain_this_question": "HR Managers are often forced to choose under incomplete information. This step tests whether you can make defensible trade-offs that balance speed and quality. Success here means the shortlist can survive scrutiny later, even if not perfect. Business value lies in momentum without reckless risk.",
+      "artefact_interaction_description": "You reorder candidates and lock five profiles for review.",
+      "interaction_type": "ordering",
+      "options_inputs": [
+        "Prioritise exact skill match",
+        "Balance skill match with tenure stability",
+        "Optimise for diversity of backgrounds",
+        "Optimise for immediate joiners"
+      ],
+      "outcomes": {
+        "correct": "Balanced, defensible shortlist",
+        "partially_correct": "Shortlist with explainable gaps",
+        "incorrect": "Inconsistent prioritisation"
+      },
+      "immediate_feedback": "Your ordering affects perceived judgment under pressure.",
+      "skill_signals_observed": ["Hiring prioritisation", "Decision framing"]
+    },
+    {
+      "step_id": 3,
+      "instruction_question": "Flag potential risks before sending the shortlist.",
+      "explain_this_question": "Strong HR Managers do not hide uncertainty—they surface it early. This step checks if you can anticipate concerns and protect downstream trust. The business impact is avoiding surprise failures during interviews or post-hire.",
+      "artefact_interaction_description": "You annotate shortlisted profiles with risk notes.",
+      "interaction_type": "selection",
+      "options_inputs": [
+        "Employment gaps",
+        "Job-hopping patterns",
+        "Skill overstatement",
+        "Cultural mismatch hints"
+      ],
+      "outcomes": {
+        "correct": "Relevant risks flagged",
+        "partially_correct": "Over- or under-flagging",
+        "incorrect": "No risks flagged"
+      },
+      "immediate_feedback": "Risk visibility influences leadership trust.",
+      "skill_signals_observed": ["Risk assessment", "Hiring judgment"]
+    },
+    {
+      "step_id": 4,
+      "instruction_question": "Send the shortlist with a concise rationale.",
+      "explain_this_question": "Executives judge HR Managers on clarity, not volume. This evaluates whether you can justify decisions in business language. The outcome affects how much autonomy you are given in future hiring.",
+      "artefact_interaction_description": "You draft a short rationale note attached to the shortlist.",
+      "interaction_type": "MCQ",
+      "options_inputs": [
+        "Explain each candidate in detail",
+        "Summarise selection logic and risks",
+        "Highlight recruiter constraints",
+        "Defer explanation until asked"
+      ],
+      "outcomes": {
+        "correct": "Clear, business-focused rationale",
+        "partially_correct": "Verbose or defensive explanation",
+        "incorrect": "No rationale provided"
+      },
+      "immediate_feedback": "Your communication shapes leadership confidence.",
+      "skill_signals_observed": ["Stakeholder communication", "Accountability"]
+    },
+    {
+      "step_id": 5,
+      "instruction_question": "Respond to feedback questioning shortlist quality.",
+      "explain_this_question": "When challenged, HR Managers are evaluated on ownership, not blame-shifting. This step tests your ability to protect credibility while remaining open to correction. Business value comes from maintaining trust during friction.",
+      "artefact_interaction_description": "You reply to a hiring manager’s critical email.",
+      "interaction_type": "MCQ",
+      "options_inputs": [
+        "Defend the shortlist aggressively",
+        "Acknowledge gaps and propose next steps",
+        "Blame time constraints",
+        "Request rework without comment"
+      ],
+      "outcomes": {
+        "correct": "Ownership with solution orientation",
+        "partially_correct": "Neutral but passive response",
+        "incorrect": "Defensive or evasive response"
+      },
+      "immediate_feedback": "Your response affects future decision autonomy.",
+      "skill_signals_observed": ["Leadership communication", "Judgment under scrutiny"]
+    }
+  ],
+  "end_state": "This is exactly the kind of situation HR Managers are judged on."
+}

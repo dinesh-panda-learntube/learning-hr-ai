@@ -1,0 +1,155 @@
+{
+  "_source": ":contentReference[oaicite:0]{index=0}",
+  "simulation": {
+    "simulation_metadata": {
+      "simulation_parent_set": "Overall Readiness",
+      "simulation_title": "Acting as an HR Manager on Day One",
+      "what_companies_look_for": "Recruiters at companies like Infosys and Accenture look for proof that you can independently handle HR manager-level decisions from day one, not just support roles.",
+      "estimated_time": "15 minutes",
+      "deliverables_unlockable": {
+        "certifications": [
+          "HR Manager Job Readiness Certificate"
+        ],
+        "badges": [
+          "HR Manager – Core Readiness"
+        ],
+        "recruiter_readable_proof": [
+          "CV Point: Acted as HR Manager handling business-critical decisions"
+        ]
+      },
+      "primary_role_competencies_evaluated": [
+        "Owning HR decisions end-to-end under limited guidance",
+        "Prioritising business impact alongside people considerations"
+      ],
+      "workplace_name": "Infosys"
+    },
+    "scenarios": [
+      {
+        "scenario_title": "Hiring Bottleneck Escalation",
+        "crisis_or_decision_trigger": "A business unit head escalates that three critical roles have been open for 45+ days, delaying a ₹2.5 crore client project.",
+        "central_artefact": "Hiring Funnel Metrics Dashboard",
+        "emotional_peak": "Leadership escalation questioning HR ownership"
+      },
+      {
+        "scenario_title": "Offer Drop-Off Crisis",
+        "crisis_or_decision_trigger": "Two accepted candidates decline offers citing compensation ambiguity and slow communication.",
+        "central_artefact": "Offer Approval Tracker Email Thread",
+        "emotional_peak": "Pressure from finance and business on cost vs speed"
+      },
+      {
+        "scenario_title": "First Leadership Review",
+        "crisis_or_decision_trigger": "You are asked to present hiring risks and corrective actions in the weekly leadership review.",
+        "central_artefact": "People Analytics Summary Slide",
+        "emotional_peak": "First senior leadership review as acting HR Manager"
+      }
+    ],
+    "steps": [
+      {
+        "instruction_or_question": "Review the hiring dashboard and identify the single biggest blocker.",
+        "mentor_explanation": {
+          "layman_explanation": "You are scanning live hiring numbers to see where things are stuck — sourcing, interviews, or approvals.",
+          "answer_action": "Spot the stage with the highest candidate drop-off and longest delay."
+        },
+        "artefact_interaction_description": "Inspect the Hiring Funnel Metrics Dashboard to flag the bottleneck stage.",
+        "artefact_ui_description": "Funnel stages with counts, average days per stage, red highlights for SLA breaches. Timer: 30 seconds.",
+        "interaction_type": "selection",
+        "options_or_inputs": [
+          "Sourcing volume is too low for niche roles",
+          "Interview feedback turnaround exceeds 5 days",
+          "Offer approvals pending with finance",
+          "Candidates rejecting due to location constraints"
+        ],
+        "outcomes": {
+          "correct": "Interview feedback turnaround exceeds 5 days",
+          "partially_correct": "Offer approvals pending with finance",
+          "incorrect": "Sourcing volume is too low for niche roles"
+        },
+        "immediate_feedback": "Correct choice helps recover ~₹40 lakh in potential project delay costs.",
+        "bridge_content": "With the bottleneck identified, leadership expects immediate corrective action.",
+        "skill_signals_observed": [
+          "Data-driven diagnosis",
+          "Business impact awareness"
+        ]
+      },
+      {
+        "instruction_or_question": "Decide your immediate corrective action as HR Manager.",
+        "mentor_explanation": {
+          "layman_explanation": "You must act fast to unblock hiring without blaming teams.",
+          "answer_action": "Set a temporary SLA and escalation rule for interview feedback."
+        },
+        "artefact_interaction_description": "Update rules within the Hiring Funnel Dashboard.",
+        "artefact_ui_description": "Toggle SLA rule, add escalation contact, confirmation animation on save. Timer: 20 seconds.",
+        "interaction_type": "ordering options or actions",
+        "options_or_inputs": [
+          "Escalate delays directly to BU head",
+          "Set 48-hour feedback SLA with auto-reminders",
+          "Pause new sourcing until backlog clears"
+        ],
+        "outcomes": {
+          "correct": "Set 48-hour feedback SLA with auto-reminders",
+          "partially_correct": "Escalate delays directly to BU head",
+          "incorrect": "Pause new sourcing until backlog clears"
+        },
+        "immediate_feedback": "SLA action improves hiring velocity by ~18% within two weeks.",
+        "bridge_content": "Hiring velocity improves, but offer closures create a new issue.",
+        "skill_signals_observed": [
+          "Process ownership",
+          "Speed vs quality judgment"
+        ]
+      },
+      {
+        "instruction_or_question": "Respond to the declined offer situation.",
+        "mentor_explanation": {
+          "layman_explanation": "Candidates dropped out after saying yes — usually a trust or clarity issue.",
+          "answer_action": "Clarify compensation structure and tighten approval communication."
+        },
+        "artefact_interaction_description": "Draft a corrective response using the Offer Approval Tracker Email.",
+        "artefact_ui_description": "Email thread with editable subject, CC rules, read receipts. Timer: 45 seconds.",
+        "interaction_type": "MCQ",
+        "options_or_inputs": [
+          "Ask recruiters to convince candidates informally",
+          "Send a transparent compensation breakup and approval timeline",
+          "Withdraw both offers to reset expectations"
+        ],
+        "outcomes": {
+          "correct": "Send a transparent compensation breakup and approval timeline",
+          "partially_correct": "Ask recruiters to convince candidates informally",
+          "incorrect": "Withdraw both offers to reset expectations"
+        },
+        "immediate_feedback": "Correct response saves ~₹6 lakh in rehiring and agency costs.",
+        "bridge_content": "Leadership now wants a consolidated view of risks.",
+        "skill_signals_observed": [
+          "Stakeholder communication",
+          "Candidate experience ownership"
+        ]
+      },
+      {
+        "instruction_or_question": "Choose what to present in the leadership review.",
+        "mentor_explanation": {
+          "layman_explanation": "Leaders want clarity on risk, not operational noise.",
+          "answer_action": "Summarise hiring risks with business impact and next actions."
+        },
+        "artefact_interaction_description": "Edit the People Analytics Summary Slide.",
+        "artefact_ui_description": "Three-slide view: risks, impact numbers, next 30-day actions. Timer: 60 seconds.",
+        "interaction_type": "selection",
+        "options_or_inputs": [
+          "Detailed recruiter-wise performance data",
+          "Hiring risks mapped to revenue and delivery",
+          "Policy explanations for delays"
+        ],
+        "outcomes": {
+          "correct": "Hiring risks mapped to revenue and delivery",
+          "partially_correct": "Detailed recruiter-wise performance data",
+          "incorrect": "Policy explanations for delays"
+        },
+        "immediate_feedback": "Leadership confidence increases; HR credibility strengthened for future decisions.",
+        "bridge_content": "The review sets expectations for your role going forward.",
+        "skill_signals_observed": [
+          "Executive communication",
+          "Business alignment"
+        ]
+      }
+    ],
+    "closing_statement": "This is exactly the kind of situation HR Managers are judged on."
+  }
+}

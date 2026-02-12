@@ -1,0 +1,810 @@
+{
+  "path_metadata": {
+    "path_title": "Recruitment Intern to HR Manager Readiness Path",
+    "simulations_included": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "design_principles_applied": {
+      "narrative_first": true,
+      "artefacts_used_sparingly": true,
+      "artefacts_only_for_high_impact_tasks": true,
+      "crisis_driven": true,
+      "no_theory_before_decisions": true
+    }
+  },
+  "simulations": [
+    {
+      "simulation_id": 1,
+      "simulation_metadata": {
+        "simulation_title": "Screening Candidates Under Hiring Pressure",
+        "why_this_matters_for_getting_hired": "Hiring managers judge whether you can produce a clean shortlist fast without missing risk.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": [
+            "Shortlisting Reliability Proof"
+          ],
+          "badges": [
+            "Signal-Spotter Under Pressure"
+          ],
+          "recruiter_readable_proof": [
+            "5-Candidate Shortlist + Rationale",
+            "Risk Flags & Hiring Signals Log"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Role-relevant resume screening",
+          "Signal vs noise judgment",
+          "Prioritising under time pressure",
+          "Consistency in applying requirements",
+          "Accountability to hiring manager"
+        ]
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1-1",
+          "scenario_title": "Shortlist Due in 30 Minutes",
+          "workplace_context": {
+            "company_type": "Series C SaaS startup",
+            "business_state": "Growth sprint; headcount approved unexpectedly"
+          },
+          "crisis_or_decision_trigger": "The hiring manager pings: “I need 5 solid candidates for today’s panel—now.”",
+          "central_artefact": "ATS shortlist view (limited fields; no deep profiles)",
+          "emotional_peak": "Hiring manager questions your judgment in front of the panel coordinator"
+        },
+        {
+          "scenario_id": "S1-2",
+          "scenario_title": "The Hidden Red Flag",
+          "workplace_context": {
+            "company_type": "VC-backed product startup",
+            "business_state": "Client escalation; role is business-critical"
+          },
+          "crisis_or_decision_trigger": "A senior interviewer flags one candidate as “too good to be true” minutes before scheduling.",
+          "central_artefact": "Candidate notes + reference snapshot (one-screen summary)",
+          "emotional_peak": "You must decide whether to remove a top candidate and risk missing the hire"
+        },
+        {
+          "scenario_id": "S1-3",
+          "scenario_title": "Shortlist Faces Scrutiny",
+          "workplace_context": {
+            "company_type": "High-paying MNC tech unit",
+            "business_state": "Hiring quality audit after mis-hire last quarter"
+          },
+          "crisis_or_decision_trigger": "Your shortlist is questioned: “Why are these profiles even here?”",
+          "central_artefact": "Shortlist rationale email (tight format; 5 bullets max)",
+          "emotional_peak": "Trust moment: keep autonomy or get micromanaged"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "instruction_question": "Pick 5 candidates to send to the hiring manager right now.",
+          "explain_this_question": "This tests whether you can produce a usable shortlist when the business is moving faster than perfect information. HR Managers earn trust by selecting candidates who are interview-ready today, not “maybe with training.” Aim for candidates who match the non-negotiables and reduce the risk of wasting panel time. Your goal is a shortlist that survives scrutiny even if a detail later changes.",
+          "artefact_interaction_description": "You see 12 candidate tiles with only role-critical signals (current role, key skills, tenure, notice period, compensation range). Tap to select 5; a ‘shortlist health’ meter updates based on role-fit and risk balance.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Select candidates with direct role match and stable tenure",
+            "Select candidates with strong brands but partial skill match",
+            "Select candidates with fastest joining only",
+            "Select candidates with the highest years of experience regardless of relevance"
+          ],
+          "scenario_id": "S1",
+          "outcomes": {
+            "correct": "Shortlist is role-fit heavy with manageable risk notes",
+            "partially_correct": "Shortlist has 1–2 questionable profiles but is defensible",
+            "incorrect": "Shortlist is driven by weak proxies (brand/years) and wastes panel time"
+          },
+          "immediate_feedback": "Impact: The panel trusts your shortlist enough to proceed—or starts re-checking everything you send.",
+          "skill_signals_observed": [
+            "Role-relevant resume screening",
+            "Signal vs noise judgment"
+          ]
+        },
+        {
+          "step_id": 2,
+          "instruction_question": "One candidate looks great—but one detail doesn’t add up. Keep or drop?",
+          "explain_this_question": "High-paying teams expect HR Managers to spot ‘too good to be true’ signals without overreacting. This step evaluates whether you can protect hiring quality while keeping hiring speed. You’re not expected to be omniscient—only to make a decision that reduces downstream risk and is explainable to leadership.",
+          "artefact_interaction_description": "You tap the candidate tile to open a one-screen ‘risk snapshot’ (inconsistent dates, unusually rapid promotions, vague project claims). Choose an action; the system reveals what happens in scheduling and interview outcome.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Keep on shortlist; add a specific verification note for interviewers",
+            "Drop immediately to avoid any risk",
+            "Keep and ignore the detail; move fast",
+            "Pause the entire shortlist until full verification is done"
+          ],
+          "scenario_id": "S1",
+          "outcomes": {
+            "correct": "You contain risk without killing speed",
+            "partially_correct": "You reduce risk but slow the pipeline more than needed",
+            "incorrect": "You either ignore risk or freeze hiring unnecessarily"
+          },
+          "immediate_feedback": "Impact: Your decision either prevents a later embarrassment—or creates a preventable interview failure.",
+          "skill_signals_observed": [
+            "Hiring risk prioritisation",
+            "Decision accountability"
+          ]
+        },
+        {
+          "step_id": 3,
+          "instruction_question": "The hiring manager asks: “Why these 5?” Reply in 5 bullets.",
+          "explain_this_question": "HR Managers are judged on clarity under pressure. This step checks if you can justify a shortlist in business language that a hiring manager actually trusts. Your explanation should show a consistent selection logic and surface any known risks upfront so the manager isn’t surprised later.",
+          "artefact_interaction_description": "You choose 5 bullet-lines from a pool to form your rationale email. Each choice shifts the manager’s trust meter (clarity, ownership, risk transparency).",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Lead with must-have match, then role outcomes, then risk notes",
+            "Lead with brand names, then years, then vague ‘culture fit’",
+            "Lead with constraints and excuses, then selections",
+            "Lead with risk notes only, then no positives"
+          ],
+          "scenario_id": "S1",
+          "outcomes": {
+            "correct": "Rationale is crisp, consistent, and risk-aware",
+            "partially_correct": "Rationale is okay but misses one key business angle",
+            "incorrect": "Rationale is defensive, vague, or proxy-driven"
+          },
+          "immediate_feedback": "Impact: Leadership either increases your autonomy—or treats you as a coordinator only.",
+          "skill_signals_observed": [
+            "Stakeholder communication",
+            "Consistency in applying requirements"
+          ]
+        },
+        {
+          "step_id": 4,
+          "instruction_question": "Two interview slots open up. Swap in a borderline candidate or keep your top 5 intact?",
+          "explain_this_question": "This tests whether you protect shortlist integrity when logistics create temptation to ‘fill slots.’ HR Managers are accountable for pipeline quality, not just scheduling. Your decision should reflect a clear standard: either uphold quality or knowingly trade it off and document why.",
+          "artefact_interaction_description": "A scheduling screen shows two panels available and your shortlist status. You pick an action and see immediate downstream effects (panel satisfaction, candidate experience, rework).",
+          "interaction_type": "trade-off meters",
+          "options_inputs": [
+            "Keep top 5 intact; use waitlist and ask for a reschedule",
+            "Swap in the borderline candidate to keep panels busy",
+            "Cancel the interviews until you source fresh candidates",
+            "Ask the hiring manager to decide without your recommendation"
+          ],
+          "scenario_id": "S1",
+          "outcomes": {
+            "correct": "You protect quality while managing expectations",
+            "partially_correct": "You keep momentum but increase rework risk",
+            "incorrect": "You break standards or offload accountability"
+          },
+          "immediate_feedback": "Impact: You either prevent ‘pipeline pollution’ or create it.",
+          "skill_signals_observed": [
+            "Prioritising under time pressure",
+            "Accountability to hiring manager"
+          ]
+        }
+      ],
+      "end_state": "This is exactly the kind of situation HR Managers are judged on."
+    },
+    {
+      "simulation_id": 2,
+      "simulation_metadata": {
+        "simulation_title": "Coordinating Interviews That Go Wrong",
+        "why_this_matters_for_getting_hired": "You’re judged on how you contain interview breakdowns without damaging trust or candidate experience.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": [
+            "Candidate Experience Incident Proof"
+          ],
+          "badges": [
+            "Crisis-Calm Coordinator"
+          ],
+          "recruiter_readable_proof": [
+            "Interview Incident Timeline + Actions Taken",
+            "Candidate Salvage Outcome Note"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Crisis communication under stress",
+          "Stakeholder alignment during breakdowns",
+          "Candidate experience protection",
+          "Escalation judgment",
+          "Ownership without blame-shifting"
+        ]
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S2-1",
+          "scenario_title": "No-Show Interviewer, Angry Candidate",
+          "workplace_context": {
+            "company_type": "High-paced startup",
+            "business_state": "Hiring sprint; overloaded interviewers"
+          },
+          "crisis_or_decision_trigger": "Candidate waits 18 minutes; interviewer doesn’t join. Candidate threatens to withdraw.",
+          "central_artefact": "Live interview schedule + escalation chat thread",
+          "emotional_peak": "Candidate posts about the experience and tags the company"
+        },
+        {
+          "scenario_id": "S2-2",
+          "scenario_title": "Interviewer Goes Off-Track",
+          "workplace_context": {
+            "company_type": "MNC engineering org",
+            "business_state": "Brand-sensitive campus hiring"
+          },
+          "crisis_or_decision_trigger": "Candidate reports inappropriate comments during the interview.",
+          "central_artefact": "Candidate complaint note (confidential) + internal escalation channel",
+          "emotional_peak": "Leadership asks: “Is this a compliance risk?”"
+        },
+        {
+          "scenario_id": "S2-3",
+          "scenario_title": "Salvage or Cut Losses",
+          "workplace_context": {
+            "company_type": "Fintech under scrutiny",
+            "business_state": "Tight timelines; zero tolerance for reputational risk"
+          },
+          "crisis_or_decision_trigger": "You must decide whether to re-interview, change panel, or end the process.",
+          "central_artefact": "Decision summary to hiring manager (short, defensible)",
+          "emotional_peak": "Your judgment is compared to “HR Manager standard”"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "instruction_question": "The candidate is waiting. What do you do in the next 2 minutes?",
+          "explain_this_question": "In real hiring, speed and tone protect the employer brand. This evaluates whether you respond like an owner: contain the candidate’s frustration, establish a next step, and keep options open without overpromising. Business value is preventing drop-offs and reputation damage while keeping the panel accountable.",
+          "artefact_interaction_description": "You choose a single message to send to the candidate. The candidate’s ‘trust level’ shifts immediately based on your tone and specificity.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Apologise, give a precise next update time, and offer a fast reschedule option",
+            "Ask them to wait; say the interviewer is busy",
+            "Say nothing until you confirm internally",
+            "Offer compensation immediately to calm them"
+          ],
+          "outcomes": {
+            "correct": "Candidate stays engaged; brand impact contained",
+            "partially_correct": "Candidate stays but confidence drops",
+            "incorrect": "Candidate withdraws or escalates publicly"
+          },
+          "immediate_feedback": "Impact: You either stabilise the situation—or turn a delay into a reputational incident.",
+          "skill_signals_observed": [
+            "Crisis communication under stress",
+            "Candidate experience protection"
+          ]
+        },
+        {
+          "step_id": 2,
+          "instruction_question": "The interviewer still hasn’t joined. Escalate, replace, or reschedule?",
+          "explain_this_question": "HR Managers protect process integrity: they don’t let candidates hang, and they don’t let interviewers treat hiring casually. This tests whether you take decisive action that keeps quality and fairness intact. Business value is preventing waste while signaling high standards internally.",
+          "artefact_interaction_description": "A schedule view shows alternate interviewers and slots. You pick an action and immediately see downstream effects (panel alignment, candidate sentiment, timeline).",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Replace with a trained backup interviewer and proceed",
+            "Reschedule to the next available slot and document the no-show",
+            "Wait longer to avoid disrupting the panel",
+            "Cancel the process and close the candidate"
+          ],
+          "outcomes": {
+            "correct": "You preserve fairness and momentum with accountability",
+            "partially_correct": "You preserve fairness but lose speed",
+            "incorrect": "You prioritise convenience over candidate experience"
+          },
+          "immediate_feedback": "Impact: Your action defines whether hiring runs like a disciplined system or chaos.",
+          "skill_signals_observed": [
+            "Stakeholder alignment during breakdowns",
+            "Escalation judgment"
+          ]
+        },
+        {
+          "step_id": 3,
+          "instruction_question": "Candidate reports an inappropriate comment. What’s your next move?",
+          "explain_this_question": "This evaluates HR maturity. HR Managers don’t dismiss sensitive signals or turn them into gossip—they capture facts, protect confidentiality, and escalate appropriately. Business value is reducing compliance risk and protecting employer brand while treating the candidate fairly.",
+          "artefact_interaction_description": "You choose a structured response path (fact capture → escalation → panel adjustment). The system reveals how leadership views your handling.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Capture details neutrally, reassure confidentiality, escalate to HRBP/People Ops lead",
+            "Tell the candidate you’ll ‘talk to the interviewer’ and get back later",
+            "Ignore unless the candidate repeats the complaint",
+            "Ask the interviewer directly first to ‘confirm’"
+          ],
+          "outcomes": {
+            "correct": "Risk contained and handled defensibly",
+            "partially_correct": "Handled with delays or minor process gaps",
+            "incorrect": "Creates exposure and trust loss"
+          },
+          "immediate_feedback": "Impact: Leadership either trusts your discretion—or worries you’ll mishandle sensitive issues.",
+          "skill_signals_observed": [
+            "Escalation judgment",
+            "Ownership without blame-shifting"
+          ]
+        },
+        {
+          "step_id": 4,
+          "instruction_question": "Decide: re-interview, change panel, or end the candidacy.",
+          "explain_this_question": "HR Managers are accountable for outcomes, not intentions. This step tests if you can make a fair, business-sound decision that protects quality and avoids repeat incidents. Your decision must be explainable to leadership and respectful to the candidate.",
+          "artefact_interaction_description": "You pick one path; the simulation shows interview outcome probabilities and brand risk consequences.",
+          "interaction_type": "trade-off meters",
+          "options_inputs": [
+            "Re-interview with a new panel and send a clear reset message",
+            "Proceed with current feedback; ignore the incident",
+            "End candidacy to avoid any complexity",
+            "Delay decision until you gather ‘more signals’"
+          ],
+          "outcomes": {
+            "correct": "Fair reset with leadership-aligned reasoning",
+            "partially_correct": "Defensible but suboptimal business outcome",
+            "incorrect": "Unfair, risky, or evasive decision"
+          },
+          "immediate_feedback": "Impact: Your judgment either prevents repeat incidents—or normalises them.",
+          "skill_signals_observed": [
+            "Candidate experience protection",
+            "Decision accountability"
+          ]
+        }
+      ],
+      "end_state": "This is exactly the kind of situation HR Managers are judged on."
+    },
+    {
+      "simulation_id": 3,
+      "simulation_metadata": {
+        "simulation_title": "Supporting a Hiring Manager’s Decision",
+        "why_this_matters_for_getting_hired": "You’re evaluated on whether you add judgment to decisions, not just pass messages.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": [
+            "Hiring Recommendation Proof"
+          ],
+          "badges": [
+            "Decision Partner"
+          ],
+          "recruiter_readable_proof": [
+            "Hire/No-Hire Recommendation + Trade-off Rationale",
+            "Risk Mitigation Plan for the Chosen Candidate"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Trade-off reasoning between candidates",
+          "Recommendation clarity under ambiguity",
+          "Bias-aware decision hygiene",
+          "Stakeholder influencing",
+          "Risk planning post-decision"
+        ]
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S3-1",
+          "scenario_title": "Two Finalists, One Seat",
+          "workplace_context": {
+            "company_type": "High-paying startup",
+            "business_state": "Role is tied to a client delivery deadline"
+          },
+          "crisis_or_decision_trigger": "Hiring manager says: “Pick. We need the offer out in 1 hour.”",
+          "central_artefact": "Short candidate comparison snapshot (only 6 signals)",
+          "emotional_peak": "Your recommendation is treated as your judgment, not ‘admin input’"
+        },
+        {
+          "scenario_id": "S3-2",
+          "scenario_title": "Conflicting Interview Feedback",
+          "workplace_context": {
+            "company_type": "MNC product org",
+            "business_state": "Consensus culture; aversion to mis-hires"
+          },
+          "crisis_or_decision_trigger": "Panel feedback is split; one senior interviewer objects strongly.",
+          "central_artefact": "Feedback thread excerpts (no full transcripts)",
+          "emotional_peak": "Senior interviewer challenges your recommendation live"
+        },
+        {
+          "scenario_id": "S3-3",
+          "scenario_title": "Offer Risk Before Offer",
+          "workplace_context": {
+            "company_type": "Fintech",
+            "business_state": "Comp constraints; candidate market is hot"
+          },
+          "crisis_or_decision_trigger": "Comp band may not match the top candidate’s expectations.",
+          "central_artefact": "Offer risk note (1 screen) to leadership",
+          "emotional_peak": "You’re judged on whether you saw the offer failure coming"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "instruction_question": "Choose who you recommend for offer: Candidate A or B.",
+          "explain_this_question": "HR Managers are expected to make a call with imperfect information. This tests whether you can identify the trade-off that matters for business outcomes—delivery risk, ramp time, team impact—rather than personal preference. Your recommendation should be explainable and tied to what the role must achieve in the next 90 days.",
+          "artefact_interaction_description": "You see two candidate cards with only decision-grade signals. Tap one to recommend; the system reveals immediate leadership reaction.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Recommend Candidate A (faster ramp, weaker long-term upside)",
+            "Recommend Candidate B (strong upside, higher ramp risk)",
+            "Recommend ‘no hire’ and restart pipeline",
+            "Tell the hiring manager to decide without your view"
+          ],
+          "outcomes": {
+            "correct": "Recommendation matches role urgency and is defensible",
+            "partially_correct": "Recommendation is arguable but misses a key risk",
+            "incorrect": "Avoids accountability or ignores role constraints"
+          },
+          "immediate_feedback": "Impact: Your recommendation either accelerates delivery—or seeds a mis-hire risk.",
+          "skill_signals_observed": [
+            "Trade-off reasoning",
+            "Recommendation clarity"
+          ]
+        },
+        {
+          "step_id": 2,
+          "instruction_question": "A senior interviewer strongly disagrees. How do you respond in the moment?",
+          "explain_this_question": "This tests whether you can hold a professional line under pressure. HR Managers don’t ‘win arguments’—they clarify decision criteria, surface risk, and steer to a resolution. Business value is preventing indecision paralysis and avoiding political fallout.",
+          "artefact_interaction_description": "You select a response line in a live meeting chat. The disagreement either escalates or resolves based on your choice.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Ask for the specific failure risk and tie it back to role outcomes",
+            "Dismiss the concern as ‘subjective’",
+            "Switch recommendation immediately to reduce conflict",
+            "End the discussion and postpone the decision"
+          ],
+          "outcomes": {
+            "correct": "You de-escalate and improve decision quality",
+            "partially_correct": "You keep calm but don’t resolve the core issue",
+            "incorrect": "You inflame politics or become evasive"
+          },
+          "immediate_feedback": "Impact: Leadership sees you as a decision partner—or a push-over.",
+          "skill_signals_observed": [
+            "Stakeholder influencing",
+            "Decision hygiene"
+          ]
+        },
+        {
+          "step_id": 3,
+          "instruction_question": "Document the recommendation in 3 lines for leadership approval.",
+          "explain_this_question": "This evaluates whether you can translate judgment into a crisp, reviewable justification. HR Managers are trusted when they can state: why this candidate, what risk exists, and how it will be managed. Business value is faster approvals and fewer reversals.",
+          "artefact_interaction_description": "You choose 3 lines from a pool to form a leadership-ready note; each line changes approval likelihood.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Tie to role outcomes and timeline",
+            "Surface the key risk transparently",
+            "Propose a mitigation step (e.g., reference check focus area)",
+            "Add general praise without evidence"
+          ],
+          "outcomes": {
+            "correct": "Approval likely with clear risk management",
+            "partially_correct": "Approval possible but questions remain",
+            "incorrect": "Vague note triggers delays and rework"
+          },
+          "immediate_feedback": "Impact: Your clarity either speeds the offer—or stalls the process.",
+          "skill_signals_observed": [
+            "Recommendation clarity",
+            "Risk planning post-decision"
+          ]
+        },
+        {
+          "step_id": 4,
+          "instruction_question": "Comp band might not match. What do you do before sending the offer?",
+          "explain_this_question": "HR Managers prevent avoidable offer failures. This step tests whether you anticipate candidate behavior and align internal stakeholders early. Business value is reducing offer drop-offs that waste weeks of pipeline time.",
+          "artefact_interaction_description": "You pick an action; the simulation reveals candidate response and internal alignment outcomes.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Run a quick expectation check with the candidate and align internally on flex points",
+            "Send the offer and negotiate only if they push back",
+            "Delay the offer until next quarter budget clears",
+            "Ask the hiring manager to handle comp discussions alone"
+          ],
+          "outcomes": {
+            "correct": "Offer risk reduced with minimal delay",
+            "partially_correct": "Offer risk reduced but timeline takes a hit",
+            "incorrect": "High likelihood of offer rejection or internal conflict"
+          },
+          "immediate_feedback": "Impact: You either secure the hire—or create a predictable rejection.",
+          "skill_signals_observed": [
+            "Risk planning",
+            "Stakeholder alignment"
+          ]
+        }
+      ],
+      "end_state": "This is exactly the kind of situation HR Managers are judged on."
+    },
+    {
+      "simulation_id": 4,
+      "simulation_metadata": {
+        "simulation_title": "Handling Offer Drop-Off Fallout",
+        "why_this_matters_for_getting_hired": "You’re judged on whether you protect employer brand and close risk when offers go sideways.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": [
+            "Offer Crisis Handling Proof"
+          ],
+          "badges": [
+            "Brand Protector"
+          ],
+          "recruiter_readable_proof": [
+            "Offer Fallout Action Log",
+            "Candidate Objection Response Summary"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Objection handling under pressure",
+          "Cross-functional coordination (comp, legal, hiring manager)",
+          "Employer brand risk containment",
+          "Fairness and consistency in offers",
+          "Fast recovery planning"
+        ]
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S4-1",
+          "scenario_title": "Offer Rejected публичly",
+          "workplace_context": {
+            "company_type": "Brand-conscious MNC",
+            "business_state": "Campus & lateral hiring reputation sensitive"
+          },
+          "crisis_or_decision_trigger": "Candidate rejects and threatens to post a screenshot of the offer email.",
+          "central_artefact": "Offer email thread (only; no long docs)",
+          "emotional_peak": "Leadership asks: “Are we about to look bad publicly?”"
+        },
+        {
+          "scenario_id": "S4-2",
+          "scenario_title": "Counteroffer & Deadline Game",
+          "workplace_context": {
+            "company_type": "Startup competing for talent",
+            "business_state": "Hot market; competitor offers within 24 hours"
+          },
+          "crisis_or_decision_trigger": "Candidate gives a 12-hour ultimatum with a counter.",
+          "central_artefact": "One-screen comp flex summary (band + approval limits)",
+          "emotional_peak": "Hiring manager pushes you to “just match it”"
+        },
+        {
+          "scenario_id": "S4-3",
+          "scenario_title": "Save the Relationship",
+          "workplace_context": {
+            "company_type": "Fintech under scrutiny",
+            "business_state": "Risk-averse; process must look fair"
+          },
+          "crisis_or_decision_trigger": "Candidate claims the offer is unfair vs peers.",
+          "central_artefact": "Short fairness justification note to leadership",
+          "emotional_peak": "Compliance tone: “Can we defend this if questioned?”"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "instruction_question": "Candidate threatens to post the offer screenshot. What do you say first?",
+          "explain_this_question": "This tests brand protection under stress. HR Managers respond quickly, respectfully, and with control—without escalating conflict or making promises they can’t keep. Business value is preventing reputational damage while preserving a chance to resolve the issue privately.",
+          "artefact_interaction_description": "You select a first-response message. The simulation shows whether the candidate calms down, escalates, or disengages.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Acknowledge, invite a private call immediately, and commit to a clear next step",
+            "Warn them not to post or mention legal consequences",
+            "Ignore and wait for the hiring manager’s guidance",
+            "Offer a raise immediately to stop the post"
+          ],
+          "outcomes": {
+            "correct": "Escalation contained; relationship salvage possible",
+            "partially_correct": "Contained but candidate remains distrustful",
+            "incorrect": "Candidate escalates; leadership confidence drops"
+          },
+          "immediate_feedback": "Impact: Your response either prevents a brand incident—or triggers one.",
+          "skill_signals_observed": [
+            "Employer brand risk containment",
+            "Objection handling"
+          ]
+        },
+        {
+          "step_id": 2,
+          "instruction_question": "Candidate gives a 12-hour counteroffer ultimatum. What’s your move?",
+          "explain_this_question": "HR Managers are judged on controlled negotiation, not panic. This step evaluates whether you can align stakeholders fast and respond within constraints. Business value is reducing offer drop-offs while avoiding inconsistent or unfair comp decisions.",
+          "artefact_interaction_description": "You choose an action path; the simulation reveals approval speed, candidate response, and internal fallout risk.”",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Clarify candidate priorities, check internal flex, and respond with a structured counter",
+            "Match immediately to close fast",
+            "Reject the counter outright to protect policy",
+            "Delay response and hope they wait"
+          ],
+          "outcomes": {
+            "correct": "Fast, controlled negotiation within rules",
+            "partially_correct": "Outcome okay but creates internal risk or delay",
+            "incorrect": "Offer collapses or triggers policy inconsistency"
+          },
+          "immediate_feedback": "Impact: You either close a hire cleanly—or create a precedent that haunts future offers.",
+          "skill_signals_observed": [
+            "Cross-functional coordination",
+            "Fairness and consistency"
+          ]
+        },
+        {
+          "step_id": 3,
+          "instruction_question": "Hiring manager pressures: “Just match it.” What do you do?",
+          "explain_this_question": "This tests whether you can hold policy boundaries without becoming obstructive. HR Managers protect the company by being clear on limits while offering alternatives. Business value is preventing runaway comp and preserving trust across teams.",
+          "artefact_interaction_description": "You choose a response in a tense chat. Leadership confidence shifts based on whether you’re firm + solution-oriented.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "State the constraint clearly and propose 2 feasible alternatives",
+            "Agree immediately to avoid conflict",
+            "Refuse without alternatives",
+            "Escalate and exit the discussion"
+          ],
+          "outcomes": {
+            "correct": "You hold boundaries and keep momentum",
+            "partially_correct": "You hold boundaries but slow the process",
+            "incorrect": "You either cave or block progress"
+          },
+          "immediate_feedback": "Impact: You’re seen as a business partner—or a bottleneck.",
+          "skill_signals_observed": [
+            "Stakeholder management",
+            "Policy consistency"
+          ]
+        },
+        {
+          "step_id": 4,
+          "instruction_question": "Candidate claims unfairness vs peers. Decide what you document for leadership.",
+          "explain_this_question": "At HR Manager level, you must anticipate defensibility. This evaluates whether you can document a fairness-aware rationale that can withstand scrutiny without oversharing confidential info. Business value is reducing compliance risk and preventing repeat escalations.",
+          "artefact_interaction_description": "You pick 3 points to include in a leadership note; the system reveals whether it’s defensible and whether it triggers rework.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Role scope + level alignment to band",
+            "Market benchmark reference (high level)",
+            "Approval boundary and exceptions policy",
+            "Other employee compensation specifics"
+          ],
+          "outcomes": {
+            "correct": "Defensible note without confidentiality breach",
+            "partially_correct": "Defensible but incomplete; prompts questions",
+            "incorrect": "Creates legal/compliance exposure"
+          },
+          "immediate_feedback": "Impact: You either protect the company—or create a liability trail.",
+          "skill_signals_observed": [
+            "Risk containment",
+            "Decision defensibility"
+          ]
+        }
+      ],
+      "end_state": "This is exactly the kind of situation HR Managers are judged on."
+    },
+    {
+      "simulation_id": 5,
+      "simulation_metadata": {
+        "simulation_title": "Fixing a Broken Hiring Process",
+        "why_this_matters_for_getting_hired": "Leaders hire HR Managers who can diagnose hiring failures and improve outcomes fast.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": [
+            "Hiring Process Diagnosis Proof"
+          ],
+          "badges": [
+            "System Fixer"
+          ],
+          "recruiter_readable_proof": [
+            "Root Cause Hypothesis + Evidence",
+            "90-Day Hiring Fix Plan (1-page)"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Diagnosing bottlenecks under pressure",
+          "Separating symptom vs root cause",
+          "Choosing high-leverage interventions",
+          "Balancing speed, quality, and candidate experience",
+          "Executive communication of a fix plan"
+        ]
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S5-1",
+          "scenario_title": "Leadership Blow-Up in Review",
+          "workplace_context": {
+            "company_type": "Scaling startup",
+            "business_state": "Hiring miss; teams understaffed; revenue impact"
+          },
+          "crisis_or_decision_trigger": "In a leadership review, the CEO says: “Hiring is broken. Fix it.”",
+          "central_artefact": "Hiring funnel snapshot (one screen; high-level metrics)",
+          "emotional_peak": "You’re asked to explain failure in 60 seconds"
+        },
+        {
+          "scenario_id": "S5-2",
+          "scenario_title": "The Real Constraint Isn’t Obvious",
+          "workplace_context": {
+            "company_type": "MNC engineering org",
+            "business_state": "Process-heavy; interview loops are slow"
+          },
+          "crisis_or_decision_trigger": "Managers blame recruiters; recruiters blame interviewers; candidates are dropping.",
+          "central_artefact": "Drop-off timeline story (3 candidate journeys)",
+          "emotional_peak": "You must choose which team to confront first"
+        },
+        {
+          "scenario_id": "S5-3",
+          "scenario_title": "Fix Plan Under Scrutiny",
+          "workplace_context": {
+            "company_type": "Fintech",
+            "business_state": "Risk-averse; wants measurable outcomes"
+          },
+          "crisis_or_decision_trigger": "Leadership demands a 90-day plan with measurable targets.",
+          "central_artefact": "1-page plan outline (bullets only)",
+          "emotional_peak": "Accountability: “If this fails, we change ownership.”"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "instruction_question": "In the review, pick your 60-second explanation: what’s actually failing?",
+          "explain_this_question": "This tests executive judgment. HR Managers must explain failure in a way that leads to action, not blame. You’re expected to identify the most likely constraint from limited data and propose a next step that reduces time-to-hire without sacrificing quality. Business value is restoring hiring confidence and protecting delivery timelines.",
+          "artefact_interaction_description": "You choose one narrative diagnosis line; leadership reaction changes (support vs skepticism).",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Interview loop delay is causing drop-offs and offer losses",
+            "Sourcing quality is poor; pipeline isn’t role-fit",
+            "Recruiters are underperforming; replace the team",
+            "Comp bands are uncompetitive; nothing else matters"
+          ],
+          "outcomes": {
+            "correct": "Your diagnosis is plausible and action-oriented",
+            "partially_correct": "Plausible but incomplete; leadership wants proof",
+            "incorrect": "Blame-heavy or unfalsifiable explanation"
+          },
+          "immediate_feedback": "Impact: Leadership either gives you the mandate—or starts doubting your readiness.",
+          "skill_signals_observed": [
+            "Diagnosing bottlenecks",
+            "Executive communication"
+          ]
+        },
+        {
+          "step_id": 2,
+          "instruction_question": "Choose the first lever to pull this week to reduce drop-offs.",
+          "explain_this_question": "HR Managers win by picking high-leverage moves. This tests whether you can choose an intervention that changes outcomes quickly while staying realistic in constraints. Business value is immediate improvement without chaos or fairness issues.",
+          "artefact_interaction_description": "You select one lever; the simulation shows effects on speed, quality, and candidate sentiment.",
+          "interaction_type": "trade-off meters",
+          "options_inputs": [
+            "Introduce backup interviewers + strict slot ownership",
+            "Add more interview rounds to increase quality",
+            "Pause hiring until process is redesigned",
+            "Push recruiters to ‘source harder’ without process changes"
+          ],
+          "outcomes": {
+            "correct": "Measurable improvement with controlled risk",
+            "partially_correct": "Improvement but creates new risk or burden",
+            "incorrect": "Worsens outcomes or stalls hiring"
+          },
+          "immediate_feedback": "Impact: You either reduce leakage—or create new bottlenecks.",
+          "skill_signals_observed": [
+            "Choosing high-leverage interventions",
+            "Balancing speed and quality"
+          ]
+        },
+        {
+          "step_id": 3,
+          "instruction_question": "Three candidate journeys show different failures. Which is the real pattern?",
+          "explain_this_question": "This evaluates your ability to separate anecdote from signal. HR Managers identify repeated failure modes across cases and target them, rather than reacting to the loudest complaint. Business value is fixing the system once, not firefighting forever.",
+          "artefact_interaction_description": "You review 3 short timelines (application → interviews → offer). Tap the pattern you believe is systemic; the simulation reveals whether your hypothesis matches downstream data.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Drop-offs spike after long scheduling gaps",
+            "Drop-offs spike after comp discussion",
+            "Drop-offs spike after technical round difficulty",
+            "No pattern—each case is unique"
+          ],
+          "outcomes": {
+            "correct": "You identify a system-level failure mode",
+            "partially_correct": "You identify a partial pattern",
+            "incorrect": "You miss the pattern and propose scattered fixes"
+          },
+          "immediate_feedback": "Impact: Your call either focuses the fix—or spreads effort thin.",
+          "skill_signals_observed": [
+            "Symptom vs root cause",
+            "Data-informed judgment"
+          ]
+        },
+        {
+          "step_id": 4,
+          "instruction_question": "Draft a 90-day fix plan headline: 3 actions, 2 metrics.",
+          "explain_this_question": "HR Managers are judged on measurable execution. This tests whether you can propose a plan that leadership can approve quickly and track weekly. Business value is predictable improvement with clear accountability.",
+          "artefact_interaction_description": "You select 3 actions and 2 success metrics from a pool. The system checks whether they are coherent and measurable.",
+          "interaction_type": "diagram completion",
+          "options_inputs": [
+            "Actions: reduce scheduling gaps, standardize panels, pre-align comp ranges",
+            "Metrics: time-to-interview, offer acceptance rate",
+            "Actions: add rounds, add approvals, add forms",
+            "Metrics: number of interviews conducted, number of emails sent"
+          ],
+          "outcomes": {
+            "correct": "Plan is coherent with outcome metrics",
+            "partially_correct": "Plan is okay but metrics are weak or lagging",
+            "incorrect": "Plan is activity-based, not outcome-based"
+          },
+          "immediate_feedback": "Impact: Leadership either signs off—or sends you back to rework.",
+          "skill_signals_observed": [
+            "Executive communication",
+            "Measurable planning"
+          ]
+        }
+      ],
+      "end_state": "This is exactly the kind of situation HR Managers are judged on."
+    }
+  ]
+}

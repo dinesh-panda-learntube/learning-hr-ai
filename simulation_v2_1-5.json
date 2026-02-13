@@ -5,11 +5,15 @@
       "simulation_metadata": {
         "simulation_id": "SIM_01",
         "simulation_title": "Crafting AI-Powered Job Description Prompts",
-        "why_this_matters_for_getting_hired": "HR Managers who master prompt engineering can create compelling, unbiased job descriptions 10x faster.",
+        "why_this_matters_for_getting_hired": "Top 10% HR Managers who master this create compelling job descriptions 10x faster, without bias.",
         "estimated_time": "15 minutes",
         "deliverables_unlockable": {
-          "certifications": ["Job Description Prompt Master"],
-          "badges": ["AI-Enhanced JD Creation"],
+          "certifications": [
+            "Job Description Prompt Master"
+          ],
+          "badges": [
+            "AI-Enhanced JD Creation"
+          ],
           "recruiter_readable_proof": [
             "Optimized Job Description Prompts",
             "Bias Detection Strategy",
@@ -82,7 +86,10 @@
             "incorrect": "AI produces generic or irrelevant content"
           },
           "immediate_feedback": "Impact: time saved and JD quality.",
-          "skill_signals_observed": ["Prompt specificity", "Context setting"]
+          "skill_signals_observed": [
+            "Prompt specificity",
+            "Context setting"
+          ]
         },
         {
           "step_id": 2,
@@ -113,7 +120,10 @@
             "incorrect": "Bias remains or increases"
           },
           "immediate_feedback": "Impact: employer brand and DEI compliance.",
-          "skill_signals_observed": ["Bias mitigation", "Prompt constraints"]
+          "skill_signals_observed": [
+            "Bias mitigation",
+            "Prompt constraints"
+          ]
         },
         {
           "step_id": 3,
@@ -144,7 +154,10 @@
             "incorrect": "JD deters qualified candidates with overreach"
           },
           "immediate_feedback": "Impact: candidate pool quality and diversity.",
-          "skill_signals_observed": ["Requirement precision", "Candidate experience"]
+          "skill_signals_observed": [
+            "Requirement precision",
+            "Candidate experience"
+          ]
         },
         {
           "step_id": 4,
@@ -175,7 +188,10 @@
             "incorrect": "Bias persists or manual effort required each time"
           },
           "immediate_feedback": "Impact: inclusivity and process efficiency.",
-          "skill_signals_observed": ["Bias prevention", "Systematic fixing"]
+          "skill_signals_observed": [
+            "Bias prevention",
+            "Systematic fixing"
+          ]
         },
         {
           "step_id": 5,
@@ -206,7 +222,10 @@
             "incorrect": "Variants are inconsistent or confusing"
           },
           "immediate_feedback": "Impact: application quality and hiring funnel optimization.",
-          "skill_signals_observed": ["Strategic prompting", "Testing mindset"]
+          "skill_signals_observed": [
+            "Strategic prompting",
+            "Testing mindset"
+          ]
         }
       ],
       "end_state": "You've mastered job description prompt engineering—next, apply these skills to resume screening.",
@@ -219,8 +238,12 @@
         "why_this_matters_for_getting_hired": "HR Managers who can engineer effective resume screening prompts reduce review time by 80% while improving quality.",
         "estimated_time": "15 minutes",
         "deliverables_unlockable": {
-          "certifications": ["Resume Screening Prompt Expert"],
-          "badges": ["AI Screening Master"],
+          "certifications": [
+            "Resume Screening Prompt Expert"
+          ],
+          "badges": [
+            "AI Screening Master"
+          ],
           "recruiter_readable_proof": [
             "Screening Criteria Prompts",
             "Fair Evaluation Framework",
@@ -282,7 +305,10 @@
             "incorrect": "AI gives vague or unusable feedback"
           },
           "immediate_feedback": "Impact: shortlist quality and time efficiency.",
-          "skill_signals_observed": ["Criteria clarity", "Structured output"]
+          "skill_signals_observed": [
+            "Criteria clarity",
+            "Structured output"
+          ]
         },
         {
           "step_id": 2,
@@ -313,7 +339,10 @@
             "incorrect": "Qualified candidates wrongly filtered out"
           },
           "immediate_feedback": "Impact: candidate diversity and fairness.",
-          "skill_signals_observed": ["Fair prompting", "Bias awareness"]
+          "skill_signals_observed": [
+            "Fair prompting",
+            "Bias awareness"
+          ]
         },
         {
           "step_id": 3,
@@ -344,7 +373,10 @@
             "incorrect": "Talented candidates incorrectly filtered out"
           },
           "immediate_feedback": "Impact: talent pool quality and innovation potential.",
-          "skill_signals_observed": ["Inclusive criteria", "Skills-based evaluation"]
+          "skill_signals_observed": [
+            "Inclusive criteria",
+            "Skills-based evaluation"
+          ]
         },
         {
           "step_id": 4,
@@ -375,7 +407,10 @@
             "incorrect": "Strong candidates rejected or important signals missed"
           },
           "immediate_feedback": "Impact: hiring manager decision quality.",
-          "skill_signals_observed": ["Nuanced prompting", "Context provision"]
+          "skill_signals_observed": [
+            "Nuanced prompting",
+            "Context provision"
+          ]
         },
         {
           "step_id": 5,
@@ -406,7 +441,10 @@
             "incorrect": "Bias goes undetected and affects hiring"
           },
           "immediate_feedback": "Impact: hiring fairness and legal risk.",
-          "skill_signals_observed": ["Bias auditing", "Quality control"]
+          "skill_signals_observed": [
+            "Bias auditing",
+            "Quality control"
+          ]
         }
       ],
       "end_state": "You've mastered AI resume screening—next, learn to generate interview assessment prompts.",
@@ -419,8 +457,12 @@
         "why_this_matters_for_getting_hired": "HR Managers using AI interview prompts create consistent, fair evaluation frameworks that improve hiring decisions.",
         "estimated_time": "15 minutes",
         "deliverables_unlockable": {
-          "certifications": ["Interview Prompt Designer"],
-          "badges": ["Structured Interview AI Master"],
+          "certifications": [
+            "Interview Prompt Designer"
+          ],
+          "badges": [
+            "Structured Interview AI Master"
+          ],
           "recruiter_readable_proof": [
             "Behavioral Question Prompts",
             "Scoring Framework Prompts",
@@ -482,7 +524,10 @@
             "incorrect": "Questions are generic or unhelpful"
           },
           "immediate_feedback": "Impact: interview signal quality and consistency.",
-          "skill_signals_observed": ["Question specificity", "Competency mapping"]
+          "skill_signals_observed": [
+            "Question specificity",
+            "Competency mapping"
+          ]
         },
         {
           "step_id": 2,
@@ -513,7 +558,10 @@
             "incorrect": "Evaluation remains subjective"
           },
           "immediate_feedback": "Impact: hiring quality and interviewer alignment.",
-          "skill_signals_observed": ["Rubric design", "Evaluation consistency"]
+          "skill_signals_observed": [
+            "Rubric design",
+            "Evaluation consistency"
+          ]
         },
         {
           "step_id": 3,
@@ -544,7 +592,10 @@
             "incorrect": "Interviews stay superficial"
           },
           "immediate_feedback": "Impact: candidate evaluation depth and accuracy.",
-          "skill_signals_observed": ["Probing strategy", "Signal extraction"]
+          "skill_signals_observed": [
+            "Probing strategy",
+            "Signal extraction"
+          ]
         },
         {
           "step_id": 4,
@@ -575,7 +626,10 @@
             "incorrect": "Questions introduce or amplify bias"
           },
           "immediate_feedback": "Impact: candidate experience and legal risk.",
-          "skill_signals_observed": ["Fair question design", "Bias prevention"]
+          "skill_signals_observed": [
+            "Fair question design",
+            "Bias prevention"
+          ]
         },
         {
           "step_id": 5,
@@ -596,7 +650,10 @@
             "incorrect": "Interviews remain unstructured"
           },
           "immediate_feedback": "Impact: interview consistency and candidate experience.",
-          "skill_signals_observed": ["Process design", "Comprehensive prompting"]
+          "skill_signals_observed": [
+            "Process design",
+            "Comprehensive prompting"
+          ]
         }
       ],
       "end_state": "You've created AI-powered interview frameworks—next comes employee feedback.",

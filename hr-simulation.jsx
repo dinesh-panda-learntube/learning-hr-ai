@@ -1418,22 +1418,32 @@ window.HRSimulationApp = function ({ simulationData }) {
           <div style={{ background: COLORS.highlightSoft, color: COLORS.highlight, fontSize: '11px', fontWeight: 600, letterSpacing: '0.5px', padding: '6px 12px', borderRadius: '20px', alignSelf: 'flex-start', marginBottom: '20px' }}>SIMULATION {currentSimulationIndex + 1} OF {simulations.length}</div>
           <h1 style={{ fontSize: '32px', fontWeight: 300, color: COLORS.text, lineHeight: 1.2, marginBottom: '16px' }}>{currentSim.simulation_metadata.simulation_title}</h1>
           {/* <p style={{ fontSize: '15px', color: COLORS.textMuted, lineHeight: 1.6, marginBottom: '32px' }}>{currentSim.simulation_metadata.why_this_matters_for_getting_hired}.<br /><br /><strong>Your Actions Will Solve Key Job Requirements:</strong></p> */}
-          <div style={{ fontSize: '12px', color: COLORS.highlight, marginBottom: '16px', fontWeight: 700, textTransform: 'uppercase' }}>YOU WILL UNLOCK</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '40px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '14px', background: COLORS.bgCard, borderRadius: '12px', border: `1px solid ${COLORS.bgLight}` }}>
-              <div style={{ fontSize: '16px' }}>✅</div>
-              <div>
-                <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600 }}>HR Manager Job Readiness Certificate</div>
-                <div style={{ fontSize: '12px', color: COLORS.highlight, marginTop: '2px' }}>5x Recruiter Callbacks</div>
+          {/* Why This Matters Card */}
+          {currentSim.simulation_metadata.why_this_matters_for_getting_hired && (
+            <div style={{ 
+              background: 'linear-gradient(135deg, rgba(64, 106, 255, 0.1) 0%, rgba(64, 106, 255, 0.05) 100%)', 
+              borderRadius: '16px', 
+              padding: '20px', 
+              marginBottom: '24px', 
+              border: `1px solid ${COLORS.highlight}40`,
+              boxShadow: '0 4px 12px rgba(64, 106, 255, 0.1)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                <span style={{ fontSize: '18px' }}>🚀</span>
+                <span style={{ fontSize: '12px', color: COLORS.highlight, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>WHY THIS MATTERS</span>
               </div>
+              <p style={{ fontSize: '15px', color: COLORS.text, lineHeight: 1.6, margin: 0, fontWeight: 400 }}>
+                {currentSim.simulation_metadata.why_this_matters_for_getting_hired}
+              </p>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '14px', background: COLORS.bgCard, borderRadius: '12px', border: `1px solid ${COLORS.bgLight}` }}>
-              <div style={{ fontSize: '16px' }}>💼</div>
-              <div>
-                <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600 }}>Job Options from 1100+ Companies</div>
-                <div style={{ fontSize: '12px', color: COLORS.highlight, marginTop: '2px' }}>Job Matching & Referrals from our hiring partners</div>
-              </div>
-            </div>
+          )}
+
+          {/* Unlockable Items - Simplifed */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '8px', marginBottom: '40px', opacity: 0.8, background: COLORS.bgCard, padding: '12px 16px', borderRadius: '12px', border: `1px dashed ${COLORS.textDim}` }}>
+             <span style={{ fontSize: '18px' }}>🎓</span>
+             <span style={{ fontSize: '13px', color: COLORS.textMuted, fontWeight: 500, letterSpacing: '0.2px' }}>
+               Certification & Job Options available on completion
+             </span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: COLORS.textDim, fontSize: '13px', marginBottom: '8px' }}>
             <span style={{ fontSize: '16px' }}>⏱</span>{currentSim.simulation_metadata.estimated_time || '15 minutes'} · {steps.length} critical decisions

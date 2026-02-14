@@ -1,0 +1,229 @@
+{
+  "path_title": "AI-Powered HR Manager Readiness Path",
+
+  "session_data_fields": [
+    "ai_model_choice",
+    "cost_sensitivity",
+    "prompt_structure_quality",
+    "bias_prevention_strength",
+    "requirement_control_level",
+    "screening_fairness_level"
+  ],
+
+  "simulations": [
+
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_01",
+        "simulation_title": "AI Foundations for HR Professionals",
+        "why_this_matters_for_getting_hired": "Modern HR Managers must use AI responsibly and strategically. Misuse increases bias, cost, and legal risk.",
+        "estimated_time": "20 minutes"
+      },
+
+      "steps": [
+
+        {
+          "step_id": 1,
+          "context": "You are an HR professional exploring AI tools for the first time. Your manager says: 'Can we use ChatGPT to speed up JD writing?'",
+          "learning_material": {
+            "title": "What is AI Prompting?",
+            "content": [
+              "AI responds to instructions (prompts).",
+              "Vague prompts produce generic outputs.",
+              "Structured prompts produce reliable outputs.",
+              "AI amplifies bias present in the prompt."
+            ],
+            "example": {
+              "weak": "Write a JD.",
+              "strong": "Write a Senior Data Scientist JD (5+ years) with structured sections and inclusive language."
+            }
+          },
+          "artefact_interaction_description": "Review two AI prompt examples in comparison view.",
+          "interaction_type": "comparison",
+          "options_inputs": [
+            "Prompt A: Write a job description.",
+            "Prompt B: Write a job description for a Senior Data Scientist (5+ years) including Responsibilities, Must-Have Skills, Nice-to-Have Skills, and Impact. Use inclusive language."
+          ],
+          "question": "Which prompt will produce more reliable output?",
+          "consequence": {
+            "correct": "Structured prompts reduce editing time by 60%.",
+            "incorrect": "Vague prompts lead to unpredictable and inflated outputs."
+          }
+        },
+
+        {
+          "step_id": 2,
+          "context": "You must choose which AI model to use for HR drafting tasks.",
+          "learning_material": {
+            "title": "AI Tool Basics for HR",
+            "content": [
+              "Different models vary in cost and capability.",
+              "Higher models = better reasoning but higher cost.",
+              "Credit limits matter for high-volume HR teams."
+            ],
+            "example": {
+              "cheap_model": "Lower cost, weaker reasoning.",
+              "advanced_model": "Higher cost, better contextual reasoning."
+            }
+          },
+          "interaction_type": "MCQ",
+          "question": "For sensitive HR drafting (bias control, structured output), which model tier is safer?",
+          "options_inputs": [
+            "Lowest cost model regardless of quality",
+            "Balanced model with strong reasoning and moderate cost",
+            "Free trial only",
+            "No AI usage"
+          ],
+          "store_if_correct": {
+            "ai_model_choice": "balanced"
+          },
+          "consequence": {
+            "correct": "You reduce legal risk while managing cost.",
+            "incorrect": "Poor model choice may amplify bias or produce unreliable drafts."
+          }
+        }
+
+      ]
+    },
+
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_02",
+        "simulation_title": "Crafting AI Job Description Prompts",
+        "estimated_time": "25 minutes"
+      },
+
+      "steps": [
+
+        {
+          "step_id": 1,
+          "context": "Hiring Manager says: 'We need a rockstar Senior Data Scientist. Make it aggressive and exciting.' Deadline: EOD.",
+          "learning_material": {
+            "title": "Translating Stakeholder Language",
+            "content": [
+              "Convert personality descriptors into competency descriptors.",
+              "Prevent bias before generation."
+            ],
+            "example": {
+              "weak_translation": "Aggressive rockstar mindset.",
+              "strong_translation": "Results-driven professional with advanced ML expertise."
+            }
+          },
+          "artefact_interaction_description": "Review the draft prompt in a one-page memo view.",
+          "interaction_type": "ordering",
+          "options_inputs": [
+            "Make it aggressive and exciting.",
+            "Use professional, inclusive language.",
+            "Must have 10+ years experience.",
+            "Limit must-haves to 5 core competencies."
+          ],
+          "question": "Select the two instructions that improve output quality.",
+          "store_if_correct": {
+            "bias_prevention_strength": "strong",
+            "requirement_control_level": "controlled"
+          },
+          "consequence": {
+            "correct": "Your JD will attract broader qualified candidates.",
+            "incorrect": "AI will amplify biased tone or inflate requirements."
+          }
+        },
+
+        {
+          "step_id": 2,
+          "context": "You finalize the prompt and generate AI output.",
+          "learning_material": {
+            "title": "Diagnose Before Editing",
+            "content": [
+              "Fix prompt constraints, not output text.",
+              "AI mirrors missing constraints."
+            ]
+          },
+          "artefact_interaction_description": "Review AI output in comparison mode (Structured vs Inflated).",
+          "interaction_type": "comparison",
+          "question": "Identify the root cause of 12 must-have skills appearing.",
+          "options_inputs": [
+            "Missing limit instruction",
+            "AI model error",
+            "Manager pressure",
+            "Formatting glitch"
+          ],
+          "consequence": {
+            "correct": "Adding must-have limits fixes output permanently.",
+            "incorrect": "Manual editing will not prevent recurrence."
+          }
+        }
+
+      ]
+    },
+
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_03",
+        "simulation_title": "AI Resume Screening with Fairness Controls",
+        "estimated_time": "25 minutes"
+      },
+
+      "steps": [
+
+        {
+          "step_id": 1,
+          "context": "200 resumes received. Hiring Manager wants shortlist by tomorrow.",
+          "learning_material": {
+            "title": "Structured Screening Prompts",
+            "content": [
+              "Define evaluation criteria explicitly.",
+              "Request structured rating outputs.",
+              "Set fairness constraints."
+            ],
+            "example": {
+              "weak": "Is this candidate good?",
+              "strong": "Rate 1-10 on product strategy (5+ years), leadership, data-driven decisions. Provide 2-sentence justification."
+            }
+          },
+          "artefact_interaction_description": "Select screening prompt using candidate tiles.",
+          "interaction_type": "selection",
+          "question": "Choose the most structured screening instruction.",
+          "options_inputs": [
+            "Is this candidate good?",
+            "Evaluate and rate 1-10 on defined criteria with justification.",
+            "Summarize the resume.",
+            "Rank randomly."
+          ],
+          "store_if_correct": {
+            "screening_fairness_level": "structured"
+          },
+          "consequence": {
+            "correct": "Shortlist becomes consistent and defensible.",
+            "incorrect": "Shortlist varies unpredictably across candidates."
+          }
+        },
+
+        {
+          "step_id": 2,
+          "context": "AI flags candidates with career gaps lower.",
+          "learning_material": {
+            "title": "Handling Employment Gaps Fairly",
+            "content": [
+              "Focus on skill relevance.",
+              "Do not penalize employment gaps automatically."
+            ]
+          },
+          "interaction_type": "MCQ",
+          "question": "What constraint should you add?",
+          "options_inputs": [
+            "Do not penalize employment gaps. Evaluate skills and trajectory.",
+            "Automatically downgrade gaps over 6 months.",
+            "Ignore employment dates.",
+            "Flag all gaps for rejection."
+          ],
+          "consequence": {
+            "correct": "Candidate diversity improves without reducing quality.",
+            "incorrect": "Qualified candidates may be filtered unfairly."
+          }
+        }
+
+      ]
+    }
+
+  ]
+}

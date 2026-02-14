@@ -1,0 +1,958 @@
+{
+  "path_title": "Prompt Engineering Mastery for HR Managers",
+  "simulations": [
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_01",
+        "simulation_title": "Crafting AI-Powered Job Description Prompts",
+        "why_this_matters_for_getting_hired": "Top 10% HR Managers who master this create compelling job descriptions 10x faster, without bias.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": [
+            "Job Description Prompt Master"
+          ],
+          "badges": [
+            "AI-Enhanced JD Creation"
+          ],
+          "recruiter_readable_proof": [
+            "Optimized Job Description Prompts",
+            "Bias Detection Strategy",
+            "Multi-variant JD Examples"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Prompt clarity and precision",
+          "Bias mitigation in AI outputs",
+          "Context setting for AI models",
+          "Iterative prompt refinement",
+          "Output quality assessment"
+        ],
+        "impact_metrics": {
+          "time_saved": "4 days",
+          "cost_saved": "$300"
+        }
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Creating Your First AI Job Description",
+          "workplace_context": {
+            "company_type": "Fast-growing tech startup",
+            "business_state": "Need to fill 5 roles this month"
+          },
+          "crisis_or_decision_trigger": "Hiring manager needs a Senior Data Scientist JD by end of day.",
+          "central_artefact": "Prompt template for job description generation",
+          "emotional_peak": "AI generates biased or irrelevant content"
+        },
+        {
+          "scenario_id": "S2",
+          "scenario_title": "Refining Prompts for Better Results",
+          "workplace_context": {
+            "company_type": "Enterprise SaaS company",
+            "business_state": "Strict DEI requirements"
+          },
+          "crisis_or_decision_trigger": "Initial AI output contains gendered language and unrealistic requirements.",
+          "central_artefact": "Prompt refinement checklist",
+          "emotional_peak": "Leadership questions AI tool value"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Before you write anything: what an HR professional is trying to achieve with AI (and what can go wrong under an EOD deadline)",
+            "key_points": [
+              "Your goal is a recruiter-ready JD that is structured, realistic, and inclusive\u2014not a flashy paragraph.",
+              "AI is an assistant, not a source of truth. The prompt is your 'spec'.",
+              "Common failure modes in HR: biased wording, inflated requirements, vague responsibilities, and inconsistent tone."
+            ],
+            "example": "Example (not your task):\n\u2705 Strong prompt: \u201cWrite a job description for a Senior Data Scientist (5+ years) at a fast-growing SaaS startup. Use professional, inclusive language. Include sections: Responsibilities, Must-Haves (max 5), Nice-to-Haves, Impact. Avoid jargon like rockstar/ninja.\u201d\n\n\u274c Weak prompt: \u201cWrite a Senior Data Scientist JD. Make it exciting.\u201d"
+          },
+          "instruction_question": "Your hiring manager is pushing urgency + biased adjectives. What should you do first (in the next 2 minutes) before using AI?",
+          "artefact_interaction_description": "Chat Thread: 1) Read the hiring manager message. 2) Tap one reply that sets expectations and asks for the minimum missing inputs (level, must-haves, team context, timeline). 3) Your chosen reply becomes the 'work record' for the next step.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Reply: \u201cGot it. I\u2019ll generate a structured JD draft and share in 30 minutes. Quick check: confirm must-have skills (max 5), reporting line, and what success looks like in 90 days?\u201d",
+            "Reply: \u201cSure. I\u2019ll paste your words into ChatGPT and send whatever it gives.\u201d",
+            "Reply: \u201cWe can\u2019t do this today. JDs take 2\u20133 days.\u201d",
+            "Reply: \u201cI\u2019ll write something exciting\u2014don\u2019t worry about details.\u201d"
+          ],
+          "outcomes": {
+            "correct": "You ask for minimal missing inputs and set a realistic expectation.",
+            "partially_correct": "You set expectation but miss key missing inputs, increasing downstream risk.",
+            "incorrect": "You accept biased/vague direction and increase the chance of unusable AI output."
+          },
+          "immediate_feedback": "Consequence: your reply either gathers essentials (fewer AI errors) or forces AI to guess (more edits later).",
+          "skill_signals_observed": [
+            "Requirement triage",
+            "Stakeholder management under urgency"
+          ],
+          "artefact_ref": "chat_thread",
+          "interaction": "single_tap",
+          "submit_mode": "instant",
+          "state_spec": {
+            "states": [
+              "incoming_message",
+              "reply_selected"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "hm_reply_style": "selected_option_id",
+              "requirements_missing_check": "selected_option_id"
+            }
+          }
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "AI tool basics for HR: model choice, cost/credits, and confidentiality (so you don\u2019t create risk while drafting a JD)",
+            "key_points": [
+              "Model choice is a tradeoff: cheaper models may be less reliable; stronger models cost more but reduce rework.",
+              "Treat JD drafting as 'low sensitivity' but still avoid pasting internal strategy, comp bands, or identifiable candidate data.",
+              "Cost control: batch your request (sections + variants) instead of repeated prompts."
+            ],
+            "example": "Example: \u201cGenerate 3 variants in one go\u201d is cheaper than 3 separate runs.\n\nConfidentiality safe: \u201cfast-growing SaaS startup\u201d\nRisky: \u201cOur client is X; comp band is Y; internal restructuring details are\u2026\u201d"
+          },
+          "instruction_question": "Pick the best setup for drafting a JD in a professional setting.",
+          "artefact_interaction_description": "Model Picker + Credit Meter: 1) Tap a model tier (Economy / Standard / Premium). 2) Tap a cost strategy (Single prompt with 3 variants / 3 separate prompts). 3) Tap the safe data policy (No confidential details / Paste internal strategy). The meter shows estimated credits and a risk banner.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Model: Standard \u2022 Strategy: Single prompt generates 3 variants \u2022 Policy: Avoid confidential details",
+            "Model: Economy \u2022 Strategy: 3 separate prompts \u2022 Policy: Paste internal strategy for accuracy",
+            "Model: Premium \u2022 Strategy: 3 separate prompts \u2022 Policy: Paste comp band + client name",
+            "Model: Economy \u2022 Strategy: Single prompt generates 3 variants \u2022 Policy: Paste internal restructuring plan"
+          ],
+          "outcomes": {
+            "correct": "You choose a balanced model, batch outputs, and keep data safe.",
+            "partially_correct": "You reduce cost but increase rework risk OR you choose a stronger model but waste credits.",
+            "incorrect": "You select unsafe data handling or inefficient prompting that creates risk/cost."
+          },
+          "immediate_feedback": "Consequence: your setup changes cost and risk banners; unsafe policies block 'send' in real orgs.",
+          "skill_signals_observed": [
+            "Tool literacy",
+            "Cost awareness",
+            "Data risk awareness"
+          ],
+          "artefact_ref": "custom/model_picker_credit_meter",
+          "interaction": "tap_sequence",
+          "submit_mode": "review_then_submit",
+          "state_spec": {
+            "states": [
+              "model_selected",
+              "strategy_selected",
+              "policy_selected",
+              "cost_risk_preview"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "model_tier": "selected_model",
+              "cost_strategy": "selected_strategy",
+              "data_policy": "selected_policy",
+              "estimated_credits": "computed_value"
+            }
+          }
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Requirement gathering for a JD: translating manager adjectives into measurable role signals",
+            "key_points": [
+              "Replace vague traits (aggressive, rockstar) with observable behaviors (results-driven, ownership, experimentation).",
+              "Capture only what changes the JD: top responsibilities, must-have skills, nice-to-haves, success indicators.",
+              "If you don't control must-haves, AI will inflate them."
+            ],
+            "example": "Example translation:\n\u274c \u201cAggressive mindset\u201d\n\u2705 \u201cComfortable owning targets; communicates tradeoffs; iterates based on experiment results\u201d"
+          },
+          "instruction_question": "From the hiring manager\u2019s message, select the 3 requirement items that must be clarified before prompting.",
+          "artefact_interaction_description": "Rationale Builder (multi-select): 1) Tap exactly 3 tiles to form a 'requirements card'. 2) Distractors look plausible but don\u2019t change JD quality. 3) Your chosen 3 appear as a summary on the next step.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Top 3 responsibilities for the first 90 days",
+            "Must-have skills (limit to 5)",
+            "Reporting line + team context",
+            "Whether the JD should sound \u201cexciting\u201d",
+            "Write it like Google",
+            "Add lots of perks to attract talent",
+            "Ask AI to be creative"
+          ],
+          "outcomes": {
+            "correct": "You pick high-leverage requirements that improve JD accuracy.",
+            "partially_correct": "You pick 2 strong items and 1 low-impact item; output needs edits.",
+            "incorrect": "You pick mostly low-impact items; AI guesses the spec."
+          },
+          "immediate_feedback": "Consequence: missing must-haves or success criteria leads to inflated/irrelevant output in the next step.",
+          "skill_signals_observed": [
+            "Input quality",
+            "Bias translation",
+            "Scope control"
+          ],
+          "artefact_ref": "rationale_builder",
+          "interaction": "tap_sequence",
+          "submit_mode": "review_then_submit",
+          "state_spec": {
+            "states": [
+              "tiles_available",
+              "tiles_selected",
+              "requirements_card_preview"
+            ],
+            "uses_default_content": false,
+            "multi_select": true,
+            "min_select": 3,
+            "max_select": 3
+          },
+          "active_data": {
+            "store": {
+              "req_card_items": "selected_tiles"
+            }
+          }
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Prompt structure for HR: your prompt is a 'spec' with sections + constraints (so the output is editable, not a wall of text)",
+            "key_points": [
+              "Always specify sections (Responsibilities, Must-Haves, Nice-to-Haves, Impact).",
+              "Set caps (Must-haves max 5).",
+              "Ask for variants in one request to save credits."
+            ],
+            "example": "Example (not your task):\n\u201cInclude sections: Responsibilities, Must-Haves (max 5), Nice-to-Haves, Impact. Generate 3 variants with different emphasis.\u201d"
+          },
+          "instruction_question": "Complete the missing parts of this prompt by choosing the best phrases (2 blanks).",
+          "artefact_interaction_description": "Scaffolded Sentence Builder: 1) You see a pre-filled prompt with 2 blanks. 2) Tap one option for each blank. 3) The prompt preview updates live. 4) Submit to generate an output preview in the next step.",
+          "interaction_type": "fill_blanks",
+          "options_inputs": [
+            "BLANK 1: Responsibilities, Must-Haves, Nice-to-Haves, Impact Expectations | BLANK 2: limit must-haves to 5 core competencies",
+            "BLANK 1: Everything about the role | BLANK 2: list all possible skills",
+            "BLANK 1: Responsibilities and Skills | BLANK 2: include 10\u201315 must-haves",
+            "BLANK 1: Perks and Culture | BLANK 2: be creative and exciting"
+          ],
+          "outcomes": {
+            "correct": "You choose sections + a must-have cap, producing a usable structure.",
+            "partially_correct": "You choose partial structure; output merges must/nice-to-have.",
+            "incorrect": "You choose vague or inflationary phrases; output becomes bloated."
+          },
+          "immediate_feedback": "Consequence: your chosen phrases control whether the AI outputs a structured JD or an inflated list.",
+          "skill_signals_observed": [
+            "Prompt specification",
+            "Constraint precision"
+          ],
+          "artefact_ref": "custom/scaffolded_sentence_builder",
+          "interaction": "tap_sequence",
+          "submit_mode": "review_then_submit",
+          "state_spec": {
+            "states": [
+              "prompt_with_blanks",
+              "blank1_selected",
+              "blank2_selected",
+              "prompt_preview"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "prompt_structure_choice": "blank1",
+              "must_have_cap_choice": "blank2",
+              "prompt_final": "rendered_prompt_text"
+            }
+          }
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Reviewing AI output like an HR manager: spot bias + inflation + missing structure, then fix the prompt (not the text)",
+            "key_points": [
+              "If you see gendered pronouns, fix by instructing neutral language in the prompt.",
+              "If you see 12 must-haves, fix by adding a cap + separation.",
+              "If you see 'rockstar/ninja', add explicit jargon avoidance."
+            ],
+            "example": "Example fix (not your task): \u201cUse professional, inclusive language; avoid rockstar/ninja/guru; use 'you' or 'the candidate'.\u201d"
+          },
+          "instruction_question": "Tap the 2 most critical issues in this AI output snippet.",
+          "artefact_interaction_description": "Prompt Linter (output highlighter): 1) You see a short AI output excerpt. 2) Tap up to 2 lines to flag. 3) The linter labels the issue type (Bias / Inflation / Missing section). 4) Your flags determine which correction options appear next.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Line: \u201cWe\u2019re looking for a data rockstar to dominate ML outcomes.\u201d",
+            "Line: \u201cMust-have: 10+ years in AI/ML, PhD preferred, 12 tools required.\u201d",
+            "Line: \u201cResponsibilities include collaborating with stakeholders.\u201d",
+            "Line: \u201cNice-to-have: experience with cloud ML platforms.\u201d"
+          ],
+          "outcomes": {
+            "correct": "You flag bias/inflation correctly; targeted repairs become available.",
+            "partially_correct": "You flag one critical issue; the other persists after regen.",
+            "incorrect": "You flag non-issues; you waste a regeneration cycle."
+          },
+          "immediate_feedback": "Consequence: flagged issues unlock targeted prompt repairs; unflagged issues persist in regeneration.",
+          "skill_signals_observed": [
+            "Output QA",
+            "Bias detection",
+            "Inflation detection"
+          ],
+          "artefact_ref": "custom/prompt_linter",
+          "interaction": "tap_sequence",
+          "submit_mode": "instant",
+          "state_spec": {
+            "states": [
+              "output_snippet",
+              "line_tapped",
+              "issue_labeled"
+            ],
+            "uses_default_content": false,
+            "multi_select": true,
+            "min_select": 1,
+            "max_select": 2
+          },
+          "active_data": {
+            "store": {
+              "issues_flagged": "selected_lines_with_labels"
+            }
+          }
+        },
+        {
+          "step_id": 6,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Iteration strategy: one targeted repair beats rewriting (and saves credits)",
+            "key_points": [
+              "Add only the missing constraint that maps to the detected issue.",
+              "Avoid vague commands like \u201cmake it better\u201d\u2014they don\u2019t change failure modes.",
+              "Batch regenerate 2\u20133 variants after repair to avoid repeated cycles."
+            ],
+            "example": "Example repair:\nIssue: pronouns \u2192 Add: \u201cUse 'you/the candidate' instead of pronouns.\u201d\nIssue: inflation \u2192 Add: \u201cMust-haves max 5; separate nice-to-haves.\u201d"
+          },
+          "instruction_question": "Choose the best prompt repair to apply now (one change only).",
+          "artefact_interaction_description": "Output Diff Viewer: 1) Tap one repair option. 2) The UI shows a before/after diff of the output snippet. 3) Submit to finalize your iteration. (Wrong repair shows little/no improvement.)",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Add: \u201cUse professional, inclusive language. Avoid jargon like rockstar/ninja/guru. Separate must-haves vs nice-to-haves and cap must-haves at 5.\u201d",
+            "Add: \u201cMake it better and more exciting.\u201d",
+            "Rewrite the whole prompt from scratch with lots of detail.",
+            "Manually edit the JD text and do not change the prompt."
+          ],
+          "outcomes": {
+            "correct": "Your repair removes recurring issues; output becomes recruiter-ready.",
+            "partially_correct": "Your repair helps partially; one issue persists.",
+            "incorrect": "Your repair is vague or manual; problems recur."
+          },
+          "immediate_feedback": "Consequence: you either fix the failure mode and move on, or you burn time/credits and carry risk into next work.",
+          "skill_signals_observed": [
+            "Iterative refinement",
+            "Cost-efficient prompting"
+          ],
+          "artefact_ref": "custom/output_diff_viewer",
+          "interaction": "tap_sequence",
+          "submit_mode": "review_then_submit",
+          "state_spec": {
+            "states": [
+              "repair_options",
+              "repair_selected",
+              "diff_preview"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "repair_selected": "selected_option_id",
+              "output_after_repair": "generated_variant_id"
+            }
+          }
+        }
+      ],
+      "end_state": "You can safely use an AI tool to draft a recruiter-ready JD prompt, diagnose output issues, and iterate with minimal cost.",
+      "hook_to_next_simulation": "Now you must use structured, fair prompts to screen 200 resumes consistently\u2014without bias or rework."
+    },
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_02",
+        "simulation_title": "AI-Powered Resume Screening Prompts",
+        "why_this_matters_for_getting_hired": "HR Managers who can engineer effective resume screening prompts reduce review time by 80% while improving quality.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": [
+            "Resume Screening Prompt Expert"
+          ],
+          "badges": [
+            "AI Screening Master"
+          ],
+          "recruiter_readable_proof": [
+            "Screening Criteria Prompts",
+            "Fair Evaluation Framework",
+            "Quality Shortlist Results"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Criteria definition in prompts",
+          "Fair evaluation prompt design",
+          "Consistency in AI screening",
+          "Bias detection in results",
+          "Candidate experience awareness"
+        ],
+        "impact_metrics": {
+          "time_saved": "2 weeks",
+          "cost_saved": "$800"
+        }
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Setting Up Screening Criteria",
+          "workplace_context": {
+            "company_type": "Scale-up with high volume hiring",
+            "business_state": "200 applications for 3 open roles"
+          },
+          "crisis_or_decision_trigger": "Hiring manager wants initial shortlist by tomorrow morning.",
+          "central_artefact": "AI screening prompt template",
+          "emotional_peak": "AI misses a strong candidate or flags weak ones"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Before screening 200 resumes with AI: setting a fair, consistent scoring template (so you don\u2019t \u2018feel\u2019 your way into bias)",
+            "key_points": [
+              "Screening with AI must be structured (criteria + scale + justification) or results vary wildly.",
+              "Fairness: explicitly instruct AI not to penalize gaps, career transitions, or non-traditional education.",
+              "Cost control: evaluate in batches with consistent output schema."
+            ],
+            "example": "Example schema (not your task):\n\u201cRate 1\u20135 on: role-relevant experience, core skills, evidence of impact, role scope match. Provide 2 bullet justifications and 1 risk flag.\u201d"
+          },
+          "instruction_question": "Pick the screening output format that will keep results comparable across 200 resumes.",
+          "artefact_interaction_description": "Comparison Table: 1) Review two AI outputs for the same resume (structured vs narrative). 2) Tap which output format you will standardize. 3) The chosen format becomes the template for later steps.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Structured: ratings (1\u20135) for each criterion + 2 bullet justifications + 1 risk flag",
+            "Narrative: one long paragraph summary of the candidate",
+            "Random rank 1\u2013100 without criteria",
+            "Just 'good/bad' to move faster"
+          ],
+          "outcomes": {
+            "correct": "You select a comparable template that scales.",
+            "partially_correct": "Your choice is usable but increases manual effort.",
+            "incorrect": "Your choice creates inconsistent, risky screening."
+          },
+          "immediate_feedback": "Consequence: only structured formats produce consistent shortlists; prose forces manual re-reading.",
+          "skill_signals_observed": [
+            "Structured evaluation",
+            "Consistency mindset"
+          ],
+          "artefact_ref": "comparison",
+          "interaction": "single_tap",
+          "submit_mode": "instant",
+          "state_spec": {
+            "states": [
+              "two_outputs_shown",
+              "format_selected"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "screening_format": "selected_option_id"
+            }
+          }
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Fairness constraints for resume screening: what HR must tell AI explicitly (because models otherwise make negative assumptions)",
+            "key_points": [
+              "Employment gaps: note neutrally; do not penalize.",
+              "Non-traditional backgrounds: prioritize demonstrated skills and impact.",
+              "Overqualification: flag for manager discussion; do not auto-reject."
+            ],
+            "example": "Example fairness line (not your task):\n\u201cDo not penalize employment gaps; focus on role-relevant skills and impact. Treat non-traditional education as valid if evidence exists.\u201d"
+          },
+          "instruction_question": "Select the 3 fairness constraints that should be included in your screening prompt.",
+          "artefact_interaction_description": "Rationale Builder (multi-select): 1) Tap exactly 3 constraint tiles. 2) The UI assembles a 'Fair Screening Rules' card. 3) That card is shown above the screening prompt in the next step.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Do not penalize employment gaps; note neutrally without negative inference",
+            "Evaluate non-traditional backgrounds based on demonstrated skills and outcomes",
+            "If overqualified, flag for discussion\u2014do not auto-reject",
+            "Automatically downgrade gaps over 6 months",
+            "Only consider top-university degrees",
+            "Assume frequent job changes indicate poor performance"
+          ],
+          "outcomes": {
+            "correct": "You select strong fairness constraints that prevent common bias.",
+            "partially_correct": "You include 1 weak/irrelevant item; bias risk remains.",
+            "incorrect": "You select biased constraints; strong candidates are filtered out."
+          },
+          "immediate_feedback": "Consequence: these rules directly change which resumes the AI shortlists in the next step.",
+          "skill_signals_observed": [
+            "Fair prompting",
+            "Bias prevention"
+          ],
+          "artefact_ref": "rationale_builder",
+          "interaction": "tap_sequence",
+          "submit_mode": "review_then_submit",
+          "state_spec": {
+            "states": [
+              "tiles_available",
+              "tiles_selected",
+              "rules_card_preview"
+            ],
+            "uses_default_content": false,
+            "multi_select": true,
+            "min_select": 3,
+            "max_select": 3
+          },
+          "active_data": {
+            "store": {
+              "fair_rules": "selected_tiles"
+            }
+          }
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Writing a screening prompt that\u2019s usable in real work: specify criteria + output schema + boundaries",
+            "key_points": [
+              "Criteria must be measurable: years/level, skills, impact evidence, role scope.",
+              "Ask for the same output fields for every resume.",
+              "Tell AI what NOT to do (no assumptions about age/gender, no guessing missing data)."
+            ],
+            "example": "Example (not your task):\n\u201cExtract: years relevant experience, top 3 skills evidence, 2 impact bullets, overall recommendation (Proceed/Hold/Reject) with reason.\u201d"
+          },
+          "instruction_question": "Fill in the two missing clauses to complete a professional screening prompt.",
+          "artefact_interaction_description": "Scaffolded Sentence Builder: 1) Prompt is shown with 2 blanks. 2) Tap an option for each blank. 3) Submit to run a sample evaluation on 2 resumes in the next step.",
+          "interaction_type": "fill_blanks",
+          "options_inputs": [
+            "BLANK 1: Rate 1\u20135 on 4 criteria + 2 bullet justifications | BLANK 2: Do not penalize gaps or infer demographics",
+            "BLANK 1: Summarize the resume in a paragraph | BLANK 2: Be creative",
+            "BLANK 1: Give a score 1\u2013100 | BLANK 2: Assume missing info is negative",
+            "BLANK 1: Decide quickly | BLANK 2: Prefer top brands"
+          ],
+          "outcomes": {
+            "correct": "Your prompt yields structured, fair evaluations.",
+            "partially_correct": "Your prompt yields usable but inconsistent output.",
+            "incorrect": "Your prompt produces biased or unusable output."
+          },
+          "immediate_feedback": "Consequence: your choices change whether the AI output is comparable and fair on the next screen.",
+          "skill_signals_observed": [
+            "Prompt design",
+            "Assumption control"
+          ],
+          "artefact_ref": "custom/scaffolded_sentence_builder",
+          "interaction": "tap_sequence",
+          "submit_mode": "review_then_submit",
+          "state_spec": {
+            "states": [
+              "prompt_with_blanks",
+              "blank1_selected",
+              "blank2_selected",
+              "prompt_preview"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "screen_prompt": "rendered_prompt_text"
+            }
+          }
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Quality control: auditing AI screening results (catching bias patterns before they reach the hiring manager)",
+            "key_points": [
+              "Look for patterns: are career breaks consistently downgraded? Are transitions penalized?",
+              "Use spot checks: compare AI verdict vs evidence in resume.",
+              "If bias appears, fix the prompt rules\u2014not the shortlist."
+            ],
+            "example": "Example audit question (not your task):\n\u201cShow me which rule caused a 'Hold' recommendation and cite resume evidence.\u201d"
+          },
+          "instruction_question": "In this sample output, tap the line that reveals an unfair assumption.",
+          "artefact_interaction_description": "Prompt Linter (reasoning highlighter): 1) You see AI's justification lines. 2) Tap 1 line that indicates an assumption/bias. 3) The UI labels it (Gap penalty / Credential bias / Brand bias) and suggests a targeted prompt fix next.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "\u201cCandidate has a 9-month gap, which suggests low commitment.\u201d",
+            "\u201cEvidence: Built churn dashboard; reduced churn by 8%.\u201d",
+            "\u201cSkills match: SQL, Python, stakeholder communication.\u201d",
+            "\u201cRecommendation: Proceed \u2014 meets must-haves.\u201d"
+          ],
+          "outcomes": {
+            "correct": "You correctly identify an unfair assumption.",
+            "partially_correct": "You identify a weak signal; audit is incomplete.",
+            "incorrect": "You miss the assumption; bias persists."
+          },
+          "immediate_feedback": "Consequence: identifying the right issue unlocks a targeted prompt rule update; missing it carries bias forward.",
+          "skill_signals_observed": [
+            "Bias detection",
+            "Audit mindset"
+          ],
+          "artefact_ref": "custom/prompt_linter",
+          "interaction": "single_tap",
+          "submit_mode": "instant",
+          "state_spec": {
+            "states": [
+              "justification_lines",
+              "line_tapped",
+              "issue_labeled"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "audit_issue": "labeled_issue"
+            }
+          }
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Iteration: updating one fairness rule and re-running (without spending unnecessary credits)",
+            "key_points": [
+              "Patch the rule that caused the bias (e.g., gaps) with explicit language.",
+              "Request evidence citations so AI must point to resume content.",
+              "Re-run only the affected cases first."
+            ],
+            "example": "Example patch (not your task):\n\u201cDo not infer motivation from gaps. If gaps exist, state 'gap noted' without judgment and continue scoring based on evidence.\u201d"
+          },
+          "instruction_question": "Choose the best single rule patch to prevent the unfair assumption you saw.",
+          "artefact_interaction_description": "Output Diff Viewer: 1) Tap one patch option. 2) See before/after justification for the same resume. 3) Submit patch and proceed.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Add: \u201cDo not infer motivation/commitment from gaps. Note gaps neutrally and base recommendation on evidence only.\u201d",
+            "Add: \u201cIgnore all dates entirely.\u201d",
+            "Add: \u201cReject any resume with gaps to reduce risk.\u201d",
+            "Add: \u201cMake the reasoning nicer.\u201d"
+          ],
+          "outcomes": {
+            "correct": "Patch fixes the bias without losing information.",
+            "partially_correct": "Patch reduces bias but removes useful signals.",
+            "incorrect": "Patch increases bias or makes output unreliable."
+          },
+          "immediate_feedback": "Consequence: correct patches remove recurring bias; incorrect patches either hide important signals or amplify bias.",
+          "skill_signals_observed": [
+            "Targeted repair",
+            "Evidence-first prompting"
+          ],
+          "artefact_ref": "custom/output_diff_viewer",
+          "interaction": "tap_sequence",
+          "submit_mode": "review_then_submit",
+          "state_spec": {
+            "states": [
+              "patch_options",
+              "patch_selected",
+              "diff_preview"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "gap_patch_selected": "selected_option_id"
+            }
+          }
+        }
+      ],
+      "end_state": "You can build a fair, structured screening prompt, audit AI reasoning for bias, and patch failures with minimal iterations.",
+      "hook_to_next_simulation": "Top candidates are advancing. Now you must generate consistent interview packs with questions, probes, and rubrics."
+    },
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_03",
+        "simulation_title": "Generating Interview Assessment Prompts",
+        "why_this_matters_for_getting_hired": "HR Managers using AI interview prompts create consistent, fair evaluation frameworks that improve hiring decisions.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": [
+            "Interview Prompt Designer"
+          ],
+          "badges": [
+            "Structured Interview AI Master"
+          ],
+          "recruiter_readable_proof": [
+            "Behavioral Question Prompts",
+            "Scoring Framework Prompts",
+            "Interview Guide Templates"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Behavioral question generation",
+          "Competency-based prompting",
+          "Evaluation consistency",
+          "Interviewer guidance creation",
+          "Fair scoring frameworks"
+        ],
+        "impact_metrics": {
+          "time_saved": "3 days",
+          "cost_saved": "$450"
+        }
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Creating Behavioral Interview Questions",
+          "workplace_context": {
+            "company_type": "Product-focused tech company",
+            "business_state": "Scaling interview process for consistency"
+          },
+          "crisis_or_decision_trigger": "Interviewers report inconsistent candidate evaluation and unclear questions.",
+          "central_artefact": "AI-generated interview question bank",
+          "emotional_peak": "Interview quality varies wildly across interviewers"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Interview prompts are not trivia: as HR, you are designing a repeatable, fair evaluation system (not just generating questions)",
+            "key_points": [
+              "Your objective: consistent signal across interviewers (same competencies, same rubric).",
+              "AI helps draft questions + rubrics, but you must constrain for neutrality and legality.",
+              "A 'good question' is one that produces evidence, not opinions."
+            ],
+            "example": "Example (not your task):\n\u201cGenerate 5 behavioral questions for stakeholder management. Provide follow-up probes and a 1\u20135 rubric with observable indicators.\u201d"
+          },
+          "instruction_question": "Choose the competency focus that best matches the complaint: 'interviewers evaluate inconsistently'.",
+          "artefact_interaction_description": "Standard MCQ: 1) Tap one focus. 2) The chosen focus becomes the 'interview pack' header for the next steps.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Define competencies + scoring rubric before generating questions",
+            "Generate trick questions to separate strong candidates",
+            "Let each interviewer ask their own favorite questions",
+            "Focus only on culture fit"
+          ],
+          "outcomes": {
+            "correct": "You focus on repeatable signal design.",
+            "partially_correct": "You partially focus on signal but miss standardization.",
+            "incorrect": "You choose an approach that increases interviewer bias."
+          },
+          "immediate_feedback": "Consequence: competency + rubric focus enables consistency; other choices increase bias and variability.",
+          "skill_signals_observed": [
+            "Competency framing",
+            "Process design"
+          ],
+          "artefact_ref": "MCQ",
+          "interaction": "single_tap",
+          "submit_mode": "instant",
+          "state_spec": {
+            "states": [
+              "options",
+              "selected"
+            ],
+            "uses_default_content": true
+          },
+          "active_data": {
+            "store": {
+              "interview_pack_focus": "selected_option_id"
+            }
+          }
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Prompting AI for behavioral questions: specify role context + STAR structure + what 'good evidence' looks like",
+            "key_points": [
+              "Ask for STAR-friendly questions (Situation/Task/Action/Result).",
+              "Constrain to realistic scenarios for the role.",
+              "Request probes to push beyond vague answers."
+            ],
+            "example": "Example (not your task):\n\u201cGenerate 5 behavioral questions for PM stakeholder management using STAR, each with 3 probes: outcome/role/learning.\u201d"
+          },
+          "instruction_question": "Fill 2 blanks to create a strong question-generation prompt.",
+          "artefact_interaction_description": "Scaffolded Sentence Builder: 1) Prompt shown with 2 blanks. 2) Tap one option per blank. 3) Submit to reveal 2 sample questions next.",
+          "interaction_type": "fill_blanks",
+          "options_inputs": [
+            "BLANK 1: use STAR format | BLANK 2: include 3 follow-up probes (outcome/your role/lessons learned)",
+            "BLANK 1: make them hard | BLANK 2: no follow-ups needed",
+            "BLANK 1: be creative | BLANK 2: focus on culture fit",
+            "BLANK 1: ask hypotheticals | BLANK 2: accept vague answers"
+          ],
+          "outcomes": {
+            "correct": "You generate evidence-producing questions with probes.",
+            "partially_correct": "Questions are relevant but probes are weak/partial.",
+            "incorrect": "Questions are vague or biased."
+          },
+          "immediate_feedback": "Consequence: your choices change whether questions produce evidence or opinion.",
+          "skill_signals_observed": [
+            "Prompt structure",
+            "Depth creation"
+          ],
+          "artefact_ref": "custom/scaffolded_sentence_builder",
+          "interaction": "tap_sequence",
+          "submit_mode": "review_then_submit",
+          "state_spec": {
+            "states": [
+              "prompt_with_blanks",
+              "blank1_selected",
+              "blank2_selected",
+              "prompt_preview"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "question_prompt": "rendered_prompt_text"
+            }
+          }
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Neutrality + legality: prevent leading questions and assumption bias in interview prompts",
+            "key_points": [
+              "Avoid leading prompts that imply the 'right' answer.",
+              "Avoid assumptions about background (college tier, family responsibilities, culture).",
+              "Focus on observable behaviors and outcomes."
+            ],
+            "example": "Example (not your task):\n\u2705 \u201cTell me about a time you influenced without authority\u2026\u201d\n\u274c \u201cYou seem like a culture fit\u2014why should we hire you?\u201d"
+          },
+          "instruction_question": "Tap the interview question that is most likely to introduce bias.",
+          "artefact_interaction_description": "Prompt Linter (question highlighter): 1) Review 4 generated questions. 2) Tap the riskiest one. 3) The UI labels why it\u2019s risky and suggests a rewrite next.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "\u201cTell me about a time you handled conflicting priorities across teams. What did you do and what changed?\u201d",
+            "\u201cWalk me through a project where you used data to make a decision. What metrics did you use?\u201d",
+            "\u201cDo you have the grit to handle our intense culture and long hours?\u201d",
+            "\u201cTell me about a time you disagreed with a stakeholder. How did you resolve it?\u201d"
+          ],
+          "outcomes": {
+            "correct": "You identify the leading/bias-prone question.",
+            "partially_correct": "You identify a weaker signal but miss the biggest risk.",
+            "incorrect": "You miss the risk; bias slips into the interview pack."
+          },
+          "immediate_feedback": "Consequence: if you miss the risky question, the interview guide teaches bias; if you catch it, you can repair it systematically.",
+          "skill_signals_observed": [
+            "Bias detection",
+            "Legal defensibility"
+          ],
+          "artefact_ref": "custom/prompt_linter",
+          "interaction": "single_tap",
+          "submit_mode": "instant",
+          "state_spec": {
+            "states": [
+              "questions_list",
+              "question_tapped",
+              "risk_label"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "biased_question_selected": "selected_option_id",
+              "risk_label": "computed_label"
+            }
+          }
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Creating a scoring rubric: what 'strong vs weak' looks like in observable behavior (so interviewers don\u2019t guess)",
+            "key_points": [
+              "Define levels (1\u20135) with observable indicators (specific actions, tradeoffs, outcomes).",
+              "Include red flags for each competency.",
+              "Rubrics reduce variability and bias."
+            ],
+            "example": "Example (not your task):\n5 = clear role, decisions, measurable outcome, stakeholder management.\n1 = no example, vague, no impact."
+          },
+          "instruction_question": "Select the best rubric line for a '5/5' stakeholder management answer.",
+          "artefact_interaction_description": "Rationale Builder: 1) Tap one rubric line. 2) The rubric preview updates. 3) That rubric line is reused in the final interview guide step.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "\u201cGives a concrete example; explains tradeoffs; shows influence without authority; outcome is measurable; reflects learning.\u201d",
+            "\u201cSeems confident and enthusiastic.\u201d",
+            "\u201cWorked with stakeholders.\u201d",
+            "\u201cWould be a good culture fit.\u201d"
+          ],
+          "outcomes": {
+            "correct": "You choose observable, defensible indicators.",
+            "partially_correct": "Your indicator is partially useful but vague.",
+            "incorrect": "Your indicator is subjective and bias-prone."
+          },
+          "immediate_feedback": "Consequence: strong rubrics create consistent hiring decisions; weak rubrics cause disagreements later.",
+          "skill_signals_observed": [
+            "Rubric quality",
+            "Signal definition"
+          ],
+          "artefact_ref": "rationale_builder",
+          "interaction": "single_tap",
+          "submit_mode": "instant",
+          "state_spec": {
+            "states": [
+              "rubric_options",
+              "selected",
+              "rubric_preview"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "rubric_5_line": "selected_option_id"
+            }
+          }
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Packaging the interview guide for real use: timing + script + questions + rubric + probes",
+            "key_points": [
+              "A usable guide includes: timing, what to say, questions, probes, rubric, note-taking format.",
+              "AI can format it in one go if your prompt asks for a full template.",
+              "Batch generation reduces cost and increases consistency."
+            ],
+            "example": "Example (not your task):\n\u201cCreate a 60-min guide: 5 intro, 40 questions+rubric, 10 candidate Qs, 5 close. Include what to say.\u201d"
+          },
+          "instruction_question": "Choose the best 'one-shot' prompt to generate the full interview guide template.",
+          "artefact_interaction_description": "Approval Note (doc send): 1) Tap one prompt option. 2) Preview shows the generated guide outline. 3) Submit to 'send to interviewers'.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "\u201cCreate a 60-minute interview guide for this role. Include: intro script, 5 behavioral questions (STAR), 3 probes each, a 1\u20135 rubric with indicators, note-taking template, and closing script. Keep language neutral.\u201d",
+            "\u201cWrite interview questions.\u201d",
+            "\u201cMake a tough interview.\u201d",
+            "\u201cGenerate random questions and scoring.\u201d"
+          ],
+          "outcomes": {
+            "correct": "You generate a deployable interview guide template.",
+            "partially_correct": "You generate a partial guide that needs edits.",
+            "incorrect": "You generate an unusable list that increases bias/variance."
+          },
+          "immediate_feedback": "Consequence: one-shot deliverables reduce interviewer variance and your own workload; weak prompts create unusable docs.",
+          "skill_signals_observed": [
+            "Deliverable orientation",
+            "Prompt completeness"
+          ],
+          "artefact_ref": "approval_note",
+          "interaction": "tap_sequence",
+          "submit_mode": "review_then_submit",
+          "state_spec": {
+            "states": [
+              "prompt_selected",
+              "guide_preview",
+              "send_confirm"
+            ],
+            "uses_default_content": false
+          },
+          "active_data": {
+            "store": {
+              "guide_prompt_selected": "selected_option_id",
+              "guide_generated": "generated_doc_id"
+            }
+          }
+        }
+      ],
+      "end_state": "You can generate interview packs that create consistent signal across interviewers\u2014neutral questions, probes, and observable rubrics.",
+      "hook_to_next_simulation": "Next: apply the same discipline to feedback, performance conversations, and sensitive HR comms."
+    }
+  ]
+}

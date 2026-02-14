@@ -580,6 +580,17 @@
         {
           "step_id": 5,
           "scenario_id": "S1",
+          "theory_content": {
+            "title": "Creating Comprehensive Interview Guides",
+            "key_points": [
+              "Time-Boxed Structure: Define clear time allocations for intro, questions, candidate Q&A, and closing",
+              "Competency Coverage: Ensure each critical competency gets dedicated time and questions",
+              "Include Scripts: Provide exact wording for introductions, transitions, and closing to ensure consistency",
+              "Scoring Integration: Embed scoring rubrics directly into the guide for real-time evaluation",
+              "Candidate Experience: Build in time for candidate questions to ensure two-way conversation"
+            ],
+            "example": "Good: Create a 60-minute guide with 5 min intro, 40 min questions (8 min per competency), 10 min candidate Q&A, 5 min close.\n\nWeak: Just list some questions without timing"
+          },
           "instruction_question": "Design a prompt to create a complete interview guide with timing and structure.",
           "explain_this_question": "Interview guides bring structure to the process. This tests whether you can use AI to create comprehensive interviewer resources.",
           "artefact_interaction_description": "You prompt for full guide; formatted document is generated.",

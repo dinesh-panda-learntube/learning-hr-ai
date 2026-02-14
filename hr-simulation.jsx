@@ -64,9 +64,9 @@ window.OptionButton = ({ label, selected, onClick, disabled }) => {
   );
 };
 
-window.TheoryCard = ({ theoryContent }) => {
+window.TheoryCard = ({ theoryContent, defaultExpanded = true }) => {
   const COLORS = window.COLORS;
-  const [isExpanded, setIsExpanded] = React.useState(true);
+  const [isExpanded, setIsExpanded] = React.useState(defaultExpanded);
 
   if (!theoryContent) return null;
 
@@ -1099,6 +1099,7 @@ window.HRSimulationApp = function ({ simulationData }) {
   const [colonVisible, setColonVisible] = useState(true);
 
   const [previousOutcome, setPreviousOutcome] = useState(null);
+  const [learningMode, setLearningMode] = useState('guided'); // 'guided' or 'assessment'
 
   // Timer interval: ticks every second, pauses after 5min idle
   useEffect(() => {
@@ -1482,6 +1483,47 @@ window.HRSimulationApp = function ({ simulationData }) {
           </p>
         </div>
 
+        {/* Learning Mode Selection Card */}
+        <div style={{ background: 'linear-gradient(135deg, #1A2F3A 0%, #0D2436 100%)', borderRadius: '16px', padding: '20px', marginBottom: '20px', border: `2px solid ${COLORS.highlight}40`, boxShadow: '0 4px 12px rgba(64, 106, 255, 0.1)' }}>
+          <div style={{ fontSize: '14px', color: COLORS.highlight, fontWeight: 700, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+            💡 Choose your learning mode for better experience:
+          </div>
+          <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
+            <div 
+              onClick={() => setLearningMode('guided')}
+              style={{ 
+                flex: 1,
+                padding: '16px',
+                borderRadius: '12px',
+                background: learningMode === 'guided' ? COLORS.highlight + '20' : COLORS.bgCard,
+                border: `2px solid ${learningMode === 'guided' ? COLORS.highlight : COLORS.bgLight}`,
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              <div style={{ fontSize: '16px', marginBottom: '4px' }}>📖</div>
+              <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600, marginBottom: '4px' }}>Guided Mode</div>
+              <div style={{ fontSize: '12px', color: COLORS.textMuted, lineHeight: 1.4 }}>Learning material provided by default for each question</div>
+            </div>
+            <div 
+              onClick={() => setLearningMode('assessment')}
+              style={{ 
+                flex: 1,
+                padding: '16px',
+                borderRadius: '12px',
+                background: learningMode === 'assessment' ? COLORS.highlight + '20' : COLORS.bgCard,
+                border: `2px solid ${learningMode === 'assessment' ? COLORS.highlight : COLORS.bgLight}`,
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              <div style={{ fontSize: '16px', marginBottom: '4px' }}>🎯</div>
+              <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600, marginBottom: '4px' }}>Assessment Mode</div>
+              <div style={{ fontSize: '12px', color: COLORS.textMuted, lineHeight: 1.4 }}>Learning material minimised for faster test experience</div>
+            </div>
+          </div>
+        </div>
+
         {/* 
         <div style={{ background: COLORS.bgCard, borderRadius: '12px', padding: '16px', marginBottom: '32px' }}>
           <div style={{ fontSize: '12px', color: COLORS.textDim, marginBottom: '10px' }}>CENTRAL ARTEFACT</div>
@@ -1637,7 +1679,7 @@ window.HRSimulationApp = function ({ simulationData }) {
         </div>
 
         {/* Theory Card - Learn Before You Answer */}
-        {step.theory_content && <window.TheoryCard theoryContent={step.theory_content} />}
+        {step.theory_content && <window.TheoryCard theoryContent={step.theory_content} defaultExpanded={learningMode === 'guided'} />}
 
         {/* COMMENTED OUT: Previous outcome text above question */}
         {/* {previousOutcome && (

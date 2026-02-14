@@ -67,8 +67,7 @@
               "Set Constraints: Define tone (professional), language style (inclusive), and content scope",
               "Provide Context: Mention company type, team structure, or special requirements",
               "Request Structure: Specify sections like responsibilities, requirements, and qualifications"
-            ],
-            "example": "✅ Good: 'Write a job description for a Senior Data Scientist with 5+ years experience, including responsibilities, requirements, and qualifications. Focus on inclusive language and realistic expectations.'\n\n❌ Weak: 'Write a job description.'"
+            ]
           },
           "instruction_question": "Choose the best opening prompt to generate a Senior Data Scientist job description.",
           "explain_this_question": "Effective prompts require clear context, role details, and output format. This tests whether you can structure a prompt that gives AI the right constraints and information.",
@@ -101,8 +100,7 @@
               "Set Clear Constraints: Explicitly state what to avoid in your prompt",
               "Use Positive Instructions: Tell AI what to do, not just what to avoid",
               "Test and Iterate: Review outputs for unintended bias patterns"
-            ],
-            "example": "Good constraint: Use professional, inclusive language. Avoid jargon like rockstar, ninja. Focus on concrete skills.\n\nWeak: Make it less biased"
+            ]
           },
           "instruction_question": "The AI output includes 'rockstar' and 'ninja'. What prompt refinement will you add?",
           "explain_this_question": "AI models can perpetuate biased language. HR Managers must know how to guide AI toward inclusive outputs through clear constraints.",
@@ -135,8 +133,7 @@
               "Avoid Credential Inflation: Requirements should reflect actual job needs, not wish lists",
               "Use Clear Criteria: Define what proficiency or experience actually means",
               "Consider Alternate Paths: Acknowledge different ways to gain relevant skills"
-            ],
-            "example": "Good: Separate must-have from nice-to-have. Limit must-haves to 5 core skills.\n\nWeak: List all possible skills and qualifications"
+            ]
           },
           "instruction_question": "Choose how to structure requirements in your prompt to avoid credential inflation.",
           "explain_this_question": "Poorly prompted AI often creates unrealistic requirement lists. This tests whether you can guide AI to generate achievable, fair requirements.",
@@ -169,8 +166,7 @@
               "Use You or The Candidate: Direct address avoids pronoun issues entirely",
               "Systematic Fixing: Correct at the prompt level so all future outputs comply",
               "Avoid Manual Editing: Manual fixes do not scale and introduce inconsistency"
-            ],
-            "example": "Good: Write all responsibilities using gender-neutral language. Use you or the candidate instead of pronouns.\n\nWeak: Manual find-and-replace after generation"
+            ]
           },
           "instruction_question": "AI generated 'he/his' pronouns in job responsibilities. Select your correction approach.",
           "explain_this_question": "Pronoun bias is a common AI output issue. HR Managers must know how to prevent this through prompt engineering, not just post-editing.",
@@ -203,8 +199,7 @@
               "Vary One Dimension: Change tone (formal vs casual), length (concise vs detailed), or focus area",
               "Maintain Core Consistency: All variants should have the same key requirements",
               "Label Variants Clearly: Make it easy to track which version performs better"
-            ],
-            "example": "Good: Create 3 variants with different emphasis - growth, technical challenges, team culture.\n\nWeak: Generating one version at a time without variation strategy"
+            ]
           },
           "instruction_question": "Choose the best prompt strategy to generate multiple JD variants for A/B testing.",
           "explain_this_question": "Advanced prompt engineering enables experimentation. This tests whether you can use AI to create variations for optimization.",
@@ -286,8 +281,7 @@
               "Request Structured Output: Ask for ratings, justifications, or specific data points",
               "Set Clear Benchmarks: Define what constitutes strong vs weak in each criterion",
               "Keep It Consistent: Same format for all candidates enables fair comparison"
-            ],
-            "example": "Good: Rate 1-10 on product strategy experience (5+ years), provide 2-sentence justification.\n\nWeak: Is this candidate good for Product Manager?"
+            ]
           },
           "instruction_question": "Select the best prompt structure to screen resumes for a Product Manager role.",
           "explain_this_question": "Effective screening prompts require clear evaluation criteria and output format. This tests your ability to translate role needs into AI-readable instructions.",
@@ -320,8 +314,7 @@
               "Avoid Negative Assumptions: Gaps may be for caregiving, education, health, or other valid reasons",
               "Set Explicit Fairness Rules: Tell AI not to penalize gaps in your prompt",
               "Note Neutrally: Gaps can be mentioned for context without negative judgment"
-            ],
-            "example": "Good: Focus on skills relevance and growth. Do not penalize employment gaps.\n\nWeak: Automatically downgrade any resume with gaps over 6 months"
+            ]
           },
           "instruction_question": "How will you prompt AI to handle employment gaps fairly?",
           "explain_this_question": "AI can amplify bias around employment gaps. HR Managers must design prompts that evaluate fairly without penalizing career breaks.",
@@ -354,8 +347,7 @@
               "Recognize Alternate Paths: Bootcamps, self-teaching, career transitions are valid",
               "Focus on Impact: What results did they achieve regardless of how they learned?",
               "Avoid Credential Bias: Traditional paths are not inherently better"
-            ],
-            "example": "Good: Evaluate based on demonstrated skills and outcomes, not credentials. Consider bootcamp, self-taught paths.\n\nWeak: Only consider 4-year degrees from top universities"
+            ]
           },
           "instruction_question": "Choose your prompt approach for evaluating non-traditional backgrounds.",
           "explain_this_question": "The best candidates may have unconventional paths. This tests whether you can prompt AI to recognize transferable skills and diverse experiences.",
@@ -388,8 +380,7 @@
               "Provide Context: Explain why they might be overqualified with specific reasons",
               "Avoid Assumptions: Let hiring manager decide if it's a problem or opportunity",
               "Note Without Penalizing: Include the data point without making it a disqualifier"
-            ],
-            "example": "Good: Note as potentially overqualified with reasons. Flag for discussion, do not auto-reject.\\n\\nWeak: Auto-reject anyone with more than 2 years over requirement"
+            ]
           },
           "instruction_question": "Design a prompt to identify overqualified candidates without auto-rejecting them.",
           "explain_this_question": "Overqualified candidates may be flight risks or great assets. This tests whether you can prompt AI for nuanced evaluation.",
@@ -422,8 +413,7 @@
               "Analyze Disparate Impact: Compare shortlisted vs rejected groups by various factors",
               "Sample Manual Review: Validate AI decisions on a subset of candidates",
               "Iterate Based on Findings: Refine prompts if bias patterns emerge"
-            ],
-            "example": "Good: Analyze shortlisted vs rejected by gender indicators, university tiers, career transitions. Report disparities.\n\nWeak: Trust AI is unbiased by default"
+            ]
           },
           "instruction_question": "How will you validate AI screening results aren't biased?",
           "explain_this_question": "Prompt engineering includes verification. This tests whether you know how to audit AI outputs for hidden bias.",
@@ -505,8 +495,7 @@
               "Target Specific Competencies: Define exact skills or behaviors to assess (e.g., stakeholder management)",
               "Request Concrete Scenarios: Ask for questions about real situations, not hypotheticals",
               "Avoid Generic Questions: Specify role context for relevant, tailored questions"
-            ],
-            "example": "Good: Generate 5 behavioral questions for Product Manager assessing stakeholder management. Use STAR format. Focus on conflicting priorities, difficult stakeholders.\n\nWeak: Create questions about stakeholder management"
+            ]
           },
           "instruction_question": "Choose the best prompt to generate behavioral questions for 'stakeholder management' competency.",
           "explain_this_question": "Good behavioral questions are specific, relevant, and reveal past behavior patterns. This tests your ability to generate targeted interview content via prompts.",
@@ -539,8 +528,7 @@
               "Use Observable Behaviors: Focus on specific actions and outcomes, not vague qualities like enthusiasm",
               "Make It Reusable: Same rubric applies to all candidates for fair comparison",
               "Include Red Flags: Define what responses would be concerning or disqualifying"
-            ],
-            "example": "Good: Define strong (includes metrics, shows cross-team collaboration), acceptable (demonstrates awareness), weak (no examples).\n\nWeak: Just score on gut feel"
+            ]
           },
           "instruction_question": "Design a prompt to create an interviewer scoring rubric for responses.",
           "explain_this_question": "Scoring rubrics reduce interviewer bias and improve consistency. This tests whether you can prompt AI to build evaluation frameworks.",
@@ -573,8 +561,7 @@
               "Challenge Generalities: If they say we did X, ask What specifically was YOUR role?",
               "Test Critical Thinking: Follow-ups should reveal problem-solving approach, not just results",
               "Prepare Multiple Angles: Have probes ready for outcome, their specific role, and lessons learned"
-            ],
-            "example": "Good: For each question, create 3 follow-ups exploring outcome, their role, and lessons learned.\n\nWeak: Just repeat the original question louder"
+            ]
           },
           "instruction_question": "How will you prompt AI to generate follow-up probing questions?",
           "explain_this_question": "Great interviews dig deeper with targeted follow-ups. This tests whether you can create prompts that help interviewers go beyond surface responses.",
@@ -607,8 +594,7 @@
               "Eliminate Assumption Bias: Do not assume candidate background, education, or resources",
               "Focus on Behaviors: Ask about what they did, not their opinions or cultural fit",
               "Set Fairness Constraints: Explicitly tell AI to avoid cultural bias and be legally defensible"
-            ],
-            "example": "Good: Generate open-ended, neutral questions. Avoid assumptions about background or culturally biased scenarios.\n\nWeak: Accept whatever AI generates without review"
+            ]
           },
           "instruction_question": "Select your approach to prevent leading or biased interview questions from AI.",
           "explain_this_question": "AI can generate biased questions without proper constraints. This tests whether you can prompt for neutral, fair questions.",
@@ -634,6 +620,16 @@
         {
           "step_id": 5,
           "scenario_id": "S1",
+          "theory_content": {
+            "title": "Creating Comprehensive Interview Guides",
+            "key_points": [
+              "Time-Boxed Structure: Define clear time allocations for intro, questions, candidate Q&A, and closing",
+              "Competency Coverage: Ensure each critical competency gets dedicated time and questions",
+              "Include Scripts: Provide exact wording for introductions, transitions, and closing to ensure consistency",
+              "Scoring Integration: Embed scoring rubrics directly into the guide for real-time evaluation",
+              "Candidate Experience: Build in time for candidate questions to ensure two-way conversation"
+            ]
+          },
           "instruction_question": "Design a prompt to create a complete interview guide with timing and structure.",
           "explain_this_question": "Interview guides bring structure to the process. This tests whether you can use AI to create comprehensive interviewer resources.",
           "artefact_interaction_description": "You prompt for full guide; formatted document is generated.",

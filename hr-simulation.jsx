@@ -164,6 +164,647 @@ window.TheoryCard = ({ theoryContent, defaultExpanded = true }) => {
   );
 };
 
+// V3 Question Type Components
+window.FindErrorQuestion = ({ segments, onAnswer, disabled }) => {
+  const COLORS = window.COLORS;
+  const [selected, setSelected] = React.useState(null);
+
+  const handleSelect = (segmentId) => {
+    if (disabled) return;
+    setSelected(segmentId);
+    onAnswer?.(segmentId);
+  };
+
+  return (
+    <div style={{ marginBottom: '20px' }}>
+      <div style={{ 
+        background: COLORS.bgCard, 
+        borderRadius: '12px', 
+        padding: '16px',
+        marginBottom: '16px'
+      }}>
+        <div style={{ fontSize: '13px', color: COLORS.textDim, marginBottom: '12px', textTransform: 'uppercase', fontWeight: 600 }}>
+          Click on the problematic part:
+        </div>
+        <div style={{ fontSize: '14px', color: COLORS.text, lineHeight: 1.8 }}>
+          {segments && segments.map((segment) => (
+            <span
+              key={segment.id}
+              onClick={() => handleSelect(segment.id)}
+              style={{
+                padding: '4px 8px',
+                margin: '2px',
+                borderRadius: '6px',
+                cursor: disabled ? 'not-allowed' : 'pointer',
+                background: selected === segment.id ? COLORS.warningBg : 'transparent',
+                border: selected === segment.id ? `2px solid ${COLORS.warning}` : '2px solid transparent',
+                color: selected === segment.id ? COLORS.warning : COLORS.text,
+                transition: 'all 0.2s ease',
+                display: 'inline-block',
+                opacity: disabled ? 0.6 : 1
+              }}
+            >
+              {segment.text}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+window.FillBlankQuestion = ({ promptTemplate, blankOptions, onAnswer, disabled }) => {
+  const COLORS = window.COLORS;
+  const [selected, setSelected] = React.useState(null);
+
+  const handleSelect = (index) => {
+    if (disabled) return;
+    setSelected(index);
+    // Don't auto-submit - wait for button
+  };
+
+  const handleSubmit = () => {
+    if (selected !== null && !disabled) {
+      onAnswer?.(selected);
+    }
+  };
+
+  return (
+    <div style={{ marginBottom: '20px' }}>
+      <div style={{ 
+        background: COLORS.bgCard, 
+        borderRadius: '12px', 
+        padding: '16px',
+        marginBottom: '16px'
+      }}>
+        <div style={{ fontSize: '14px', color: COLORS.text, lineHeight: 1.8, marginBottom: '16px' }}>
+          {promptTemplate.split('[____]').map((part, idx, arr) => (
+            <React.Fragment key={idx}>
+              {part}
+              {idx < arr.length - 1 && (
+                <span style={{ 
+                  background: COLORS.highlightSoft, 
+                  color: COLORS.highlight, 
+                  padding: '4px 12px',
+                  borderRadius: '6px',
+                  fontWeight: 600,
+                  border: `2px dashed ${COLORS.highlight}`
+                }}>
+                  {selected !== null ? blankOptions[selected] : '[____]'}
+                </span>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+      
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        {blankOptions && blankOptions.map((option, idx) => (
+          <button
+            key={idx}
+            onClick={() => handleSelect(idx)}
+            disabled={disabled}
+            style={{
+              width: '100%',
+              padding: '14px 16px',
+              background: selected === idx ? COLORS.highlightSoft : COLORS.bgCard,
+              border: `2px solid ${selected === idx ? COLORS.highlight : 'transparent'}`,
+              borderRadius: '12px',
+              cursor: disabled ? 'not-allowed' : 'pointer',
+              textAlign: 'left',
+              transition: 'all 0.15s ease',
+              opacity: disabled ? 0.5 : 1
+            }}
+          >
+            <span style={{ fontSize: '14px', color: COLORS.text, lineHeight: 1.5 }}>{option}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Submit button */}
+      {selected !== null && !disabled && (
+        <button
+          onClick={handleSubmit}
+          style={{
+            width: '100%',
+            marginTop: '16px',
+            padding: '16px',
+            background: COLORS.cta,
+            border: 'none',
+            borderRadius: '12px',
+            cursor: 'pointer',
+            fontSize: '16px',
+            fontWeight: 600,
+            color: '#0D2436',
+            boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)',
+            transition: 'transform 0.1s ease'
+          }}
+          onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
+          onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
+        >
+          Submit Answer
+        </button>
+      )}
+    </div>
+  );
+};
+
+window.ViolatedPrinciplesQuestion = ({ problematicPrompt, availablePrinciples, onAnswer, disabled }) => {
+  const COLORS = window.COLORS;
+  const [selectedPrinciples, setSelectedPrinciples] = React.useState([]);
+
+  const togglePrinciple = (index) => {
+    if (disabled) return;
+    const newSelection = selectedPrinciples.includes(index)
+      ? selectedPrinciples.filter(i => i !== index)
+      : [...selectedPrinciples, index];
+    setSelectedPrinciples(newSelection);
+    // Don't auto-submit - wait for button
+  };
+
+  const handleSubmit = () => {
+    if (!disabled && selectedPrinciples.length > 0) {
+      onAnswer?.(selectedPrinciples);
+    }
+  };
+
+  return (
+    <div style={{ marginBottom: '20px' }}>
+      <div style={{ 
+        background: COLORS.warningBg, 
+        borderRadius: '12px', 
+        padding: '16px',
+        marginBottom: '16px',
+        border: `1px solid ${COLORS.warning}40`
+      }}>
+        <div style={{ fontSize: '12px', color: COLORS.warning, fontWeight: 600, marginBottom: '8px', textTransform: 'uppercase' }}>
+          ⚠ Problematic Prompt:
+        </div>
+        <div style={{ fontSize: '14px', color: COLORS.textMuted, lineHeight: 1.6, fontStyle: 'italic' }}>
+          "{problematicPrompt}"
+        </div>
+      </div>
+
+      <div style={{ fontSize: '13px', color: COLORS.textDim, marginBottom: '12px', textTransform: 'uppercase', fontWeight: 600 }}>
+        Select ALL violated principles:
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        {availablePrinciples && availablePrinciples.map((principle, idx) => {
+          const isSelected = selectedPrinciples.includes(idx);
+          return (
+            <button
+              key={idx}
+              onClick={() => togglePrinciple(idx)}
+              disabled={disabled}
+              style={{
+                width: '100%',
+                padding: '14px 16px',
+                background: isSelected ? COLORS.highlightSoft : COLORS.bgCard,
+                border: `2px solid ${isSelected ? COLORS.highlight : 'transparent'}`,
+                borderRadius: '12px',
+                cursor: disabled ? 'not-allowed' : 'pointer',
+                textAlign: 'left',
+                transition: 'all 0.15s ease',
+                opacity: disabled ? 0.5 : 1,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px'
+              }}
+            >
+              <div style={{
+                width: '20px',
+                height: '20px',
+                borderRadius: '4px',
+                border: `2px solid ${isSelected ? COLORS.highlight : COLORS.textDim}`,
+                background: isSelected ? COLORS.highlight : 'transparent',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}>
+                {isSelected && <span style={{ color: COLORS.text, fontSize: '12px', fontWeight: 700 }}>✓</span>}
+              </div>
+              <span style={{ fontSize: '14px', color: COLORS.text, lineHeight: 1.5 }}>{principle}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Submit button - no count text */}
+      {selectedPrinciples.length > 0 && !disabled && (
+        <button
+          onClick={handleSubmit}
+          style={{
+            width: '100%',
+            marginTop: '16px',
+            padding: '16px',
+            background: COLORS.cta,
+            border: 'none',
+            borderRadius: '12px',
+            cursor: 'pointer',
+            fontSize: '16px',
+            fontWeight: 600,
+            color: '#0D2436',
+            boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)',
+            transition: 'transform 0.1s ease'
+          }}
+          onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
+          onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
+        >
+          Submit Answer
+        </button>
+      )}
+    </div>
+  );
+};
+
+
+// Tap Sequence Question Components
+window.FillBlanksSequence = ({ template, blankOrder, options, requiredSelections, onComplete, disabled }) => {
+  const COLORS = window.COLORS;
+  const [selections, setSelections] = React.useState({});
+  const [currentBlankIndex, setCurrentBlankIndex] = React.useState(0);
+
+  const currentBlank = blankOrder && blankOrder[currentBlankIndex];
+  const allFilled = blankOrder && blankOrder.every(blank => selections[blank]);
+
+  const handleSelectOption = (option) => {
+    if (disabled) return;
+    
+    const newSelections = { ...selections, [currentBlank]: option };
+    setSelections(newSelections);
+    
+    // Move to next blank if not at the end
+    if (currentBlankIndex < blankOrder.length - 1) {
+      setCurrentBlankIndex(currentBlankIndex + 1);
+    }
+    
+    // Check if all blanks are filled
+    const allFilledNow = blankOrder.every(blank => newSelections[blank]);
+    if (allFilledNow && onComplete) {
+      setTimeout(() => onComplete(newSelections), 300);
+    }
+  };
+
+  const handleBlankClick = (blankId, index) => {
+    if (disabled) return;
+    setCurrentBlankIndex(index);
+  };
+
+  const renderPromptWithBlanks = () => {
+    if (!template) return null;
+    let parts = [];
+    let remaining = template;
+    
+    blankOrder.forEach((blankId, idx) => {
+      const blankToken = `[${blankId}]`;
+      const splitIndex = remaining.indexOf(blankToken);
+      
+      if (splitIndex !== -1) {
+        // Add text before blank
+        if (splitIndex > 0) {
+          parts.push({ type: 'text', content: remaining.substring(0, splitIndex) });
+        }
+        
+        // Add blank
+        parts.push({ 
+          type: 'blank', 
+          id: blankId, 
+          index: idx,
+          value: selections[blankId]
+        });
+        
+        remaining = remaining.substring(splitIndex + blankToken.length);
+      }
+    });
+    
+    // Add remaining text
+    if (remaining) {
+      parts.push({ type: 'text', content: remaining });
+    }
+    
+    return parts.map((part, i) => {
+      if (part.type === 'text') {
+        return <span key={i} style={{ whiteSpace: 'pre-wrap' }}>{part.content}</span>;
+      } else {
+        const isActive = part.index === currentBlankIndex;
+        const isFilled = !!part.value;
+        
+        return (
+          <span
+            key={i}
+            onClick={() => handleBlankClick(part.id, part.index)}
+            style={{
+              display: 'inline-block',
+              minWidth: '120px',
+              padding: '6px 12px',
+              margin: '0 4px',
+              borderRadius: '6px',
+              background: isActive ? COLORS.highlightSoft : (isFilled ? COLORS.bgCard : COLORS.warningBg),
+              border: `2px ${isActive ? 'solid' : 'dashed'} ${isActive ? COLORS.highlight : (isFilled ? COLORS.highlight : COLORS.textDim)}`,
+              color: isFilled ? COLORS.text : COLORS.textMuted,
+              fontWeight: isFilled ? 600 : 400,
+              cursor: disabled ? 'not-allowed' : 'pointer',
+              textAlign: 'center',
+              transition: 'all 0.2s ease',
+              opacity: disabled ? 0.6 : 1
+            }}
+          >
+            {part.value || `[${part.index + 1}]`}
+          </span>
+        );
+      }
+    });
+  };
+
+  return (
+    <div style={{ marginBottom: '20px' }}>
+      <div style={{ 
+        background: COLORS.bgCard, 
+        borderRadius: '12px', 
+        padding: '20px',
+        marginBottom: '16px'
+      }}>
+        <div style={{ fontSize: '13px', color: COLORS.textDim, marginBottom: '12px', textTransform: 'uppercase', fontWeight: 600 }}>
+          Tap options in order to fill the blanks:
+        </div>
+        <div style={{ fontSize: '15px', color: COLORS.text, lineHeight: 2, fontFamily: 'monospace' }}>
+          {renderPromptWithBlanks()}
+        </div>
+      </div>
+
+      {currentBlank && !allFilled && (
+        <div style={{ marginBottom: '12px' }}>
+          <div style={{ fontSize: '12px', color: COLORS.textMuted, marginBottom: '8px' }}>
+            Filling blank {currentBlankIndex + 1} of {blankOrder.length}:
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {options && options.map((option, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleSelectOption(option)}
+                disabled={disabled}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  background: COLORS.bgCard,
+                  border: `2px solid transparent`,
+                  borderRadius: '10px',
+                  cursor: disabled ? 'not-allowed' : 'pointer',
+                  textAlign: 'left',
+                  transition: 'all 0.15s ease',
+                  opacity: disabled ? 0.5 : 1,
+                  fontSize: '14px',
+                  color: COLORS.text
+                }}
+                onMouseEnter={(e) => !disabled && (e.target.style.border = `2px solid ${COLORS.highlight}`)}
+                onMouseLeave={(e) => !disabled && (e.target.style.border = '2px solid transparent')}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {allFilled && (
+        <div style={{ 
+          padding: '12px', 
+          background: COLORS.highlightSoft, 
+          borderRadius: '8px', 
+          textAlign: 'center',
+          fontSize: '13px',
+          color: COLORS.highlight,
+          fontWeight: 600
+        }}>
+          ✓ All blanks filled! Proceeding...
+        </div>
+      )}
+    </div>
+  );
+};
+
+window.FlagAndReplaceSequence = ({ promptText, options, requiredFlags, requiredReplacements, onComplete, disabled }) => {
+  const COLORS = window.COLORS;
+  const [flaggedLines, setFlaggedLines] = React.useState([]);
+  const [selectedReplacements, setSelectedReplacements] = React.useState([]);
+  const [phase, setPhase] = React.useState('flag'); // 'flag' or 'replace'
+
+  const promptLines = promptText ? promptText.split('\n').filter(line => line.trim()) : [];
+  const flagPhaseComplete = flaggedLines.length === requiredFlags;
+  const replacePhaseComplete = selectedReplacements.length === requiredReplacements;
+  const allComplete = flagPhaseComplete && replacePhaseComplete;
+
+  React.useEffect(() => {
+    if (flagPhaseComplete && phase === 'flag') {
+      setPhase('replace');
+    }
+  }, [flagPhaseComplete, phase]);
+
+  React.useEffect(() => {
+    if (allComplete && onComplete) {
+      setTimeout(() => {
+        onComplete({
+          flagged: flaggedLines,
+          replacements: selectedReplacements
+        });
+      }, 300);
+    }
+  }, [allComplete]);
+
+  const handleLineClick = (lineIndex) => {
+    if (disabled || phase !== 'flag') return;
+    
+    if (flaggedLines.includes(lineIndex)) {
+      setFlaggedLines(flaggedLines.filter(i => i !== lineIndex));
+    } else if (flaggedLines.length < requiredFlags) {
+      setFlaggedLines([...flaggedLines, lineIndex]);
+    }
+  };
+
+  const handleReplacementClick = (option) => {
+    if (disabled || phase !== 'replace') return;
+    
+    if (selectedReplacements.includes(option)) {
+      setSelectedReplacements(selectedReplacements.filter(o => o !== option));
+    } else if (selectedReplacements.length < requiredReplacements) {
+      setSelectedReplacements([...selectedReplacements, option]);
+    }
+  };
+
+  return (
+    <div style={{ marginBottom: '20px' }}>
+      {/* Phase indicator */}
+      <div style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
+        <div style={{
+          flex: 1,
+          padding: '8px 12px',
+          borderRadius: '8px',
+          background: phase === 'flag' ? COLORS.highlightSoft : (flagPhaseComplete ? COLORS.successBg : COLORS.bgCard),
+          border: `2px solid ${phase === 'flag' ? COLORS.highlight : (flagPhaseComplete ? COLORS.success : COLORS.textDim)}`,
+          fontSize: '12px',
+          fontWeight: 600,
+          textAlign: 'center',
+          color: phase === 'flag' ? COLORS.highlight : (flagPhaseComplete ? COLORS.success : COLORS.textMuted)
+        }}>
+          {flagPhaseComplete ? '✓' : '1.'} Flag Problems ({flaggedLines.length}/{requiredFlags})
+        </div>
+        <div style={{
+          flex: 1,
+          padding: '8px 12px',
+          borderRadius: '8px',
+          background: phase === 'replace' ? COLORS.highlightSoft : COLORS.bgCard,
+          border: `2px solid ${phase === 'replace' ? COLORS.highlight : COLORS.textDim}`,
+          fontSize: '12px',
+          fontWeight: 600,
+          textAlign: 'center',
+          color: phase === 'replace' ? COLORS.highlight : COLORS.textMuted,
+          opacity: phase === 'flag' ? 0.5 : 1
+        }}>
+          {replacePhaseComplete ? '✓' : '2.'} Select Fixes ({selectedReplacements.length}/{requiredReplacements})
+        </div>
+      </div>
+
+      {/* Prompt display with tappable lines */}
+      <div style={{ 
+        background: COLORS.bgCard, 
+        borderRadius: '12px', 
+        padding: '16px',
+        marginBottom: '16px'
+      }}>
+        <div style={{ fontSize: '12px', color: COLORS.textDim, marginBottom: '12px', textTransform: 'uppercase', fontWeight: 600 }}>
+          {phase === 'flag' ? 'Tap problematic lines:' : 'Problematic lines flagged:'}
+        </div>
+        {promptLines.map((line, idx) => {
+          const isFlagged = flaggedLines.includes(idx);
+          const canSelect = phase === 'flag' && !disabled;
+          
+          return (
+            <div
+              key={idx}
+              onClick={() => handleLineClick(idx)}
+              style={{
+                padding: '10px 14px',
+                marginBottom: '6px',
+                borderRadius: '8px',
+                background: isFlagged ? COLORS.warningBg : 'transparent',
+                border: `2px solid ${isFlagged ? COLORS.warning : 'transparent'}`,
+                cursor: canSelect ? 'pointer' : 'default',
+                transition: 'all 0.2s ease',
+                fontSize: '14px',
+                color: isFlagged ? COLORS.warning : COLORS.text,
+                fontWeight: isFlagged ? 600 : 400,
+                opacity: disabled ? 0.6 : 1
+              }}
+            >
+              {isFlagged && '⚠ '}{line}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Replacement options */}
+      {phase === 'replace' && (
+        <div>
+          <div style={{ fontSize: '12px', color: COLORS.textDim, marginBottom: '8px', textTransform: 'uppercase', fontWeight: 600 }}>
+            Select replacement constraints:
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {options && options.map((option, idx) => {
+              const isSelected = selectedReplacements.includes(option);
+              
+              return (
+                <button
+                  key={idx}
+                  onClick={() => handleReplacementClick(option)}
+                  disabled={disabled}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    background: isSelected ? COLORS.highlightSoft : COLORS.bgCard,
+                    border: `2px solid ${isSelected ? COLORS.highlight : 'transparent'}`,
+                    borderRadius: '10px',
+                    cursor: disabled ? 'not-allowed' : 'pointer',
+                    textAlign: 'left',
+                    transition: 'all 0.15s ease',
+                    opacity: disabled ? 0.5 : 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px'
+                  }}
+                >
+                  <div style={{
+                    width: '20px',
+                    height: '20px',
+                    borderRadius: '4px',
+                    border: `2px solid ${isSelected ? COLORS.highlight : COLORS.textDim}`,
+                    background: isSelected ? COLORS.highlight : 'transparent',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    {isSelected && <span style={{ color: COLORS.text, fontSize: '12px', fontWeight: 700 }}>✓</span>}
+                  </div>
+                  <span style={{ fontSize: '14px', color: COLORS.text }}>{option}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {allComplete && (
+        <div style={{ 
+          marginTop: '12px',
+          padding: '12px', 
+          background: COLORS.highlightSoft, 
+          borderRadius: '8px', 
+          textAlign: 'center',
+          fontSize: '13px',
+          color: COLORS.highlight,
+          fontWeight: 600
+        }}>
+          ✓ Flags and replacements complete! Proceeding...
+        </div>
+      )}
+    </div>
+  );
+};
+
+window.TapSequenceQuestion = ({ step, onComplete, disabled }) => {
+  // Detect variant based on step data
+  if (step.artefact_prompt_template && step.blank_order) {
+    // Variant 1: Fill Blanks
+    return (
+      <window.FillBlanksSequence
+        template={step.artefact_prompt_template}
+        blankOrder={step.blank_order}
+        options={step.options_inputs}
+        requiredSelections={step.required_selections}
+        onComplete={onComplete}
+        disabled={disabled}
+      />
+    );
+  } else if (step.artefact_prompt_displayed && step.required_selections) {
+    // Variant 2: Flag and Replace
+    return (
+      <window.FlagAndReplaceSequence
+        promptText={step.artefact_prompt_displayed}
+        options={step.options_inputs}
+        requiredFlags={step.required_selections.flags}
+        requiredReplacements={step.required_selections.replacements}
+        onComplete={onComplete}
+        disabled={disabled}
+      />
+    );
+  }
+  
+  return null;
+};
+
+
 window.FeedbackPanel = ({ type, message, points, outcomeText, percentile, onComplete }) => {
   const COLORS = window.COLORS;
   const ProgressTimer = window.ProgressTimer;
@@ -1015,7 +1656,7 @@ window.ReviewPage = ({ history, onContinue }) => {
   );
 };
 
-window.HRSimulationApp = function ({ simulationData }) {
+window.HRSimulationApp = function ({ simulationData, uiVersion }) {
   const COLORS = window.COLORS;
   const OptionButton = window.OptionButton;
   const CandidateCard = window.CandidateCard;
@@ -1201,6 +1842,8 @@ window.HRSimulationApp = function ({ simulationData }) {
   const handleOptionSelect = (index) => {
     if (isFeedbackVisible) return;
     setSelectedOption(index);
+    // Auto-advance for traditional MCQ (all versions including V3)
+    // V3 fill_blank and violated_principles use their own components with submit buttons
     evaluateStep(index);
   };
 
@@ -1601,6 +2244,64 @@ window.HRSimulationApp = function ({ simulationData }) {
           { label: 'Internal Trust', initial: 60 }
         ];
         artefact = <window.TradeOffMeters meters={meters} onComplete={(values) => evaluateStep(0)} />;
+      } else if (step.interaction_type === 'find_error' && step.segments) {
+        // V3 Question Type: Find the Error
+        artefact = (
+          <window.FindErrorQuestion
+            segments={step.segments}
+            onAnswer={(segmentId) => {
+              // Find if the selected segment is an error
+              const selectedSegment = step.segments.find(s => s.id === segmentId);
+              const isCorrect = selectedSegment && selectedSegment.is_error;
+              const correctSegment = step.segments.find(s => s.is_error);
+              const correctIndex = correctSegment ? correctSegment.id : 0;
+              evaluateStep(isCorrect ? 0 : 1, correctIndex);
+            }}
+            disabled={isFeedbackVisible}
+          />
+        );
+      } else if (step.interaction_type === 'fill_blank' && step.prompt_template) {
+        // V3 Question Type: Fill in the Blank
+        artefact = (
+          <window.FillBlankQuestion
+            promptTemplate={step.prompt_template}
+            blankOptions={step.blank_options}
+            onAnswer={(selectedIndex) => {
+              evaluateStep(selectedIndex, step.correct_answer_index || 0);
+            }}
+            disabled={isFeedbackVisible}
+          />
+        );
+      } else if (step.interaction_type === 'tap_sequence') {
+        // Tap Sequence Questions (Fill Blanks or Flag & Replace)
+        artefact = (
+          <window.TapSequenceQuestion
+            step={step}
+            onComplete={(result) => {
+              // Auto-proceed on completion
+              console.log('Tap sequence completed:', result);
+              evaluateStep(0); // Success for learning flow
+            }}
+            disabled={isFeedbackVisible}
+          />
+        );
+      } else if (step.interaction_type === 'violated_principles' && step.available_principles) {
+        // V3 Question Type: Violated Principles
+        artefact = (
+          <window.ViolatedPrinciplesQuestion
+            problematicPrompt={step.problematic_prompt}
+            availablePrinciples={step.available_principles}
+            onAnswer={(selectedIndices) => {
+              // Check if selected indices match violated ones
+              const violated = step.violated_principle_indices || [];
+              const isCorrect = 
+                selectedIndices.length === violated.length &&
+                selectedIndices.every(idx => violated.includes(idx));
+              evaluateStep(isCorrect ? 0 : 1, violated);
+            }}
+            disabled={isFeedbackVisible}
+          />
+        );
       } else if (step.options_inputs && step.options_inputs.length > 0) {
         // Catch-all for MCQ, custom_compose, trade_off_meters (button variant)
         artefact = (

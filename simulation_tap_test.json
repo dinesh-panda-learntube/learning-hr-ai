@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "title": "Tap Sequence Test - Prompt Engineering",
+    "description": "Test simulation for tap_sequence interaction types",
+    "version": "test_1.0"
+  },
+  "simulations": [
+    {
+      "simulation_id": 1,
+      "title": "Prompt Engineering Basics",
+      "description": "Learn to build and refine AI prompts",
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Build a Structured Prompt Foundation",
+            "key_points": [
+              "Define role, level, and experience clearly.",
+              "Add company context to guide tone and scope.",
+              "Explicitly request output sections.",
+              "Avoid vague wording that makes AI guess."
+            ]
+          },
+          "instruction_question": "Complete the 4 missing parts of the prompt by tapping options in order.",
+          "artefact_interaction_description": "A live prompt draft is shown with 4 blanks. Tap one option per blank in order. You may change a selection before completing all 4. The step proceeds automatically when all blanks are filled.",
+          "interaction_type": "tap_sequence",
+          "artefact_prompt_template": "Write a job description for [BLANK_1] ([BLANK_2]) at a [BLANK_3].\nInclude sections: [BLANK_4].",
+          "blank_order": [
+            "BLANK_1",
+            "BLANK_2",
+            "BLANK_3",
+            "BLANK_4"
+          ],
+          "options_inputs": [
+            "Senior Data Scientist",
+            "Data Scientist",
+            "5+ years experience",
+            "10+ years experience",
+            "fast-growing tech startup",
+            "enterprise bank",
+            "Responsibilities, Must-Have Skills, Nice-to-Have Skills, Impact Expectations",
+            "Responsibilities and Skills"
+          ],
+          "required_selections": 4,
+          "selection_rules": {
+            "one_per_blank": true,
+            "ordered_selection": true,
+            "deselect_allowed": true
+          },
+          "progression_condition": "All 4 blanks must be filled",
+          "outcomes": {
+            "correct": "Prompt is specific and structured, leading to clean, usable AI output.",
+            "partially_correct": "Prompt is somewhat usable but AI may guess structure or inflate requirements.",
+            "incorrect": "Prompt remains vague or misaligned, causing generic or bloated output."
+          },
+          "skill_signals_observed": [
+            "Prompt specificity",
+            "Context setting",
+            "Output structuring"
+          ]
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "theory_content": {
+            "title": "Control Bias and Requirement Inflation in the Prompt",
+            "key_points": [
+              "Prevent issues in the prompt, not after generation.",
+              "Avoid hype or gender-coded words.",
+              "Limit must-have requirements explicitly.",
+              "Use clear constraints instead of vague improvements."
+            ]
+          },
+          "instruction_question": "Tap exactly 2 problematic lines in the prompt. Then tap exactly 2 replacement constraints.",
+          "artefact_interaction_description": "The full prompt draft is displayed below. First tap 2 lines that will cause biased or inflated output. Then tap 2 replacement lines. You can deselect any line before the second replacement is chosen. The step proceeds after 2 flags and 2 replacements.",
+          "interaction_type": "tap_sequence",
+          "artefact_prompt_displayed": "Write a job description for a Senior Data Scientist (5+ years experience) at a fast-growing tech startup.\nInclude sections: Responsibilities, Must-Have Skills, Nice-to-Have Skills, Impact Expectations.\nMake it exciting and aggressive.\nList as many skills as relevant.",
+          "options_inputs": [
+            "Make it exciting and aggressive.",
+            "List as many skills as relevant.",
+            "Use professional, inclusive language. Avoid jargon like rockstar, ninja, guru.",
+            "Separate Must-Have Skills and Nice-to-Have Skills. Limit Must-Have Skills to 5 core competencies aligned to actual job needs.",
+            "Manually edit the JD after generation.",
+            "Make it less biased."
+          ],
+          "required_selections": {
+            "flags": 2,
+            "replacements": 2
+          },
+          "selection_rules": {
+            "deselect_allowed": true,
+            "must_flag_before_replace": true
+          },
+          "progression_condition": "2 problematic lines flagged AND 2 replacements selected",
+          "outcomes": {
+            "correct": "Regenerated JD removes biased tone and controls requirement inflation.",
+            "partially_correct": "Tone improves but requirements remain inflated or vague.",
+            "incorrect": "Bias or inflation persists, increasing manual correction effort."
+          },
+          "skill_signals_observed": [
+            "Bias detection",
+            "Prompt refinement precision",
+            "Root-cause diagnosis"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -109,9 +109,17 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
+        // UI Version Mapping Configuration
+        const UI_VERSION_MAP = {
+            'simulation_1-5': 'v1',
+            'simulation_v2_1-5': 'v2',
+            'simulation_v3_1-5': 'v3'
+        };
+
         function AppWrapper() {
             const [data, setData] = useState(null);
             const [engineReady, setEngineReady] = useState(false);
+            const [uiVersion, setUiVersion] = useState('v2'); // Default to v2
 
             useEffect(() => {
                 // Fetch simulation data based on URL parameter
@@ -119,6 +127,11 @@
                 const params = new URLSearchParams(window.location.search);
                 const simId = params.get('sim') || 'simulation_v2_1-5';
                 const jsonPath = `${simId}.json?t=${Date.now()}`;
+
+                // Determine UI version from simId
+                const detectedVersion = UI_VERSION_MAP[simId] || 'v2';
+                setUiVersion(detectedVersion);
+                console.log(`UI Version detected: ${detectedVersion} for ${simId}`);
 
                 console.log(`Loading simulation from: ${jsonPath}`);
 
@@ -129,6 +142,7 @@
                     })
                     .then(d => {
                         window.SIMULATION_DATA = d;
+                        window.UI_VERSION = detectedVersion; // Store globally for components
                         setData(d);
                     })
                     .catch(err => {
@@ -149,7 +163,7 @@
             if (!data) return <div style={{ color: '#8BA3B9', padding: '40px', textAlign: 'center' }}>Loading data...</div>;
             if (!engineReady) return <div style={{ color: '#8BA3B9', padding: '40px', textAlign: 'center' }}>Initializing engine...</div>;
 
-            return <window.HRSimulationApp simulationData={data} />;
+            return <window.HRSimulationApp simulationData={data} uiVersion={uiVersion} />;
         }
 
         const rootNode = document.getElementById('root');

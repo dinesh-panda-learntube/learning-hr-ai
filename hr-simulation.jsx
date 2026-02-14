@@ -70,7 +70,7 @@ window.TheoryCard = ({ theoryContent, defaultExpanded = true }) => {
 
   if (!theoryContent) return null;
 
-  const { title, key_points, example } = theoryContent;
+  const { title, key_points } = theoryContent;
 
   return (
     <div style={{ 
@@ -131,7 +131,7 @@ window.TheoryCard = ({ theoryContent, defaultExpanded = true }) => {
 
           {/* Key Points */}
           {key_points && key_points.length > 0 && (
-            <div style={{ marginBottom: example ? '16px' : '0' }}>
+            <div>
               {key_points.map((point, idx) => (
                 <div key={idx} style={{ 
                   display: 'flex', 
@@ -156,36 +156,6 @@ window.TheoryCard = ({ theoryContent, defaultExpanded = true }) => {
                   </span>
                 </div>
               ))}
-            </div>
-          )}
-
-          {/* Example Section */}
-          {example && (
-            <div style={{ 
-              background: COLORS.bgCard, 
-              borderRadius: '8px', 
-              padding: '12px',
-              borderLeft: `3px solid ${COLORS.highlight}`
-            }}>
-              <div style={{ 
-                fontSize: '11px', 
-                color: COLORS.highlight, 
-                fontWeight: 700, 
-                marginBottom: '8px',
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px'
-              }}>
-                Example
-              </div>
-              <div style={{ 
-                fontSize: '13px', 
-                color: COLORS.text, 
-                lineHeight: 1.6,
-                whiteSpace: 'pre-line',
-                fontFamily: 'monospace'
-              }}>
-                {example}
-              </div>
             </div>
           )}
         </div>

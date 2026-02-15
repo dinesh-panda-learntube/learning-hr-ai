@@ -112,9 +112,9 @@
             "Add: 'Make it sound cool and exciting'"
           ],
           "outcomes": {
-            "correct": "AI regenerates with professional, inclusive language",
-            "partially_correct": "Some improvements but inconsistent",
-            "incorrect": "Bias remains or increases"
+            "correct": "AI regenerates with professional, inclusive language, removing bias",
+            "partially_correct": "Output is professional but may still exclude underrepresented groups",
+            "incorrect": "Bias remains or increases with vague instructions"
           },
           "immediate_feedback": "Impact: employer brand and DEI compliance.",
           "skill_signals_observed": [
@@ -124,9 +124,9 @@
           "prompt_template": "Add: 'Use professional, [____]. Avoid jargon like rockstar, ninja, or guru. Focus on concrete skills and behaviors.'",
           "blank_options": [
             "inclusive language",
-            "buzzwords",
-            "jargon",
-            "vague terms"
+            "neutral tone",
+            "formal style",
+            "standard terms"
           ],
           "correct_answer_index": 0
         },
@@ -229,9 +229,9 @@
             "Create one perfect JD instead of variants"
           ],
           "outcomes": {
-            "correct": "You get testable variants optimized for different candidate motivations",
-            "partially_correct": "Variants exist but differences are superficial",
-            "incorrect": "Variants are inconsistent or confusing"
+            "correct": "Variant distinctively highlights exciting work, attracting growth-minded candidates",
+            "partially_correct": "Variant is too similar to the core JD, offering little testing value",
+            "incorrect": "Variant narrows the pool too much or sounds discouraging"
           },
           "immediate_feedback": "Impact: application quality and hiring funnel optimization.",
           "skill_signals_observed": [
@@ -240,10 +240,10 @@
           ],
           "prompt_template": "Generate 3 versions: one emphasizing growth opportunities, one highlighting technical [____] one focused on team culture. Keep core requirements consistent.",
           "blank_options": [
-            "challenges,",
-            "problems,",
-            "issues,",
-            "tasks,"
+            "innovations,",
+            "requirements,",
+            "stack,",
+            "complexity,"
           ],
           "correct_answer_index": 0
         }
@@ -351,9 +351,9 @@
             "Flag all gaps for manual review"
           ],
           "outcomes": {
-            "correct": "AI evaluates fairly while noting relevant context",
-            "partially_correct": "Gaps noted but bias may remain subtle",
-            "incorrect": "Qualified candidates wrongly filtered out"
+            "correct": "AI consistently ignores gaps, focusing purely on skills as instructed",
+            "partially_correct": "AI makes an effort but bias slips through without absolute constraints",
+            "incorrect": "Process remains manual or unscalable"
           },
           "immediate_feedback": "Impact: candidate diversity and fairness.",
           "skill_signals_observed": [
@@ -362,10 +362,10 @@
           ],
           "prompt_template": "When evaluating employment history, focus on skills relevance and growth trajectory. [____] not penalize employment gaps. Note gaps neutrally without negative inference.",
           "blank_options": [
-            "Do",
-            "Always",
-            "Never",
-            "Sometimes"
+            "Explicitly do",
+            "Generally do",
+            "Try to",
+            "Manually"
           ],
           "correct_answer_index": 0
         },
@@ -468,9 +468,9 @@
             "Only check if someone complains"
           ],
           "outcomes": {
-            "correct": "You catch and correct bias before it affects candidates",
-            "partially_correct": "Some bias detected but process is manual",
-            "incorrect": "Bias goes undetected and affects hiring"
+            "correct": "You clearly identify if AI flags senior vs junior candidates unfairly",
+            "partially_correct": "Subjective metrics are hard to audit for systemic bias",
+            "incorrect": "Audit misses key discrimination patterns"
           },
           "immediate_feedback": "Impact: hiring fairness and legal risk.",
           "skill_signals_observed": [
@@ -479,10 +479,10 @@
           ],
           "prompt_template": "Analyze the shortlisted vs rejected groups by: gender indicators, university tiers, [____] of experience, career transitions. Report any significant disparities for review.",
           "blank_options": [
-            "challenges,",
-            "problems,",
-            "issues,",
-            "tasks,"
+            "years",
+            "quality",
+            "relevance",
+            "source"
           ],
           "correct_answer_index": 0
         }
@@ -590,9 +590,9 @@
             "Give everyone the same score to be fair"
           ],
           "outcomes": {
-            "correct": "Interviewers have clear, calibrated scoring guidelines",
-            "partially_correct": "Rubric exists but levels are vague",
-            "incorrect": "Evaluation remains subjective"
+            "correct": "Rubric clearly distinguishes competence based on observable facts",
+            "partially_correct": "Evaluation risks being subjective or future-biased",
+            "incorrect": "Rubric rewards busy-work rather than capability"
           },
           "immediate_feedback": "Impact: hiring quality and interviewer alignment.",
           "skill_signals_observed": [
@@ -601,10 +601,10 @@
           ],
           "prompt_template": "Create a 1-5 scoring rubric for stakeholder management responses: 1=no examples, 2=basic examples, 3=clear examples with some [____] 4=strong examples with clear impact, 5=exceptional examples with measurable business outcomes. Include behavioral indicators for each level.",
           "blank_options": [
-            "Do",
-            "Always",
-            "Never",
-            "Sometimes"
+            "evidence,",
+            "potential,",
+            "effort,",
+            "theory,"
           ],
           "correct_answer_index": 0
         },
@@ -708,9 +708,9 @@
             "Tell interviewers to wing it"
           ],
           "outcomes": {
-            "correct": "Interviewers have complete, time-managed structure",
-            "partially_correct": "Guide exists but missing key elements",
-            "incorrect": "Interviews remain unstructured"
+            "correct": "Time is perfectly allocated to ensure all competencies are assessed",
+            "partially_correct": "Structure is functional but phrasing ensures less clarity",
+            "incorrect": "Assessment approach is confusing or aggressive"
           },
           "immediate_feedback": "Impact: interview consistency and candidate experience.",
           "skill_signals_observed": [
@@ -719,10 +719,10 @@
           ],
           "prompt_template": "Create a 60-minute interview guide for Engineering Manager role: 5 min intro, 40 min behavioral questions (8 min each [____] 5 competencies with scoring rubrics), 10 min candidate questions, 5 min close. Include what to say at each stage.",
           "blank_options": [
-            "challenges,",
-            "problems,",
-            "issues,",
-            "tasks,"
+            "covering",
+            "targeting",
+            "regarding",
+            "involving"
           ],
           "correct_answer_index": 0
         }

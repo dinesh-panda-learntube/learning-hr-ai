@@ -73,39 +73,39 @@ window.TheoryCard = ({ theoryContent, defaultExpanded = true }) => {
   const { title, key_points } = theoryContent;
 
   return (
-    <div style={{ 
-      background: 'linear-gradient(135deg, #1A2F3A 0%, #0D2436 100%)', 
-      borderRadius: '16px', 
+    <div style={{
+      background: 'linear-gradient(135deg, #1A2F3A 0%, #0D2436 100%)',
+      borderRadius: '16px',
       padding: '20px',
       marginBottom: '20px',
       border: `2px solid ${COLORS.highlight}40`,
       boxShadow: '0 4px 12px rgba(64, 106, 255, 0.1)'
     }}>
-      <div 
+      <div
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
+        style={{
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'space-between',
           cursor: 'pointer',
           marginBottom: isExpanded ? '16px' : '0'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ fontSize: '20px' }}>📚</span>
-          <h3 style={{ 
-            fontSize: '16px', 
-            fontWeight: 700, 
-            color: COLORS.highlight, 
+          <span style={{ fontSize: '20px' }}>👨🏻‍💼</span>
+          <h3 style={{
+            fontSize: '16px',
+            fontWeight: 700,
+            color: COLORS.highlight,
             margin: 0,
             textTransform: 'uppercase',
             letterSpacing: '0.5px'
           }}>
-            Learn Before You Answer
+            Mentor Notes
           </h3>
         </div>
-        <div style={{ 
-          fontSize: '14px', 
+        <div style={{
+          fontSize: '14px',
           fontWeight: 700,
           color: COLORS.highlight,
           transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)',
@@ -118,10 +118,10 @@ window.TheoryCard = ({ theoryContent, defaultExpanded = true }) => {
       {isExpanded && (
         <div>
           {/* Theory Title */}
-          <div style={{ 
-            fontSize: '15px', 
-            fontWeight: 600, 
-            color: COLORS.text, 
+          <div style={{
+            fontSize: '15px',
+            fontWeight: 600,
+            color: COLORS.text,
             marginBottom: '12px',
             paddingBottom: '12px',
             borderBottom: `1px solid ${COLORS.bgLight}`
@@ -133,24 +133,24 @@ window.TheoryCard = ({ theoryContent, defaultExpanded = true }) => {
           {key_points && key_points.length > 0 && (
             <div>
               {key_points.map((point, idx) => (
-                <div key={idx} style={{ 
-                  display: 'flex', 
-                  gap: '10px', 
+                <div key={idx} style={{
+                  display: 'flex',
+                  gap: '10px',
                   marginBottom: '10px',
                   alignItems: 'flex-start'
                 }}>
-                  <span style={{ 
-                    color: COLORS.highlight, 
-                    fontSize: '14px', 
+                  <span style={{
+                    color: COLORS.highlight,
+                    fontSize: '14px',
                     marginTop: '2px',
                     flexShrink: 0
                   }}>
                     ✓
                   </span>
-                  <span style={{ 
-                    fontSize: '14px', 
-                    color: COLORS.textMuted, 
-                    lineHeight: 1.5 
+                  <span style={{
+                    fontSize: '14px',
+                    color: COLORS.textMuted,
+                    lineHeight: 1.5
                   }}>
                     {point}
                   </span>
@@ -177,9 +177,9 @@ window.FindErrorQuestion = ({ segments, onAnswer, disabled }) => {
 
   return (
     <div style={{ marginBottom: '20px' }}>
-      <div style={{ 
-        background: COLORS.bgCard, 
-        borderRadius: '12px', 
+      <div style={{
+        background: COLORS.bgCard,
+        borderRadius: '12px',
         padding: '16px',
         marginBottom: '16px'
       }}>
@@ -231,9 +231,9 @@ window.FillBlankQuestion = ({ promptTemplate, blankOptions, onAnswer, disabled }
 
   return (
     <div style={{ marginBottom: '20px' }}>
-      <div style={{ 
-        background: COLORS.bgCard, 
-        borderRadius: '12px', 
+      <div style={{
+        background: COLORS.bgCard,
+        borderRadius: '12px',
         padding: '16px',
         marginBottom: '16px'
       }}>
@@ -242,9 +242,9 @@ window.FillBlankQuestion = ({ promptTemplate, blankOptions, onAnswer, disabled }
             <React.Fragment key={idx}>
               {part}
               {idx < arr.length - 1 && (
-                <span style={{ 
-                  background: COLORS.highlightSoft, 
-                  color: COLORS.highlight, 
+                <span style={{
+                  background: COLORS.highlightSoft,
+                  color: COLORS.highlight,
                   padding: '4px 12px',
                   borderRadius: '6px',
                   fontWeight: 600,
@@ -257,7 +257,7 @@ window.FillBlankQuestion = ({ promptTemplate, blankOptions, onAnswer, disabled }
           ))}
         </div>
       </div>
-      
+
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {blankOptions && blankOptions.map((option, idx) => (
           <button
@@ -330,9 +330,9 @@ window.ViolatedPrinciplesQuestion = ({ problematicPrompt, availablePrinciples, o
 
   return (
     <div style={{ marginBottom: '20px' }}>
-      <div style={{ 
-        background: COLORS.warningBg, 
-        borderRadius: '12px', 
+      <div style={{
+        background: COLORS.warningBg,
+        borderRadius: '12px',
         padding: '16px',
         marginBottom: '16px',
         border: `1px solid ${COLORS.warning}40`
@@ -431,15 +431,15 @@ window.FillBlanksSequence = ({ template, blankOrder, options, requiredSelections
 
   const handleSelectOption = (option) => {
     if (disabled) return;
-    
+
     const newSelections = { ...selections, [currentBlank]: option };
     setSelections(newSelections);
-    
+
     // Move to next blank if not at the end
     if (currentBlankIndex < blankOrder.length - 1) {
       setCurrentBlankIndex(currentBlankIndex + 1);
     }
-    
+
     // Check if all blanks are filled
     const allFilledNow = blankOrder.every(blank => newSelections[blank]);
     if (allFilledNow && onComplete) {
@@ -456,41 +456,41 @@ window.FillBlanksSequence = ({ template, blankOrder, options, requiredSelections
     if (!template) return null;
     let parts = [];
     let remaining = template;
-    
+
     blankOrder.forEach((blankId, idx) => {
       const blankToken = `[${blankId}]`;
       const splitIndex = remaining.indexOf(blankToken);
-      
+
       if (splitIndex !== -1) {
         // Add text before blank
         if (splitIndex > 0) {
           parts.push({ type: 'text', content: remaining.substring(0, splitIndex) });
         }
-        
+
         // Add blank
-        parts.push({ 
-          type: 'blank', 
-          id: blankId, 
+        parts.push({
+          type: 'blank',
+          id: blankId,
           index: idx,
           value: selections[blankId]
         });
-        
+
         remaining = remaining.substring(splitIndex + blankToken.length);
       }
     });
-    
+
     // Add remaining text
     if (remaining) {
       parts.push({ type: 'text', content: remaining });
     }
-    
+
     return parts.map((part, i) => {
       if (part.type === 'text') {
         return <span key={i} style={{ whiteSpace: 'pre-wrap' }}>{part.content}</span>;
       } else {
         const isActive = part.index === currentBlankIndex;
         const isFilled = !!part.value;
-        
+
         return (
           <span
             key={i}
@@ -520,9 +520,9 @@ window.FillBlanksSequence = ({ template, blankOrder, options, requiredSelections
 
   return (
     <div style={{ marginBottom: '20px' }}>
-      <div style={{ 
-        background: COLORS.bgCard, 
-        borderRadius: '12px', 
+      <div style={{
+        background: COLORS.bgCard,
+        borderRadius: '12px',
         padding: '20px',
         marginBottom: '16px'
       }}>
@@ -569,10 +569,10 @@ window.FillBlanksSequence = ({ template, blankOrder, options, requiredSelections
       )}
 
       {allFilled && (
-        <div style={{ 
-          padding: '12px', 
-          background: COLORS.highlightSoft, 
-          borderRadius: '8px', 
+        <div style={{
+          padding: '12px',
+          background: COLORS.highlightSoft,
+          borderRadius: '8px',
           textAlign: 'center',
           fontSize: '13px',
           color: COLORS.highlight,
@@ -615,7 +615,7 @@ window.FlagAndReplaceSequence = ({ promptText, options, requiredFlags, requiredR
 
   const handleLineClick = (lineIndex) => {
     if (disabled || phase !== 'flag') return;
-    
+
     if (flaggedLines.includes(lineIndex)) {
       setFlaggedLines(flaggedLines.filter(i => i !== lineIndex));
     } else if (flaggedLines.length < requiredFlags) {
@@ -625,7 +625,7 @@ window.FlagAndReplaceSequence = ({ promptText, options, requiredFlags, requiredR
 
   const handleReplacementClick = (option) => {
     if (disabled || phase !== 'replace') return;
-    
+
     if (selectedReplacements.includes(option)) {
       setSelectedReplacements(selectedReplacements.filter(o => o !== option));
     } else if (selectedReplacements.length < requiredReplacements) {
@@ -667,9 +667,9 @@ window.FlagAndReplaceSequence = ({ promptText, options, requiredFlags, requiredR
       </div>
 
       {/* Prompt display with tappable lines */}
-      <div style={{ 
-        background: COLORS.bgCard, 
-        borderRadius: '12px', 
+      <div style={{
+        background: COLORS.bgCard,
+        borderRadius: '12px',
         padding: '16px',
         marginBottom: '16px'
       }}>
@@ -679,7 +679,7 @@ window.FlagAndReplaceSequence = ({ promptText, options, requiredFlags, requiredR
         {promptLines.map((line, idx) => {
           const isFlagged = flaggedLines.includes(idx);
           const canSelect = phase === 'flag' && !disabled;
-          
+
           return (
             <div
               key={idx}
@@ -713,7 +713,7 @@ window.FlagAndReplaceSequence = ({ promptText, options, requiredFlags, requiredR
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {options && options.map((option, idx) => {
               const isSelected = selectedReplacements.includes(option);
-              
+
               return (
                 <button
                   key={idx}
@@ -756,11 +756,11 @@ window.FlagAndReplaceSequence = ({ promptText, options, requiredFlags, requiredR
       )}
 
       {allComplete && (
-        <div style={{ 
+        <div style={{
           marginTop: '12px',
-          padding: '12px', 
-          background: COLORS.highlightSoft, 
-          borderRadius: '8px', 
+          padding: '12px',
+          background: COLORS.highlightSoft,
+          borderRadius: '8px',
           textAlign: 'center',
           fontSize: '13px',
           color: COLORS.highlight,
@@ -800,7 +800,7 @@ window.TapSequenceQuestion = ({ step, onComplete, disabled }) => {
       />
     );
   }
-  
+
   return null;
 };
 
@@ -1353,7 +1353,7 @@ window.SimulationResult = ({ simulation, score, onContinue, nextSimTitle }) => {
         {metadata.impact_metrics && (
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '32px' }}>
             {/* Time Saved Card */}
-            <div style={{ 
+            <div style={{
               background: 'linear-gradient(135deg, #1A3A52 0%, #0D2436 100%)',
               borderRadius: '16px',
               padding: '20px',
@@ -1370,7 +1370,7 @@ window.SimulationResult = ({ simulation, score, onContinue, nextSimTitle }) => {
             </div>
 
             {/* Cost Saved Card */}
-            <div style={{ 
+            <div style={{
               background: 'linear-gradient(135deg, #1A3A52 0%, #0D2436 100%)',
               borderRadius: '16px',
               padding: '20px',
@@ -1503,28 +1503,28 @@ window.ReviewPage = ({ history, onContinue }) => {
 
     return (
       <div style={{ marginBottom: '24px' }}>
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          gap: '8px', 
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
           marginBottom: '12px',
           paddingBottom: '8px',
           borderBottom: `2px solid ${color}30`
         }}>
           <span style={{ fontSize: '18px', color: color }}>{icon}</span>
-          <h3 style={{ 
-            fontSize: '16px', 
-            fontWeight: 700, 
-            color: color, 
+          <h3 style={{
+            fontSize: '16px',
+            fontWeight: 700,
+            color: color,
             margin: 0,
             textTransform: 'uppercase',
             letterSpacing: '0.5px'
           }}>
             {title}
           </h3>
-          <span style={{ 
-            fontSize: '12px', 
-            fontWeight: 600, 
+          <span style={{
+            fontSize: '12px',
+            fontWeight: 600,
             color: COLORS.textDim,
             background: COLORS.bgLight,
             padding: '2px 8px',
@@ -1540,20 +1540,20 @@ window.ReviewPage = ({ history, onContinue }) => {
             const isExpanded = expandedItems.has(itemId);
 
             return (
-              <div key={itemId} style={{ 
-                background: COLORS.bgCard, 
-                borderRadius: '12px', 
-                border: `1px solid ${color}30`, 
-                overflow: 'hidden' 
+              <div key={itemId} style={{
+                background: COLORS.bgCard,
+                borderRadius: '12px',
+                border: `1px solid ${color}30`,
+                overflow: 'hidden'
               }}>
                 <div
                   onClick={() => toggleExpand(itemId)}
-                  style={{ 
-                    padding: '16px', 
-                    display: 'flex', 
-                    justifyContent: 'space-between', 
-                    alignItems: 'flex-start', 
-                    cursor: 'pointer', 
+                  style={{
+                    padding: '16px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    cursor: 'pointer',
                     background: isExpanded ? COLORS.bgLight : 'transparent',
                     transition: 'background 0.2s'
                   }}
@@ -1563,10 +1563,10 @@ window.ReviewPage = ({ history, onContinue }) => {
                       {item.outcomeText}
                     </div>
                   </div>
-                  <div style={{ 
-                    color: color, 
-                    fontSize: '16px', 
-                    fontWeight: 700, 
+                  <div style={{
+                    color: color,
+                    fontSize: '16px',
+                    fontWeight: 700,
                     flexShrink: 0,
                     transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)',
                     transition: 'transform 0.2s'
@@ -1913,7 +1913,7 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
         points = 0;
       }
     }
-    
+
     console.log('Points calculated:', { type, points, hasAttemptedCurrentStep });
 
     // Construct Feedback Message
@@ -1930,6 +1930,41 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
       else outcomeText = step.outcomes.incorrect;
     }
 
+    // Construct User Answer Text based on Step Type
+    let userAnswerText = "";
+
+    if (step.interaction_type === 'violated_principles' && candidates && Array.isArray(candidates)) {
+      userAnswerText = candidates
+        .map(idx => step.available_principles && step.available_principles[idx])
+        .filter(Boolean)
+        .join(", ");
+    } else if (step.interaction_type === 'fill_blank') {
+      if (originalIndex !== null && step.blank_options && step.blank_options[originalIndex]) {
+        userAnswerText = step.blank_options[originalIndex];
+      } else {
+        userAnswerText = "No selection";
+      }
+    } else {
+      userAnswerText = candidates
+        ? 'Candidate Selection'
+        : (visualIndex !== null && shuffledOptions[visualIndex] ? shuffledOptions[visualIndex] : 'Custom Input');
+    }
+
+    // Construct Correct Answer Text based on Step Type
+    let correctAnswerText = null;
+    if (step.interaction_type === 'violated_principles' && step.violated_principle_indices) {
+      correctAnswerText = step.violated_principle_indices
+        .map(idx => step.available_principles && step.available_principles[idx])
+        .filter(Boolean)
+        .join(", ");
+    } else if (step.interaction_type === 'fill_blank' && step.correct_answer_index !== undefined) {
+      if (step.blank_options && step.blank_options[step.correct_answer_index]) {
+        correctAnswerText = step.blank_options[step.correct_answer_index];
+      }
+    } else {
+      correctAnswerText = step.options_inputs ? step.options_inputs[0] : null;
+    }
+
     const result = {
       type: type,
       message: feedbackMsg,
@@ -1940,8 +1975,8 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
       scenarioId: step.scenario_id,
       stepId: step.step_id,
       question: step.instruction_question,
-      userAnswer: candidates ? 'Candidate Selection' : (visualIndex !== null ? shuffledOptions[visualIndex] : 'Custom Input'),
-      correctAnswer: step.options_inputs ? step.options_inputs[0] : null,
+      userAnswer: userAnswerText,
+      correctAnswer: correctAnswerText,
       explanation: step.explain_this_question // Capture explanation for review
     };
 
@@ -1955,7 +1990,7 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
     setStepResults(prev => [...prev, result]);
     setAttemptCount(prev => prev + 1);
     setIsFeedbackVisible(true);
-    
+
     // Add points immediately (since we're skipping feedback display)
     if (!hasAttemptedCurrentStep) {
       setScore(prev => {
@@ -1964,7 +1999,7 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
         return newScore;
       });
     }
-    
+
     // Immediately proceed to next step without showing feedback
     setTimeout(() => handleFeedbackComplete(), 0);
   };
@@ -2005,7 +2040,7 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
       setPreviousOutcome(null);
       // Skip review if all answers are correct
       const allCorrect = userHistory.every(item => item.type === 'correct');
-      setScreen(allCorrect ? 'sim_result' : 'review');
+      setScreen(allCorrect && learningMode !== 'guided' ? 'sim_result' : 'review');
     }
     setIsExplainExpanded(false);
   };
@@ -2034,11 +2069,11 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
           {/* <p style={{ fontSize: '15px', color: COLORS.textMuted, lineHeight: 1.6, marginBottom: '32px' }}>{currentSim.simulation_metadata.why_this_matters_for_getting_hired}.<br /><br /><strong>Your Actions Will Solve Key Job Requirements:</strong></p> */}
           {/* Why This Matters Card */}
           {currentSim.simulation_metadata.why_this_matters_for_getting_hired && (
-            <div style={{ 
-              background: 'linear-gradient(135deg, rgba(64, 106, 255, 0.1) 0%, rgba(64, 106, 255, 0.05) 100%)', 
-              borderRadius: '16px', 
-              padding: '20px', 
-              marginBottom: '24px', 
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(64, 106, 255, 0.1) 0%, rgba(64, 106, 255, 0.05) 100%)',
+              borderRadius: '16px',
+              padding: '20px',
+              marginBottom: '24px',
               border: `1px solid ${COLORS.highlight}40`,
               boxShadow: '0 4px 12px rgba(64, 106, 255, 0.1)'
             }}>
@@ -2054,10 +2089,10 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
 
           {/* Unlockable Items - Simplifed */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '8px', marginBottom: '40px', opacity: 0.8, background: COLORS.bgCard, padding: '12px 16px', borderRadius: '12px', border: `1px dashed ${COLORS.textDim}` }}>
-             <span style={{ fontSize: '18px' }}>🎓</span>
-             <span style={{ fontSize: '13px', color: COLORS.textMuted, fontWeight: 500, letterSpacing: '0.2px' }}>
-               Certification & Job Options available on completion
-             </span>
+            <span style={{ fontSize: '18px' }}>🎓</span>
+            <span style={{ fontSize: '13px', color: COLORS.textMuted, fontWeight: 500, letterSpacing: '0.2px' }}>
+              Certification & Job Options available on completion
+            </span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: COLORS.textDim, fontSize: '13px', marginBottom: '8px' }}>
             <span style={{ fontSize: '16px' }}>⏱</span>{currentSim.simulation_metadata.estimated_time || '15 minutes'} · {steps.length} critical decisions
@@ -2109,12 +2144,12 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
         {/* Learning Mode Selection Card */}
         <div style={{ background: 'linear-gradient(135deg, #1A2F3A 0%, #0D2436 100%)', borderRadius: '16px', padding: '20px', marginBottom: '20px', border: `2px solid ${COLORS.highlight}40`, boxShadow: '0 4px 12px rgba(64, 106, 255, 0.1)' }}>
           <div style={{ fontSize: '14px', color: COLORS.highlight, fontWeight: 700, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-            💡 Choose your learning mode for better experience:
+            💡 Choose your preferred level:
           </div>
           <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
-            <div 
+            <div
               onClick={() => setLearningMode('guided')}
-              style={{ 
+              style={{
                 flex: 1,
                 padding: '16px',
                 borderRadius: '12px',
@@ -2124,13 +2159,13 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
                 transition: 'all 0.3s ease'
               }}
             >
-              <div style={{ fontSize: '16px', marginBottom: '4px' }}>📖</div>
-              <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600, marginBottom: '4px' }}>Guided Mode</div>
-              <div style={{ fontSize: '12px', color: COLORS.textMuted, lineHeight: 1.4 }}>Learning material provided by default for each question</div>
+              <div style={{ fontSize: '16px', marginBottom: '4px' }}>👨🏻‍💼</div>
+              <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600, marginBottom: '4px' }}>Guided Certification</div>
+              <div style={{ fontSize: '12px', color: COLORS.textMuted, lineHeight: 1.4 }}>Best For Beginners</div>
             </div>
-            <div 
+            <div
               onClick={() => setLearningMode('assessment')}
-              style={{ 
+              style={{
                 flex: 1,
                 padding: '16px',
                 borderRadius: '12px',
@@ -2140,9 +2175,9 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
                 transition: 'all 0.3s ease'
               }}
             >
-              <div style={{ fontSize: '16px', marginBottom: '4px' }}>🎯</div>
-              <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600, marginBottom: '4px' }}>Assessment Mode</div>
-              <div style={{ fontSize: '12px', color: COLORS.textMuted, lineHeight: 1.4 }}>Learning material minimised for faster test experience</div>
+              <div style={{ fontSize: '16px', marginBottom: '4px' }}>⚡️</div>
+              <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600, marginBottom: '4px' }}>Direct Certification</div>
+              <div style={{ fontSize: '12px', color: COLORS.textMuted, lineHeight: 1.4 }}>For Experienced Professionals</div>
             </div>
           </div>
         </div>
@@ -2262,11 +2297,20 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
         );
       } else if (step.interaction_type === 'fill_blank' && step.prompt_template) {
         // V3 Question Type: Fill in the Blank
+        // Synchronize shuffling: Map blank_options to match the shuffled options_inputs
+        const currentBlankOptions = step.blank_options
+          ? (optionIndices.length === step.blank_options.length
+            ? optionIndices.map(i => step.blank_options[i])
+            : step.blank_options)
+          : [];
+
         artefact = (
           <window.FillBlankQuestion
             promptTemplate={step.prompt_template}
-            blankOptions={step.blank_options}
+            blankOptions={currentBlankOptions}
             onAnswer={(selectedIndex) => {
+              // selectedIndex is the VISUAL index (shuffled)
+              // evaluateStep handles mapping visual -> original via optionIndices
               evaluateStep(selectedIndex, step.correct_answer_index || 0);
             }}
             disabled={isFeedbackVisible}
@@ -2287,17 +2331,43 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
         );
       } else if (step.interaction_type === 'violated_principles' && step.available_principles) {
         // V3 Question Type: Violated Principles
+        // Synchronize shuffling for principles
+        const currentPrinciples = step.available_principles
+          ? (optionIndices.length === step.available_principles.length
+            ? optionIndices.map(i => step.available_principles[i])
+            : step.available_principles)
+          : [];
+
         artefact = (
           <window.ViolatedPrinciplesQuestion
             problematicPrompt={step.problematic_prompt}
-            availablePrinciples={step.available_principles}
+            availablePrinciples={currentPrinciples}
             onAnswer={(selectedIndices) => {
-              // Check if selected indices match violated ones
+              // selectedIndices are VISUAL (shuffled) indices.
+              // Map them back to ORIGINAL indices to check against violated_principle_indices
+              const userOriginalIndices = selectedIndices.map(idx => (optionIndices[idx] !== undefined ? optionIndices[idx] : idx));
+
               const violated = step.violated_principle_indices || [];
-              const isCorrect = 
-                selectedIndices.length === violated.length &&
-                selectedIndices.every(idx => violated.includes(idx));
-              evaluateStep(isCorrect ? 0 : 1, violated);
+
+              // Sort for comparison
+              const userSorted = [...userOriginalIndices].sort((a, b) => a - b);
+              const violatedSorted = [...violated].sort((a, b) => a - b);
+
+              const isCorrect =
+                userSorted.length === violatedSorted.length &&
+                userSorted.every((val, index) => val === violatedSorted[index]);
+
+              // evaluateStep expects a visual index. It effectively does: original = optionIndices[visual].
+              // We need to pass a VISUAL index that maps to 0 (Correct) or 2 (Incorrect).
+              const visualCorrect = optionIndices.indexOf(0);
+              const visualIncorrect = optionIndices.indexOf(2);
+
+              // Fallback if shuffle is not active or weird
+              const finalIndex = isCorrect
+                ? (visualCorrect !== -1 ? visualCorrect : 0)
+                : (visualIncorrect !== -1 ? visualIncorrect : 2);
+
+              evaluateStep(finalIndex, userSorted);
             }}
             disabled={isFeedbackVisible}
           />

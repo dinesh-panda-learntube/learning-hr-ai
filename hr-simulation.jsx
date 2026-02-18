@@ -64,100 +64,112 @@ window.OptionButton = ({ label, selected, onClick, disabled }) => {
   );
 };
 
-window.TheoryCard = ({ theoryContent, defaultExpanded = true }) => {
-  const COLORS = window.COLORS;
-  const [isExpanded, setIsExpanded] = React.useState(defaultExpanded);
+window.MarkdownText = ({ text, boldColor }) => {
+  if (!text) return null;
+  if (typeof text !== 'string') return text;
 
+  // Split by **
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return (
+    <span>
+      {parts.map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          const content = part.slice(2, -2);
+          
+          let color;
+          if (boldColor) {
+             color = boldColor;
+          } else {
+             // Default logic
+             const isLabel = ['Issue:', 'Solution:', 'Common Mistake:', 'Best Practice:'].includes(content.trim());
+             color = isLabel ? '#FFFFFF' : window.COLORS.highlight;
+          }
+
+          return <strong key={i} style={{ color: color, fontWeight: 700 }}>{content}</strong>;
+        }
+        return part;
+      })}
+    </span>
+  );
+};
+
+window.TheoryCard = ({ theoryContent }) => {
+  const COLORS = window.COLORS;
+  // Always expanded, no card container
   if (!theoryContent) return null;
 
   const { title, key_points } = theoryContent;
 
   return (
-    <div style={{
-      background: 'linear-gradient(135deg, #1A2F3A 0%, #0D2436 100%)',
-      borderRadius: '16px',
-      padding: '20px',
-      marginBottom: '20px',
-      border: `2px solid ${COLORS.highlight}40`,
-      boxShadow: '0 4px 12px rgba(64, 106, 255, 0.1)'
-    }}>
-      <div
-        onClick={() => setIsExpanded(!isExpanded)}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          cursor: 'pointer',
-          marginBottom: isExpanded ? '16px' : '0'
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ fontSize: '20px' }}>👨🏻‍💼</span>
-          <h3 style={{
-            fontSize: '16px',
-            fontWeight: 700,
-            color: COLORS.highlight,
-            margin: 0,
-            textTransform: 'uppercase',
-            letterSpacing: '0.5px'
-          }}>
-            Mentor Notes
-          </h3>
-        </div>
-        <div style={{
-          fontSize: '14px',
-          fontWeight: 700,
-          color: COLORS.highlight,
-          transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)',
-          transition: 'transform 0.2s'
-        }}>
-          ▸
-        </div>
-      </div>
+    <div style={{ marginBottom: '24px' }}>
+      {/* Title removed as requested */}
+      
+      {/* Key Points */}
+      {key_points && key_points.length > 0 && (
+        <div style={{ paddingLeft: '8px' }}>
+          {key_points.map((point, idx) => {
+            let icon = null;
+            if (idx !== 0) {
+               icon = (
+                <span style={{
+                  color: COLORS.highlight,
+                  fontSize: '16px',
+                  marginTop: '1px',
+                  flexShrink: 0,
+                  opacity: 0.8
+                }}>•</span>
+               );
+            }
+            
+            if (point.includes('**Common Mistake:**')) {
+               icon = (
+                 <div style={{
+                   width: '18px', height: '18px',
+                   background: COLORS.warning,
+                   borderRadius: '50%',
+                   display: 'flex', alignItems: 'center', justifyContent: 'center',
+                   marginTop: '2px', flexShrink: 0
+                 }}>
+                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                     <line x1="18" y1="6" x2="6" y2="18"></line>
+                     <line x1="6" y1="6" x2="18" y2="18"></line>
+                   </svg>
+                 </div>
+               );
+            } else if (point.includes('**Best Practice:**')) {
+               icon = (
+                 <div style={{
+                   width: '18px', height: '18px',
+                   background: COLORS.success,
+                   borderRadius: '50%',
+                   display: 'flex', alignItems: 'center', justifyContent: 'center',
+                   marginTop: '2px', flexShrink: 0
+                 }}>
+                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                     <polyline points="20 6 9 17 4 12"></polyline>
+                   </svg>
+                 </div>
+               );
+            }
 
-      {isExpanded && (
-        <div>
-          {/* Theory Title */}
-          <div style={{
-            fontSize: '15px',
-            fontWeight: 600,
-            color: COLORS.text,
-            marginBottom: '12px',
-            paddingBottom: '12px',
-            borderBottom: `1px solid ${COLORS.bgLight}`
-          }}>
-            {title}
-          </div>
-
-          {/* Key Points */}
-          {key_points && key_points.length > 0 && (
-            <div>
-              {key_points.map((point, idx) => (
-                <div key={idx} style={{
-                  display: 'flex',
-                  gap: '10px',
-                  marginBottom: '10px',
-                  alignItems: 'flex-start'
-                }}>
-                  <span style={{
-                    color: COLORS.highlight,
-                    fontSize: '14px',
-                    marginTop: '2px',
-                    flexShrink: 0
-                  }}>
-                    ✓
-                  </span>
-                  <span style={{
-                    fontSize: '14px',
-                    color: COLORS.textMuted,
-                    lineHeight: 1.5
-                  }}>
-                    {point}
-                  </span>
-                </div>
-              ))}
+            return (
+            <div key={idx} style={{
+              display: 'flex',
+              gap: icon ? '12px' : '0',
+              marginBottom: idx === key_points.length - 1 ? '0' : '12px',
+              alignItems: 'flex-start'
+            }}>
+              {icon}
+              <span style={{
+                fontSize: '15px',
+                color: COLORS.text,
+                lineHeight: 1.6,
+                fontWeight: 400
+              }}>
+                <window.MarkdownText text={point} />
+              </span>
             </div>
-          )}
+          )})}
         </div>
       )}
     </div>
@@ -564,7 +576,7 @@ window.ClickablePromptQuestion = ({ scenarioContext, promptText, clickableOption
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
           <div style={{ fontSize: '12px', color: COLORS.textDim, textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.5px' }}>
-            💬 AI PROMPT DRAFT
+            💬 YOUR AI PROMPT DRAFT
           </div>
         </div>
         
@@ -986,6 +998,16 @@ window.FeedbackPanel = ({ type, message, points, outcomeText, percentile, onComp
         <div style={{ fontSize: '16px', color: isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.warning, fontWeight: 700 }}>{isPositive ? '✓ Strong choice' : isPartial ? '◐ Acceptable' : '✗ Risky approach'}</div>
         <div style={{ fontSize: '14px', fontWeight: 700, color: isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.textMuted }}>{points > 0 ? `+${points} ⚡` : ''}</div>
       </div>
+
+      <div style={{ fontSize: '14px', color: COLORS.text, marginBottom: '12px', lineHeight: 1.5 }}>
+        <window.MarkdownText text={message} />
+      </div>
+
+      {outcomeText && (
+        <div style={{ fontSize: '13px', color: COLORS.textMuted, marginBottom: '12px', lineHeight: 1.5, background: 'rgba(0,0,0,0.2)', padding: '10px', borderRadius: '8px' }}>
+          <window.MarkdownText text={outcomeText} />
+        </div>
+      )}
 
       {speedText && (
         <div style={{ marginBottom: '8px', fontSize: '13px', fontWeight: 400, color: COLORS.textMuted }}>
@@ -1570,7 +1592,7 @@ window.SimulationResult = ({ simulation, score, onContinue, nextSimTitle, histor
                textOverflow: 'ellipsis',
                opacity: isExpanded ? 1 : 0.9
              }}>
-               {item.question}
+               <window.MarkdownText text={item.question} />
              </div>
           </div>
           
@@ -1596,7 +1618,7 @@ window.SimulationResult = ({ simulation, score, onContinue, nextSimTitle, histor
                 <div>
                    <div style={{ fontSize: '11px', color: color, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>Review</div>
                    <div style={{ fontSize: '14px', color: COLORS.textMuted, lineHeight: 1.5 }}>
-                     {item.outcomeText}
+                     <window.MarkdownText text={item.outcomeText} />
                    </div>
                 </div>
                 
@@ -2492,8 +2514,8 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
             transition: 'width 0.8s cubic-bezier(0.22, 1, 0.36, 1)'
           }} />
         </div>
-        <div style={{ fontSize: '11px', fontWeight: 600, color: COLORS.textDim, letterSpacing: '0.5px', marginBottom: '12px', display: 'flex', justifyContent: 'space-between' }}>
-          <span>STEP {currentStep + 1} OF {steps.length}</span>
+        <div style={{ fontSize: '11px', fontWeight: 600, color: COLORS.textDim, letterSpacing: '0.5px', marginBottom: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: '16px', color: COLORS.text, fontWeight: 700 }}>STEP {currentStep + 1} OF {steps.length}</span>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
             {streak >= 2 && (
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: COLORS.highlightSoft, padding: '6px 12px', borderRadius: '8px' }}>
@@ -2527,20 +2549,9 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
           </div>
         )}
 
-        {/* Integrated Mentor Notes / Theory Content (Starts from Q3 / index 2) */}
-        {currentStep >= 2 && step.theory_content && (
-          <div style={{ marginBottom: '24px' }}>
-            <h3 style={{ fontSize: '16px', fontWeight: 700, color: COLORS.highlight, marginBottom: '12px', textTransform: 'uppercase' }}>
-              {step.theory_content.title}
-            </h3>
-            {step.theory_content.key_points && (
-              <ul style={{ margin: 0, paddingLeft: '20px', color: COLORS.textMuted, fontSize: '15px', lineHeight: 1.6 }}>
-                {step.theory_content.key_points.map((point, idx) => (
-                  <li key={idx} style={{ marginBottom: '8px' }}>{point}</li>
-                ))}
-              </ul>
-            )}
-          </div>
+        {/* Integrated Mentor Notes / Theory Content */}
+        {step.theory_content && (
+           <window.TheoryCard theoryContent={step.theory_content} />
         )}
 
         {/* Scenario Context - Displayed above question */}
@@ -2549,17 +2560,19 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
             fontSize: '15px',
             color: COLORS.textMuted,
             lineHeight: 1.6,
-            marginBottom: '16px',
+            marginBottom: '24px', // Increased from 16px to match flow
             fontStyle: 'italic',
             opacity: 0.85,
             borderLeft: `3px solid ${COLORS.highlight}40`,
             paddingLeft: '12px'
           }}>
-            {step.scenario_context}
+            <window.MarkdownText text={step.scenario_context} />
           </div>
         )}
 
-        <h3 style={{ fontSize: '20px', fontWeight: 600, fontStyle: 'italic', color: COLORS.text, opacity: 1, lineHeight: 1.4, marginBottom: '24px' }}>{step.instruction_question}</h3>
+        <h3 style={{ fontSize: '17px', fontWeight: 600, color: COLORS.text, opacity: 1, lineHeight: 1.4, marginBottom: '24px' }}>
+          <window.MarkdownText text={'Q. ' + step.instruction_question} boldColor={COLORS.text} />
+        </h3>
 
         {/* REMOVED: Explain This Question dropdown */}
         {artefact}

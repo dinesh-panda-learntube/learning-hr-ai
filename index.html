@@ -109,27 +109,28 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // UI Version Mapping Configuration
-        const UI_VERSION_MAP = {
-            'simulation_1-5': 'v1',
-            'simulation_v2_1-5': 'v2',
-            'simulation_v3_1-5': 'v3'
-        };
+                // UI Version Mapping Configuration
+                const UI_VERSION_MAP = {
+                    'simulation_1-5': 'v1',
+                    'simulation_v2_1-5': 'v2',
+                    'simulation_v3_1-5': 'v3',
+                    'v4': 'v3'
+                };
 
-        function AppWrapper() {
-            const [data, setData] = useState(null);
-            const [engineReady, setEngineReady] = useState(false);
-            const [uiVersion, setUiVersion] = useState('v2'); // Default to v2
+                function AppWrapper() {
+                    const [data, setData] = useState(null);
+                    const [engineReady, setEngineReady] = useState(false);
+                    const [uiVersion, setUiVersion] = useState('v2'); // Default to v2
 
-            useEffect(() => {
-                // Fetch simulation data based on URL parameter
-                // Example: /?sim=custom_test loads custom_test.json
-                const params = new URLSearchParams(window.location.search);
-                const simId = params.get('sim') || 'simulation_v2_1-5';
-                const jsonPath = `${simId}.json?t=${Date.now()}`;
+                    useEffect(() => {
+                        // Fetch simulation data based on URL parameter
+                        // Example: /?sim=custom_test loads custom_test.json
+                        const params = new URLSearchParams(window.location.search);
+                        const simId = params.get('sim') || 'v4';
+                        const jsonPath = `${simId}.json?t=${Date.now()}`;
 
-                // Determine UI version from simId
-                const detectedVersion = UI_VERSION_MAP[simId] || 'v2';
+                        // Determine UI version from simId
+                        const detectedVersion = UI_VERSION_MAP[simId] || 'v2';
                 setUiVersion(detectedVersion);
                 console.log(`UI Version detected: ${detectedVersion} for ${simId}`);
 

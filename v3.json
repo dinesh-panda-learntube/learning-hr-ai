@@ -69,24 +69,26 @@
               "Request Structure: Specify sections like responsibilities, requirements, and qualifications"
             ]
           },
-          "instruction_question": "Choose the best opening prompt to generate a Senior Data Scientist job description.",
-          "explain_this_question": "Effective prompts require clear context, role details, and output format. This tests whether you can structure a prompt that gives AI the right constraints and information.",
-          "artefact_interaction_description": "You select a prompt structure; the AI output quality changes based on your choice.",
-          "options_inputs": [
-            "Write a job description for a Senior Data Scientist with 5+ years experience, including responsibilities, requirements, and qualifications. Focus on inclusive language and realistic expectations.",
-            "Create a job posting for Data Scientist.",
-            "Generate a Senior Data Scientist JD similar to Google's approach, emphasizing ML expertise, Python skills, and leadership abilities.",
-            "Write a job description."
+          "instruction_question": "This generated JD sounds generic and made-up. Find the vague instruction in the prompt.",
+          "explain_this_question": "AI cannot describe your specific company culture unless you provide details. Commands like 'describe our culture' without context force AI to hallucinate generic tropes (e.g., 'work hard play hard').",
+          "artefact_interaction_description": "You spot the hallucination trigger; learning to provide context instead.",
+          "interaction_type": "clickable_prompt",
+          "scenario_context": "The draft JD talks about 'ping pong tables' and 'fast-paced environments' which doesn't match your remote, thoughtful culture. Why?",
+          "prompt_text": "Act as an expert recruiter. Write a comprehensive job description for a Senior Data Scientist role at {{1}}our Series B fintech startup{{/1}}. Use a professional but engaging tone. {{2}}Include sections for: Introduction, Responsibilities (Python, SQL, AWS){{/2}}, and Requirements (5+ years exp). {{0}}Describe our unique and amazing company culture in detail{{/0}}. End with a call to action.",
+          "clickable_options": [
+            "Describe our unique and amazing company culture in detail",
+            "our Series B fintech startup",
+            "Include sections for: Introduction, Responsibilities (Python, SQL, AWS)"
           ],
           "outcomes": {
-            "correct": "AI generates a well-structured, comprehensive JD",
-            "partially_correct": "AI output is usable but needs significant editing",
-            "incorrect": "AI produces generic or irrelevant content"
+            "correct": "Correct. AI doesn't know your specific culture. Asking it to 'describe in detail' forces it to hallucinate generic 'ping pong' tropes.",
+            "partially_correct": "That sets the context correctly. The issue is asking AI to invent details it doesn't have.",
+            "incorrect": "Structuring the JD is a good instruction. Look for the command that requires internal knowledge."
           },
-          "immediate_feedback": "Impact: time saved and JD quality.",
+          "immediate_feedback": "Subjectivity kills prompt quality.",
           "skill_signals_observed": [
-            "Prompt specificity",
-            "Context setting"
+            "Prompt precision",
+            "Subjectivity detection"
           ]
         },
         {
@@ -186,21 +188,23 @@
               "Avoid Manual Editing: Manual fixes do not scale and introduce inconsistency"
             ]
           },
-          "instruction_question": "AI generated 'he/his' pronouns in job responsibilities. Select your correction approach.",
-          "explain_this_question": "Pronoun bias is a common AI output issue. HR Managers must know how to prevent this through prompt engineering, not just post-editing.",
-          "artefact_interaction_description": "You modify your prompt; pronouns update automatically in regeneration.",
-          "options_inputs": [
-            "Add to prompt: 'Write all responsibilities using gender-neutral language. Use 'you' or 'the candidate' instead of pronouns.'",
-            "Just find-and-replace 'he' with 'they' in the output",
-            "Ignore it since it's just a draft",
-            "Ask AI to 'be less sexist'"
+          "instruction_question": "This prompt contains a subtle bias that will alienate female candidates. Find it.",
+          "explain_this_question": "Using gendered pronouns like 'he' in the prompt often causes the AI to mirror that bias in the output, using masculine-coded language throughout the JD.",
+          "artefact_interaction_description": "You identify the pronoun bias; AI regenerates with inclusive language.",
+          "interaction_type": "clickable_prompt",
+          "scenario_context": "The hiring manager wrote this draft, but it seems to assume the candidate will be male.",
+          "prompt_text": "Draft a requirement list for a {{1}}Lead Developer{{/1}}. {{0}}He needs to be a strong leader{{/0}} who can manage the team. Focus on {{2}}React and Node.js skills{{/2}}.",
+          "clickable_options": [
+            "He needs to be a strong leader",
+            "Lead Developer",
+            "React and Node.js skills"
           ],
           "outcomes": {
-            "correct": "All future generations use neutral language automatically",
-            "partially_correct": "This instance is fixed but pattern may repeat",
-            "incorrect": "Bias persists or manual effort required each time"
+            "correct": "Correct. Using 'He' teaches the AI that this role is for men. Use 'The candidate' or 'You' instead.",
+            "partially_correct": "The role title is neutral. Look for the assumption about the person filling the role.",
+            "incorrect": "Skills are neutral. Look for the pronoun usage."
           },
-          "immediate_feedback": "Impact: inclusivity and process efficiency.",
+          "immediate_feedback": "Pronouns in prompts shape the AI's output bias.",
           "skill_signals_observed": [
             "Bias prevention",
             "Systematic fixing"
@@ -308,24 +312,26 @@
               "Keep It Consistent: Same format for all candidates enables fair comparison"
             ]
           },
-          "instruction_question": "Select the best prompt structure to screen resumes for a Product Manager role.",
-          "explain_this_question": "Effective screening prompts require clear evaluation criteria and output format. This tests your ability to translate role needs into AI-readable instructions.",
-          "artefact_interaction_description": "You craft a screening prompt; AI evaluates sample resumes.",
-          "options_inputs": [
-            "Evaluate this resume for a Product Manager role. Rate 1-10 on: product strategy experience (5+ years), cross-functional leadership, data-driven decision making, technical understanding. Provide rating and 2-sentence justification.",
-            "Is this candidate good for Product Manager?",
-            "Rank this resume from 1-100",
-            "Tell me everything about this candidate"
+          "instruction_question": "Why is the AI returning unstructured, chatty paragraphs instead of a clear shortlist score? Find the prompt error.",
+          "explain_this_question": "AI follows your lead. Casual phrases like 'let me know your thoughts' invite conversational, unstructured outputs. You must request structured data (tables, scores, lists) explicitly.",
+          "artefact_interaction_description": "You spot the conversational drift; AI corrects to structured data.",
+          "interaction_type": "clickable_prompt",
+          "scenario_context": "You need a spreadsheet-ready shortlist, but this prompt is generating long essay-style reviews for each candidate.",
+          "prompt_text": "Review this resume for {{1}}Product Management fit{{/1}}. {{2}}Check specifically for agile experience{{/2}}. {{0}}Let me know your thoughts{{/0}} on the candidate.",
+          "clickable_options": [
+            "Let me know your thoughts",
+            "Product Management fit",
+            "Check specifically for agile experience"
           ],
           "outcomes": {
-            "correct": "AI provides structured, actionable assessments",
-            "partially_correct": "AI output is inconsistent across candidates",
-            "incorrect": "AI gives vague or unusable feedback"
+            "correct": "Replacing 'thoughts' with 'Rate 1-10' or 'List pros/cons' forces structure.",
+            "partially_correct": "That part provides good context. The issue determines the output *format*.",
+            "incorrect": "Agile check is specific and good. Look for the instruction controlling the output style."
           },
-          "immediate_feedback": "Impact: shortlist quality and time efficiency.",
+          "immediate_feedback": "Style instructions determine output format.",
           "skill_signals_observed": [
-            "Criteria clarity",
-            "Structured output"
+            "Structured output prompting",
+            "Instruction clarity"
           ]
         },
         {
@@ -340,34 +346,27 @@
               "Note Neutrally: Gaps can be mentioned for context without negative judgment"
             ]
           },
-          "instruction_question": "How will you prompt AI to handle employment gaps fairly?",
-          "explain_this_question": "AI can amplify bias around employment gaps. HR Managers must design prompts that evaluate fairly without penalizing career breaks.",
-          "artefact_interaction_description": "You add fairness constraints; AI's gap evaluation changes.",
-          "interaction_type": "fill_blank",
-          "options_inputs": [
-            "When evaluating employment history, focus on skills relevance and growth trajectory. Do not penalize employment gaps. Note gaps neutrally without negative inference.",
-            "Automatically downgrade any resume with gaps over 6 months",
-            "Ignore employment dates entirely",
-            "Flag all gaps for manual review"
+          "instruction_question": "This screening instruction introduces massive bias against caregivers and career pivoters. Find the unfair rule.",
+          "explain_this_question": "Auto-rejecting based on gaps is a poor hiring practice. AI should be instructed to focus on skills and trajectory, noting gaps neutrally rather than disqualifying.",
+          "artefact_interaction_description": "You remove the unfair filter; the candidate pool expands.",
+          "interaction_type": "clickable_prompt",
+          "scenario_context": "The hiring manager wants to save time by auto-filtering, but this rule might exclude top talent.",
+          "prompt_text": "Screen these resumes for the {{1}}Account Manager role{{/1}}. {{0}}Reject anyone with gaps over 6 months{{/0}}. Focus on {{2}}B2B sales experience{{/2}}.",
+          "clickable_options": [
+            "Reject anyone with gaps over 6 months",
+            "Account Manager role",
+            "B2B sales experience"
           ],
           "outcomes": {
-            "correct": "AI consistently ignores gaps, focusing purely on skills as instructed",
-            "partially_correct": "AI makes an effort but bias slips through without absolute constraints",
-            "incorrect": "Process remains manual or unscalable"
+            "correct": "Correct. Gaps often have valid reasons (caregiving, health). Auto-rejection is discriminatory and shortsighted.",
+            "partially_correct": "The role title is fine. Look for the exclusion criteria.",
+            "incorrect": "Sales experience is a valid requirement. Look for the rule about timeline continuity."
           },
-          "immediate_feedback": "Impact: candidate diversity and fairness.",
+          "immediate_feedback": "Evaluate skills, not timelines.",
           "skill_signals_observed": [
             "Fair prompting",
             "Bias awareness"
-          ],
-          "prompt_template": "When evaluating employment history, focus on skills relevance and growth trajectory. [____] not penalize employment gaps. Note gaps neutrally without negative inference.",
-          "blank_options": [
-            "Explicitly do",
-            "Generally do",
-            "Try to",
-            "Manually"
-          ],
-          "correct_answer_index": 0
+          ]
         },
         {
           "step_id": 3,
@@ -547,24 +546,26 @@
               "Avoid Generic Questions: Specify role context for relevant, tailored questions"
             ]
           },
-          "instruction_question": "Choose the best prompt to generate behavioral questions for 'stakeholder management' competency.",
-          "explain_this_question": "Good behavioral questions are specific, relevant, and reveal past behavior patterns. This tests your ability to generate targeted interview content via prompts.",
-          "artefact_interaction_description": "You craft a question generation prompt; AI produces interview questions.",
-          "options_inputs": [
-            "Generate 5 behavioral interview questions that assess stakeholder management for a Product Manager role. Use STAR format. Focus on: conflicting priorities, difficult stakeholders, cross-team alignment, executive communication, and influence without authority.",
-            "Create questions about stakeholder management",
-            "Write interview questions",
-            "Generate hard questions to trick candidates"
+          "instruction_question": "These generated questions are too generic to reveal candidate depth. Find the prompt error.",
+          "explain_this_question": "Asking for 'typical' or 'standard' questions guarantees average results. To get deep, revealing questions, you must prompt for specific, challenging scenarios.",
+          "artefact_interaction_description": "You spot the cliché request; AI switches to scenario-based questions.",
+          "interaction_type": "clickable_prompt",
+          "scenario_context": "Your interviewers are complaining that candidates are giving rehearsed answers because the AI questions are too standard.",
+          "prompt_text": "Generate interview questions for {{1}}Stakeholder Management{{/1}}. {{0}}Ask typical questions about problems{{/0}}. Use {{2}}STAR format{{/2}}.",
+          "clickable_options": [
+            "Ask typical questions about problems",
+            "Stakeholder Management",
+            "Use STAR format"
           ],
           "outcomes": {
-            "correct": "AI produces targeted, STAR-friendly behavioral questions",
-            "partially_correct": "Questions are relevant but not optimized for evaluation",
-            "incorrect": "Questions are generic or unhelpful"
+            "correct": "Replacing 'typical' with 'complex scenario' or 'failure mode' invites depth.",
+            "partially_correct": "That part defines the topic correctly. The issue is in *how* we ask about it.",
+            "incorrect": "STAR format is a best practice. Look for the instruction limiting creativity."
           },
-          "immediate_feedback": "Impact: interview signal quality and consistency.",
+          "immediate_feedback": "Generic prompts yield generic results.",
           "skill_signals_observed": [
-            "Question specificity",
-            "Competency mapping"
+            "Creativity prompting",
+            "Cliché avoidance"
           ]
         },
         {
@@ -664,21 +665,23 @@
               "Set Fairness Constraints: Explicitly tell AI to avoid cultural bias and be legally defensible"
             ]
           },
-          "instruction_question": "Select your approach to prevent leading or biased interview questions from AI.",
-          "explain_this_question": "AI can generate biased questions without proper constraints. This tests whether you can prompt for neutral, fair questions.",
-          "artefact_interaction_description": "You add fairness constraints; question tone shifts to neutral.",
-          "options_inputs": [
-            "Generate questions that are open-ended and neutral. Avoid questions that assume candidate background, suggest 'correct' answers, or contain cultural bias. Focus on observable behaviors and outcomes.",
-            "Accept whatever AI generates",
-            "Only ask yes/no questions to avoid bias",
-            "Generate questions that favor candidates from top companies"
+          "instruction_question": "This generated question is not just biased—it's illegal in many jurisdictions. Find it.",
+          "explain_this_question": "Questions about family planning, marital status, or age are discriminatory. You must explicitly instruct AI to avoid personal life questions and focus only on job-related behaviors.",
+          "artefact_interaction_description": "You flag the illegal question; AI removes it for legal compliance.",
+          "interaction_type": "clickable_prompt",
+          "scenario_context": "The hiring manager wants to ensure the candidate can handle long hours, but this prompt goes too far.",
+          "prompt_text": "Create an interview script for a {{1}}Sales Manager{{/1}}. {{0}}Ask if they are planning to have kids soon{{/0}} (for scheduling). {{2}}Check if they can travel 50% of the time{{/2}}.",
+          "clickable_options": [
+            "Ask if they are planning to have kids soon",
+            "Sales Manager",
+            "Check if they can travel 50% of the time"
           ],
           "outcomes": {
-            "correct": "Interview questions are fair and legally defensible",
-            "partially_correct": "Most questions are fair but some bias slips through",
-            "incorrect": "Questions introduce or amplify bias"
+            "correct": "Correct. Family planning questions are discriminatory and illegal. Ask about availability/travel directly instead.",
+            "partially_correct": "Role title is fine. Look for the personal question.",
+            "incorrect": "Travel requirement is valid if essential to the job. Look for the question about personal life."
           },
-          "immediate_feedback": "Impact: candidate experience and legal risk.",
+          "immediate_feedback": "Evaluate availability, not family plans.",
           "skill_signals_observed": [
             "Fair question design",
             "Bias prevention"

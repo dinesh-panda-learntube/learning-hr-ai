@@ -419,6 +419,168 @@ window.ViolatedPrinciplesQuestion = ({ problematicPrompt, availablePrinciples, o
   );
 };
 
+// New V3 Question Type: Clickable Prompt
+// Shows a prompt card with clickable underlined phrases - clicking one proceeds to next question
+window.ClickablePromptQuestion = ({ scenarioContext, promptText, clickableOptions, onAnswer, disabled }) => {
+  const COLORS = window.COLORS;
+  const [hoveredIndex, setHoveredIndex] = React.useState(null);
+
+  const handleClick = (index) => {
+    if (disabled) return;
+    onAnswer?.(index);
+  };
+
+  // Parse the promptText to identify clickable segments
+  // Format: Use {{option_index}} to mark clickable phrases
+  // Example: "Please {{0}}review{{/0}} or {{1}}schedule{{/1}}"
+  const renderPrompt = () => {
+    // 1. Find all occurrences of all markers
+    const segments = [];
+    
+    clickableOptions.forEach((option, index) => {
+      const startMarker = `{{${index}}}`;
+      const endMarker = `{{/${index}}}`;
+      const startIndex = promptText.indexOf(startMarker);
+      const endIndex = promptText.indexOf(endMarker);
+      
+      if (startIndex !== -1 && endIndex !== -1) {
+        segments.push({
+          start: startIndex,
+          end: endIndex + endMarker.length,
+          contentStart: startIndex + startMarker.length,
+          contentEnd: endIndex,
+          index: index,
+          type: 'clickable'
+        });
+      }
+    });
+
+    // 2. Sort segments by position in formatting string
+    segments.sort((a, b) => a.start - b.start);
+
+    // 3. Build the final parts array
+    const parts = [];
+    let lastIndex = 0;
+
+    segments.forEach((seg, i) => {
+      // Add plain text before this segment
+      if (seg.start > lastIndex) {
+        parts.push({
+          type: 'text',
+          content: promptText.substring(lastIndex, seg.start),
+          key: `text-${lastIndex}`
+        });
+      }
+
+      // Add the clickable segment
+      parts.push({
+        type: 'clickable',
+        content: promptText.substring(seg.contentStart, seg.contentEnd),
+        optionIndex: seg.index,
+        key: `clickable-${seg.index}`
+      });
+
+      lastIndex = seg.end;
+    });
+
+    // Add remaining plain text
+    if (lastIndex < promptText.length) {
+      parts.push({
+        type: 'text',
+        content: promptText.substring(lastIndex),
+        key: `text-end`
+      });
+    }
+    
+    return parts.map(part => {
+      if (part.type === 'text') {
+        return <span key={part.key}>{part.content}</span>;
+      } else {
+        const isHovered = hoveredIndex === part.optionIndex;
+        return (
+          <span
+            key={part.key}
+            onClick={() => handleClick(part.optionIndex)}
+            onMouseEnter={() => setHoveredIndex(part.optionIndex)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            style={{
+              textDecoration: 'underline',
+              textDecorationColor: COLORS.highlight,
+              textDecorationThickness: '2px',
+              textUnderlineOffset: '3px',
+              color: isHovered ? COLORS.highlight : COLORS.text,
+              cursor: disabled ? 'not-allowed' : 'pointer',
+              fontWeight: 600,
+              transition: 'all 0.2s ease',
+              background: isHovered ? COLORS.highlightSoft : 'transparent',
+              padding: '2px 4px',
+              borderRadius: '4px',
+              opacity: disabled ? 0.5 : 1
+            }}
+          >
+            {part.content}
+          </span>
+        );
+      }
+    });
+  };
+
+  return (
+    <div style={{ marginBottom: '20px' }}>
+      {/* Scenario Context - Blended with Question */}
+      {scenarioContext && (
+        <div style={{
+          fontSize: '15px',
+          color: COLORS.textMuted,
+          lineHeight: 1.6,
+          marginBottom: '24px',
+          fontStyle: 'italic',
+          opacity: 0.85,
+          borderLeft: `3px solid ${COLORS.highlight}40`,
+          paddingLeft: '12px'
+        }}>
+          {scenarioContext}
+        </div>
+      )}
+
+      {/* Instruction Header */}
+      <div style={{ 
+        fontSize: '12px', 
+        color: COLORS.textMuted, 
+        fontWeight: 600, 
+        textAlign: 'center', 
+        marginBottom: '12px' 
+      }}>
+        Click the error phrase in the prompt
+      </div>
+
+      {/* Prompt Card with Clickable Phrases */}
+      <div style={{
+        background: COLORS.bgCard,
+        borderRadius: '12px',
+        padding: '24px',
+        border: `1px solid ${COLORS.bgLight}`,
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+          <div style={{ fontSize: '12px', color: COLORS.textDim, textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.5px' }}>
+            💬 AI PROMPT DRAFT
+          </div>
+        </div>
+        
+        <div style={{ 
+          fontSize: '16px', 
+          color: COLORS.text, 
+          lineHeight: 1.9,
+          fontFamily: 'Georgia, serif'
+        }}>
+          "{renderPrompt()}"
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 // Tap Sequence Question Components
 window.FillBlanksSequence = ({ template, blankOrder, options, requiredSelections, onComplete, disabled }) => {
@@ -1335,16 +1497,128 @@ window.downloadBadge = (badgeTitle) => {
   }
 };
 
-window.SimulationResult = ({ simulation, score, onContinue, nextSimTitle }) => {
+window.SimulationResult = ({ simulation, score, onContinue, nextSimTitle, history }) => {
   const COLORS = window.COLORS;
   const metadata = simulation.simulation_metadata;
   const deliverables = metadata.deliverables_unlockable || {};
+  const [expandedItems, setExpandedItems] = React.useState(new Set());
+  const [isReviewOpen, setIsReviewOpen] = React.useState(false);
+
+  // Filter history for review
+  const incorrectItems = history ? history.filter(item => item.type === 'incorrect') : [];
+  const partialItems = history ? history.filter(item => item.type === 'partial') : [];
+  const correctItems = history ? history.filter(item => item.type === 'correct') : [];
+
+  const toggleItem = (id) => {
+    setExpandedItems(prev => {
+        const next = new Set(prev);
+        if (next.has(id)) next.delete(id);
+        else next.add(id);
+        return next;
+    });
+  };
+
+  const renderReviewItem = (item, uniqueId, color, icon) => {
+    const isExpanded = expandedItems.has(uniqueId);
+    return (
+      <div key={uniqueId} style={{
+        /* Linear Style: Subtle border, clean background */
+        background: 'rgba(255, 255, 255, 0.02)',
+        border: `1px solid ${COLORS.bgLight}`,
+        borderRadius: '8px',
+        marginBottom: '8px',
+        overflow: 'hidden',
+        transition: 'background 0.2s ease'
+      }}>
+        {/* Header - Always Visible */}
+        <div 
+          onClick={() => toggleItem(uniqueId)}
+          style={{
+            padding: '14px 16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            cursor: 'pointer',
+            background: isExpanded ? 'rgba(255, 255, 255, 0.03)' : 'transparent'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1, overflow: 'hidden' }}>
+             {/* Status Icon */}
+             <div style={{ 
+               width: '20px', 
+               height: '20px', 
+               borderRadius: '50%', 
+               background: color, 
+               flexShrink: 0,
+               display: 'flex',
+               alignItems: 'center',
+               justifyContent: 'center',
+               color: '#000',
+               fontSize: '12px',
+               fontWeight: 800
+             }}>
+               {icon}
+             </div>
+             
+             {/* Title (Question) */}
+             <div style={{ 
+               fontSize: '14px', 
+               fontWeight: 500, 
+               color: COLORS.text,
+               whiteSpace: 'nowrap', 
+               overflow: 'hidden', 
+               textOverflow: 'ellipsis',
+               opacity: isExpanded ? 1 : 0.9
+             }}>
+               {item.question}
+             </div>
+          </div>
+          
+          <div style={{ color: COLORS.textDim, fontSize: '18px', marginLeft: '12px', lineHeight: 1 }}>
+             {isExpanded ? '−' : '+'}
+          </div>
+        </div>
+
+        {/* Expanded Content - Details */}
+        {isExpanded && (
+          <div style={{ padding: '16px 16px 20px 16px', borderTop: `1px solid ${COLORS.bgLight}` }}>
+             <div style={{ display: 'grid', gap: '16px' }}>
+                
+                {/* Selected Answer */}
+                <div>
+                   <div style={{ fontSize: '11px', color: COLORS.textDim, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>Selected Answer</div>
+                   <div style={{ fontSize: '14px', color: COLORS.text, lineHeight: 1.5 }}>
+                     {item.userAnswer}
+                   </div>
+                </div>
+
+                {/* Review / Outcome */}
+                <div>
+                   <div style={{ fontSize: '11px', color: color, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>Review</div>
+                   <div style={{ fontSize: '14px', color: COLORS.textMuted, lineHeight: 1.5 }}>
+                     {item.outcomeText}
+                   </div>
+                </div>
+                
+                {/* Best Answer (if needed) */}
+                {item.correctAnswer && item.type !== 'correct' && (
+                   <div style={{ background: 'rgba(74, 222, 128, 0.05)', border: `1px dashed ${COLORS.success}40`, padding: '12px', borderRadius: '8px' }}>
+                      <div style={{ fontSize: '11px', color: COLORS.success, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px', fontWeight: 700 }}>Best Answer</div>
+                      <div style={{ fontSize: '14px', color: COLORS.success }}>{item.correctAnswer}</div>
+                   </div>
+                )}
+             </div>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div style={{ minHeight: '100vh', background: `linear-gradient(180deg, ${COLORS.bg} 0%, #091620 100%)`, padding: '24px 20px', fontFamily: 'system-ui, -apple-system, sans-serif', display: 'flex', flexDirection: 'column' }}>
       <div style={{ flex: 1, paddingBottom: '80px' }}>
         <div style={{ textAlign: 'center', marginBottom: '32px', marginTop: '20px' }}>
-          <div style={{ fontSize: '64px', marginBottom: '16px' }}>✅</div>
+          {/* Removed Tick Icon */}
           <h2 style={{ fontSize: '28px', fontWeight: 700, color: COLORS.text, marginBottom: '8px' }}>Simulation Complete</h2>
           <div style={{ fontSize: '16px', color: COLORS.cta, fontWeight: 600 }}>+{score.toLocaleString()} Skillions Earned</div>
         </div>
@@ -1387,15 +1661,69 @@ window.SimulationResult = ({ simulation, score, onContinue, nextSimTitle }) => {
             </div>
           </div>
         )}
+        
+        {/* Review Section - Card Style */}
+        {history && history.length > 0 && (
+          <div style={{ background: COLORS.bgCard, borderRadius: '16px', padding: '20px', marginBottom: '24px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+              <div style={{ fontSize: '12px', color: COLORS.highlight, fontWeight: 700, textTransform: 'uppercase' }}>YOUR PERFORMANCE ANALYSIS</div>
+              <div 
+                 onClick={() => setIsReviewOpen(!isReviewOpen)}
+                 style={{ fontSize: '12px', color: COLORS.highlight, cursor: 'pointer', fontWeight: 600 }}
+              >
+                 {isReviewOpen ? 'Show Less' : 'Show More'}
+              </div>
+            </div>
 
-        <div style={{ background: COLORS.bgCard, borderRadius: '16px', padding: '20px', marginBottom: '24px', border: `1px solid ${COLORS.bgLight}` }}>
-          <div style={{ fontSize: '12px', color: COLORS.textDim, marginBottom: '16px', fontWeight: 700, textTransform: 'uppercase' }}>Competencies Proven</div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-            {metadata.primary_role_competencies_evaluated.map((skill, i) => (
-              <span key={i} style={{ background: COLORS.highlightSoft, color: COLORS.highlight, fontSize: '12px', fontWeight: 500, padding: '8px 12px', borderRadius: '8px' }}>{skill}</span>
-            ))}
+            {/* Content List */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {/* If collapsed, show max 3 items (prioritizing incorrect/partial) */}
+              {!isReviewOpen ? (
+                 <>
+                   {[...incorrectItems, ...partialItems, ...correctItems].slice(0, 3).map((item, i) => {
+                      let color = COLORS.success;
+                      let icon = '✓';
+                      if(item.type === 'incorrect') { color = COLORS.warning; icon = '!'; }
+                      else if(item.type === 'partial') { color = '#FCD34D'; icon = '!'; }
+                      return renderReviewItem(item, `preview-${i}`, color, icon);
+                   })}
+                   {history.length > 3 && (
+                     <div 
+                       onClick={() => setIsReviewOpen(true)}
+                       style={{ textAlign: 'center', fontSize: '12px', color: COLORS.textDim, marginTop: '8px', cursor: 'pointer' }}
+                     >
+                       + {history.length - 3} more items
+                     </div>
+                   )}
+                 </>
+              ) : (
+                 /* Expanded View - Grouped */
+                <>
+                   {incorrectItems.length > 0 && (
+                     <div style={{ marginBottom: '8px' }}>
+                       <div style={{ fontSize: '14px', color: COLORS.warning, fontWeight: 700, marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Needs Attention</div>
+                       {incorrectItems.map((item, i) => renderReviewItem(item, `inc-${i}`, COLORS.warning, '!'))}
+                     </div>
+                   )}
+                   {partialItems.length > 0 && (
+                     <div style={{ marginBottom: '8px' }}>
+                       <div style={{ fontSize: '14px', color: '#FCD34D', fontWeight: 700, marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Room for Improvement</div>
+                       {partialItems.map((item, i) => renderReviewItem(item, `part-${i}`, '#FCD34D', '!'))}
+                     </div>
+                   )}
+                   {correctItems.length > 0 && (
+                     <div style={{ marginBottom: '8px' }}>
+                       <div style={{ fontSize: '14px', color: COLORS.success, fontWeight: 700, marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Good Decisions</div>
+                       {correctItems.map((item, i) => renderReviewItem(item, `corr-${i}`, COLORS.success, '✓'))}
+                     </div>
+                   )}
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* Removed Competencies Proven Card */}
 
         <div style={{ background: COLORS.bgCard, borderRadius: '16px', padding: '20px', marginBottom: '24px' }}>
           <div style={{ fontSize: '12px', color: COLORS.highlight, marginBottom: '16px', fontWeight: 700, textTransform: 'uppercase' }}>YOU'VE UNLOCKED</div>
@@ -1476,185 +1804,8 @@ window.SimulationResult = ({ simulation, score, onContinue, nextSimTitle }) => {
   );
 };
 
-window.ReviewPage = ({ history, onContinue }) => {
-  const COLORS = window.COLORS;
-  const [expandedItems, setExpandedItems] = React.useState(new Set());
+// ReviewPage Removed
 
-  // Categorize all answers by type
-  const incorrectItems = history.filter(item => item.type === 'incorrect');
-  const partialItems = history.filter(item => item.type === 'partial');
-  const correctItems = history.filter(item => item.type === 'correct');
-
-  const toggleExpand = (itemId) => {
-    setExpandedItems(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(itemId)) {
-        newSet.delete(itemId);
-      } else {
-        newSet.add(itemId);
-      }
-      return newSet;
-    });
-  };
-
-  // Render a category section
-  const renderCategory = (items, title, color, icon) => {
-    if (items.length === 0) return null;
-
-    return (
-      <div style={{ marginBottom: '24px' }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          marginBottom: '12px',
-          paddingBottom: '8px',
-          borderBottom: `2px solid ${color}30`
-        }}>
-          <span style={{ fontSize: '18px', color: color }}>{icon}</span>
-          <h3 style={{
-            fontSize: '16px',
-            fontWeight: 700,
-            color: color,
-            margin: 0,
-            textTransform: 'uppercase',
-            letterSpacing: '0.5px'
-          }}>
-            {title}
-          </h3>
-          <span style={{
-            fontSize: '12px',
-            fontWeight: 600,
-            color: COLORS.textDim,
-            background: COLORS.bgLight,
-            padding: '2px 8px',
-            borderRadius: '12px'
-          }}>
-            {items.length}
-          </span>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {items.map((item, idx) => {
-            const itemId = `${title}-${idx}`;
-            const isExpanded = expandedItems.has(itemId);
-
-            return (
-              <div key={itemId} style={{
-                background: COLORS.bgCard,
-                borderRadius: '12px',
-                border: `1px solid ${color}30`,
-                overflow: 'hidden'
-              }}>
-                <div
-                  onClick={() => toggleExpand(itemId)}
-                  style={{
-                    padding: '16px',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                    cursor: 'pointer',
-                    background: isExpanded ? COLORS.bgLight : 'transparent',
-                    transition: 'background 0.2s'
-                  }}
-                >
-                  <div style={{ flex: 1, marginRight: '12px' }}>
-                    <div style={{ fontSize: '14px', fontWeight: 500, color: COLORS.text, lineHeight: 1.4 }}>
-                      {item.outcomeText}
-                    </div>
-                  </div>
-                  <div style={{
-                    color: color,
-                    fontSize: '16px',
-                    fontWeight: 700,
-                    flexShrink: 0,
-                    transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)',
-                    transition: 'transform 0.2s'
-                  }}>
-                    ▸
-                  </div>
-                </div>
-
-                {isExpanded && (
-                  <div style={{ padding: '16px', borderTop: `1px solid ${COLORS.bg}20`, background: COLORS.bgCard }}>
-                    <div style={{ marginBottom: '16px' }}>
-                      <div style={{ fontSize: '11px', color: COLORS.textDim, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>Question</div>
-                      <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 500 }}>{item.question}</div>
-                    </div>
-
-                    <div style={{ marginBottom: '16px' }}>
-                      <div style={{ fontSize: '11px', color: COLORS.textDim, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>Your Answer</div>
-                      <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 500 }}>{item.userAnswer}</div>
-                    </div>
-
-                    {/* Best Answer - only show for incorrect and partial answers */}
-                    {item.correctAnswer && item.type !== 'correct' && (
-                      <div style={{ background: COLORS.successBg, padding: '12px', borderRadius: '8px', border: `1px solid ${COLORS.success}30` }}>
-                        <div style={{ fontSize: '11px', color: COLORS.success, fontWeight: 700, marginBottom: '6px' }}>BEST ANSWER</div>
-                        <div style={{ fontSize: '13px', color: COLORS.textMuted, lineHeight: 1.5 }}>
-                          <div style={{ marginBottom: '6px', color: COLORS.success }}>{item.correctAnswer}</div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  };
-
-  if (!history || history.length === 0) {
-    return (
-      <div style={{ minHeight: '100vh', background: COLORS.bg, padding: '24px 20px 100px 20px', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 600, color: COLORS.text, marginBottom: '16px' }}>Review Your Choices</h2>
-        <div style={{ color: COLORS.success, fontSize: '15px', marginBottom: '20px' }}>🎉 No answers to review!</div>
-        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '20px', background: `linear-gradient(180deg, rgba(9, 22, 32, 0) 0%, #091620 20%)`, zIndex: 100, maxWidth: '600px', margin: '0 auto' }}>
-          <button onClick={onContinue} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>Unlock Career Benefits</button>
-        </div>
-      </div>
-    );
-  }
-
-  // Check if all answers are correct
-  const allCorrect = incorrectItems.length === 0 && partialItems.length === 0;
-
-  if (allCorrect) {
-    return (
-      <div style={{ minHeight: '100vh', background: COLORS.bg, padding: '24px 20px 100px 20px', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 600, color: COLORS.text, marginBottom: '16px' }}>Review Your Choices</h2>
-        <div style={{ color: COLORS.success, fontSize: '15px', marginBottom: '20px' }}>🎉 All answers correct! Great job.</div>
-        {renderCategory(correctItems, 'Best Answers', COLORS.success, '✓')}
-        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '20px', background: `linear-gradient(180deg, rgba(9, 22, 32, 0) 0%, #091620 20%)`, zIndex: 100, maxWidth: '600px', margin: '0 auto' }}>
-          <button onClick={onContinue} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>Unlock Career Benefits</button>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div style={{ minHeight: '100vh', background: COLORS.bg, padding: '24px 20px 100px 20px', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-      <h2 style={{ fontSize: '24px', fontWeight: 600, color: COLORS.text, marginBottom: '24px' }}>Review Your Choices</h2>
-
-      {/* Need Attention Section */}
-      {renderCategory(incorrectItems, 'Need Attention', COLORS.warning, '⚠')}
-
-      {/* Room for Improvement Section */}
-      {renderCategory(partialItems, 'Room for Improvement', COLORS.highlight, '◑')}
-
-      {/* Best Answers Section */}
-      {renderCategory(correctItems, 'Best Answers', COLORS.success, '✓')}
-
-      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '20px', background: `linear-gradient(180deg, rgba(9, 22, 32, 0) 0%, #091620 20%)`, zIndex: 100, maxWidth: '600px', margin: '0 auto' }}>
-        <button onClick={onContinue} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>
-          Unlock Career Benefits
-        </button>
-      </div>
-    </div>
-  );
-};
 
 window.HRSimulationApp = function ({ simulationData, uiVersion }) {
   const COLORS = window.COLORS;
@@ -2040,7 +2191,8 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
       setPreviousOutcome(null);
       // Skip review if all answers are correct
       const allCorrect = userHistory.every(item => item.type === 'correct');
-      setScreen(allCorrect && learningMode !== 'guided' ? 'sim_result' : 'review');
+      // Always go to sim_result, never review page
+      setScreen('sim_result');
     }
     setIsExplainExpanded(false);
   };
@@ -2113,93 +2265,14 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
             setSimElapsed(0);
             setSimTimerPaused(false);
             setLastActivity(Date.now());
-            setScreen('scenario');
+            setScreen('step');
           }} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>Start Simulation</button>
         </div>
       </div >
     );
   }
 
-  if (screen === 'scenario') {
-    return (
-      <div style={{ minHeight: '100vh', background: COLORS.bg, padding: '24px 20px', fontFamily: 'system-ui, -apple-system, sans-serif', display: 'flex', flexDirection: 'column' }}>
-        <h2 style={{ fontSize: '28px', fontWeight: 300, color: COLORS.text, lineHeight: 1.3, marginBottom: '20px' }}>{currentScenario.scenario_title}</h2>
 
-        <div style={{ background: COLORS.bgCard, borderRadius: '8px', padding: '16px', marginBottom: '24px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-          <span style={{ fontSize: '20px', marginTop: '-2px' }}>🏢</span>
-          <span style={{ fontSize: '14px', color: COLORS.textMuted, lineHeight: 1.5 }}>
-            You're an HR Manager in a <strong>{currentScenario.workplace_context.company_type}</strong>.
-            <br />
-            {/* REMEMBER: {currentScenario.workplace_context.business_state}. */}
-          </span>
-        </div>
-
-        <div style={{ background: COLORS.warningBg, borderRadius: '12px', padding: '16px', marginBottom: '24px' }}>
-          <div style={{ fontSize: '13px', color: COLORS.warning, fontWeight: 600, marginBottom: '6px' }}>⚡ SOLVE THIS CRISIS</div>
-          <p style={{ fontSize: '14px', color: COLORS.textMuted, lineHeight: 1.6, margin: 0 }}>
-            {currentScenario.crisis_or_decision_trigger}
-          </p>
-        </div>
-
-        {/* Learning Mode Selection Card */}
-        <div style={{ background: 'linear-gradient(135deg, #1A2F3A 0%, #0D2436 100%)', borderRadius: '16px', padding: '20px', marginBottom: '20px', border: `2px solid ${COLORS.highlight}40`, boxShadow: '0 4px 12px rgba(64, 106, 255, 0.1)' }}>
-          <div style={{ fontSize: '14px', color: COLORS.highlight, fontWeight: 700, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-            💡 Choose your preferred level:
-          </div>
-          <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
-            <div
-              onClick={() => setLearningMode('guided')}
-              style={{
-                flex: 1,
-                padding: '16px',
-                borderRadius: '12px',
-                background: learningMode === 'guided' ? COLORS.highlight + '20' : COLORS.bgCard,
-                border: `2px solid ${learningMode === 'guided' ? COLORS.highlight : COLORS.bgLight}`,
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              <div style={{ fontSize: '16px', marginBottom: '4px' }}>👨🏻‍💼</div>
-              <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600, marginBottom: '4px' }}>Guided Certification</div>
-              <div style={{ fontSize: '12px', color: COLORS.textMuted, lineHeight: 1.4 }}>Best For Beginners</div>
-            </div>
-            <div
-              onClick={() => setLearningMode('assessment')}
-              style={{
-                flex: 1,
-                padding: '16px',
-                borderRadius: '12px',
-                background: learningMode === 'assessment' ? COLORS.highlight + '20' : COLORS.bgCard,
-                border: `2px solid ${learningMode === 'assessment' ? COLORS.highlight : COLORS.bgLight}`,
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              <div style={{ fontSize: '16px', marginBottom: '4px' }}>⚡️</div>
-              <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600, marginBottom: '4px' }}>Direct Certification</div>
-              <div style={{ fontSize: '12px', color: COLORS.textMuted, lineHeight: 1.4 }}>For Experienced Professionals</div>
-            </div>
-          </div>
-        </div>
-
-        {/* 
-        <div style={{ background: COLORS.bgCard, borderRadius: '12px', padding: '16px', marginBottom: '32px' }}>
-          <div style={{ fontSize: '12px', color: COLORS.textDim, marginBottom: '10px' }}>CENTRAL ARTEFACT</div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ background: COLORS.highlightSoft, width: '44px', height: '44px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>📋</div>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 600, color: COLORS.text }}>{currentScenario.central_artefact}</div>
-              <div style={{ fontSize: '12px', color: COLORS.textMuted }}>Contextual work document</div>
-            </div>
-          </div>
-        </div>
-        */}
-        <div style={{ position: 'sticky', bottom: 0, padding: '20px 0', background: COLORS.bg, zIndex: 10, marginTop: 'auto' }}>
-          <button id="begin-simulation" onClick={() => setScreen('step')} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>Begin</button>
-        </div>
-      </div >
-    );
-  }
 
   if (screen === 'step') {
     let artefact = null;
@@ -2312,6 +2385,19 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
               // selectedIndex is the VISUAL index (shuffled)
               // evaluateStep handles mapping visual -> original via optionIndices
               evaluateStep(selectedIndex, step.correct_answer_index || 0);
+            }}
+            disabled={isFeedbackVisible}
+          />
+        );
+      } else if (step.interaction_type === 'clickable_prompt' && step.prompt_text) {
+        // V3 Question Type: Clickable Prompt
+        artefact = (
+          <window.ClickablePromptQuestion
+            promptText={step.prompt_text}
+            clickableOptions={step.clickable_options || []}
+            onAnswer={(selectedIndex) => {
+              // Direct evaluation - no shuffling for this type
+              evaluateStep(selectedIndex);
             }}
             disabled={isFeedbackVisible}
           />
@@ -2429,16 +2515,51 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
           </div>
         </div>
 
-        {/* Theory Card - Learn Before You Answer */}
-        {step.theory_content && <window.TheoryCard theoryContent={step.theory_content} defaultExpanded={learningMode === 'guided'} />}
-
-        {/* COMMENTED OUT: Previous outcome text above question */}
-        {/* {previousOutcome && (
-          <div style={{ fontSize: '16px', fontWeight: 200, color: COLORS.textDim, lineHeight: 1.35, marginBottom: '16px' }}>
-            {previousOutcome.text}
+        {/* Scenario Header for Q1 */}
+        {currentStep === 0 && (
+          <div style={{ marginBottom: '24px' }}>
+             <h2 style={{ fontSize: '24px', fontWeight: 700, color: COLORS.text, marginBottom: '12px' }}>{currentScenario.scenario_title}</h2>
+             <p style={{ fontSize: '15px', color: COLORS.textMuted, lineHeight: 1.6 }}>
+               You are a HR Manager in <strong>{currentScenario.workplace_context.company_type}</strong>. {currentScenario.workplace_context.business_state}.
+               <br/><br/>
+               {currentScenario.crisis_or_decision_trigger}
+             </p>
           </div>
-        )} */}
-        <h3 style={{ fontSize: '20px', fontWeight: 400, color: COLORS.text, lineHeight: 1.35, marginBottom: '16px' }}>{step.instruction_question}</h3>
+        )}
+
+        {/* Integrated Mentor Notes / Theory Content (Starts from Q3 / index 2) */}
+        {currentStep >= 2 && step.theory_content && (
+          <div style={{ marginBottom: '24px' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: 700, color: COLORS.highlight, marginBottom: '12px', textTransform: 'uppercase' }}>
+              {step.theory_content.title}
+            </h3>
+            {step.theory_content.key_points && (
+              <ul style={{ margin: 0, paddingLeft: '20px', color: COLORS.textMuted, fontSize: '15px', lineHeight: 1.6 }}>
+                {step.theory_content.key_points.map((point, idx) => (
+                  <li key={idx} style={{ marginBottom: '8px' }}>{point}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
+
+        {/* Scenario Context - Displayed above question */}
+        {step.scenario_context && (
+          <div style={{
+            fontSize: '15px',
+            color: COLORS.textMuted,
+            lineHeight: 1.6,
+            marginBottom: '16px',
+            fontStyle: 'italic',
+            opacity: 0.85,
+            borderLeft: `3px solid ${COLORS.highlight}40`,
+            paddingLeft: '12px'
+          }}>
+            {step.scenario_context}
+          </div>
+        )}
+
+        <h3 style={{ fontSize: '20px', fontWeight: 600, fontStyle: 'italic', color: COLORS.text, opacity: 1, lineHeight: 1.4, marginBottom: '24px' }}>{step.instruction_question}</h3>
 
         {/* REMOVED: Explain This Question dropdown */}
         {artefact}
@@ -2476,17 +2597,13 @@ window.HRSimulationApp = function ({ simulationData, uiVersion }) {
         score={score}
         onContinue={nextSimulation}
         nextSimTitle={nextSim ? nextSim.simulation_metadata.simulation_title : null}
+        history={userHistory}
       />
     )
   }
 
   if (screen === 'review') {
-    return (
-      <window.ReviewPage
-        history={userHistory}
-        onContinue={() => setScreen('sim_result')}
-      />
-    );
+    return null; // Review page logic is now in SimulationResult
   }
 
   if (screen === 'results') {
